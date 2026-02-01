@@ -1,0 +1,262 @@
+@charset "UTF-8";
+
+body{
+	font-family: "Yu Gothic";
+	margin: 0;
+	padding: 0;
+	color: #333;
+	background-color: #fffaea;
+}
+
+main{
+	width: 100%;
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+/* ===========================
+   セクション共通カードデザイン
+=========================== */
+#countdown,#event{
+  background-color: #fff;
+  padding: 24px;
+  margin: 60px 0;
+  border-radius: 12px;
+  border: 1px solid #D8B46A; 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+}
+section h2 {
+	font-size: 24px;
+	padding-bottom: 6px;
+	border-bottom: 2px solid #D8B46A;
+	display: inline-block; 
+	margin: 0 auto 20px;   
+}
+
+
+/* ===========================
+   TOP画像
+=========================== */
+#hero {
+  text-align: center;
+  padding: 80px 20px;
+  background-color: #fffdf8; /* 紙っぽい背景 */
+}
+
+/* 最初の文字 */
+.intro-text {
+  font-size: 28px;
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+/* 写真 */
+.hero-photo {
+  width: 100%;
+  max-width: 900px;
+  border-radius: 12px;
+  margin-top: 30px;
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards;
+  animation-delay: 1s; /* 文字の後に出てくる */
+}
+
+/* OUR BIG DAY */
+.hero-title {
+  font-size: 32px;
+  letter-spacing: 2px;
+  margin-top: 20px;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 1.8s;
+}
+
+/* 日付 */
+.hero-date {
+  font-size: 18px;
+  color: #666;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+  animation-delay: 2.2s;
+}
+
+/* アニメーション定義 */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===========================
+   カウントダウン
+=========================== */
+/* カウントダウン全体 */
+#countdown {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 24px;
+  text-align: center;
+}
+
+/* 上段（112 DAY） */
+.count-top {
+  margin-bottom: 20px;
+}
+
+.big-time {
+  display: block;
+  font-size: 56px;
+  font-weight: bold;
+  color: #005BAC;
+  line-height: 1;
+}
+
+.big-unit {
+  display: block;
+  font-size: 18px;
+  color: #666;
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+/* 下段（6 30 20） */
+.count-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.count-item {
+  flex: 1;
+}
+
+.count-item .time {
+  display: block;
+  font-size: 32px;
+  font-weight: bold;
+  color: #005BAC;
+  margin-bottom: 2px;
+}
+
+.count-item .unit {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  letter-spacing: 1px;
+}
+
+
+/* ===========================
+   メッセージ
+=========================== */
+#message {
+  margin: 50px 0;
+  line-height: 1.8;
+  text-align: center;
+  font-size: 18px;
+}
+
+/* ===========================
+   新郎新婦プロフィール
+=========================== */
+#host {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+
+#host div {
+  width: 60%;
+}
+
+#host img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+#host .name {
+  font-weight: bold;
+  font-size: 20px;
+  margin-top: 10px;
+  color: #005BAC; /* DeNAブルー */
+}
+
+#host .message {
+  margin-top: 10px;
+  line-height: 1.7;
+}
+
+/* ===========================
+   写真スライダー
+=========================== */
+#gallery{
+	text-align: center;
+}
+.photo-slider-section {
+  margin: 60px 0;
+}
+
+.photo-slider img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* ===========================
+   イベント（日時・会場）
+=========================== */
+#event {
+  margin: 60px 0;
+  padding: 20px;
+  text-align: center;
+}
+
+#event .date,
+#event .location {
+  margin-bottom: 20px;
+}
+
+#event p {
+  margin: 6px 0;
+}
+
+#event iframe {
+  width: 100%;
+  height: 300px;
+  border: 0;
+  border-radius: 12px;
+}
+
+/* ===========================
+   RSVP
+=========================== */
+#rsvp {
+  text-align: center;
+  margin: 60px 0;
+}
+
+#rsvp button {
+  background-color: #005BAC; /* DeNAブルー */
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+#rsvp button a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
