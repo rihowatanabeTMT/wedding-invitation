@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>RSVP確認</title>
+</head>
+<body>
+<header></header>
+<main>
+    <h1>入力内容の確認</h1>
+
+    <form action="/rsvp/submit" method="post" th:object="${rsvpForm}">
+
+        <div class="form-group">
+            <label>お名前：</label>
+            <span th:text="*{name}"></span>
+            <input type="hidden" th:field="*{name}">
+        </div>
+
+        <div class="form-group">
+            <label>ふりがな：</label>
+            <span th:text="*{furigana}"></span>
+            <input type="hidden" th:field="*{furigana}">
+        </div>
+
+        <div class="form-group">
+            <label>ご出席：</label>
+            <span th:text="*{attendance == 'yes' ? '出席' : '欠席'}"></span>
+            <input type="hidden" th:field="*{attendance}">
+        </div>
+
+        <div class="form-group">
+            <label>電話番号：</label>
+            <span th:text="*{phone}"></span>
+            <input type="hidden" th:field="*{phone}">
+        </div>
+
+        <div class="form-group">
+            <label>メールアドレス：</label>
+            <span th:text="*{email}"></span>
+            <input type="hidden" th:field="*{email}">
+        </div>
+
+        <div class="form-group">
+            <label>郵便番号：</label>
+            <span th:text="*{post}"></span>
+            <input type="hidden" th:field="*{post}">
+        </div>
+
+        <div class="form-group">
+            <label>住所：</label>
+            <span th:text="*{address}"></span>
+            <input type="hidden" th:field="*{address}">
+        </div>
+
+        <div class="form-group">
+            <label>宿泊施設：</label>
+            <span th:text="*{hotel == 'yes' ? '利用する' : '利用しない'}"></span>
+            <input type="hidden" th:field="*{hotel}">
+        </div>
+
+        <div class="form-group">
+            <label>シャトルバス：</label>
+            <span th:text="*{bus == 'yes' ? '利用する' : '利用しない'}"></span>
+            <input type="hidden" th:field="*{bus}">
+        </div>
+
+        <div class="form-group">
+            <label>アレルギー：</label>
+            <span th:text="*{allergy == 'yes' ? '有' : '無'}"></span>
+            <input type="hidden" th:field="*{allergy}">
+        </div>
+
+        <div class="form-group" th:if="*{allergy} == 'yes'">
+            <label>アレルギー詳細：</label>
+            <span th:text="*{allergyText}"></span>
+            <input type="hidden" th:field="*{allergyText}">
+        </div>
+
+        <!-- 同伴者 -->
+        <div class="form-group" th:if="*{plusones} != null and *{plusones.size()} > 0">
+            <h3>同伴者情報</h3>
+
+            <div th:each="p, i : *{plusones}">
+                <h4 th:text="'同伴者 ' + (${i.index} + 1)"></h4>
+
+                <p>お名前：<span th:text="${p.plusOneName}"></span></p>
+                <input type="hidden" th:name="|plusones[${i.index}].plusOneName|" th:value="${p.plusOneName}">
+
+                <p>ふりがな：<span th:text="${p.plusOneFurigana}"></span></p>
+                <input type="hidden" th:name="|plusones[${i.index}].plusOneFurigana|" th:value="${p.plusOneFurigana}">
+
+                <p>アレルギー：<span th:text="${p.plusOneAllergy}"></span></p>
+                <input type="hidden" th:name="|plusones[${i.index}].plusOneAllergy|" th:value="${p.plusOneAllergy}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>メッセージ：</label>
+            <span th:text="*{message}"></span>
+            <input type="hidden" th:field="*{message}">
+        </div>
+
+        <button type="submit">送信</button>
+    </form>
+
+    <!-- 戻るボタン（POSTで戻す場合） -->
+    <form action="/rsvp" method="post" th:object="${rsvpForm}">
+        <input type="hidden" th:field="*{name}">
+        <input type="hidden" th:field="*{furigana}">
+        <input type="hidden" th:field="*{attendance}">
+        <input type="hidden" th:field="*{phone}">
+        <input type="hidden" th:field="*{email}">
+        <input type="hidden" th:field="*{post}">
+        <input type="hidden" th:field="*{address}">
+        <input type="hidden" th:field="*{hotel}">
+        <input type="hidden" th:field="*{bus}">
+        <input type="hidden" th:field="*{allergy}">
+        <input type="hidden" th:field="*{allergyText}">
+        <input type="hidden" th:field="*{message}">
+
+        <div th:each="p, i : *{plusones}">
+            <input type="hidden" th:name="|plusones[${i.index}].plusOneName|" th:value="${p.plusOneName}">
+            <input type="hidden" th:name="|plusones[${i.index}].plusOneFurigana|" th:value="${p.plusOneFurigana}">
+            <input type="hidden" th:name="|plusones[${i.index}].plusOneAllergy|" th:value="${p.plusOneAllergy}">
+        </div>
+
+        <button type="submit">戻る</button>
+    </form>
+
+</main>
+<footer></footer>
+</body>
+</html>

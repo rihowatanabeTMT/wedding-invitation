@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<header></header>
+<main>
+	<h1>RSVP</h1>
+	<form action="/rsvp/confirm" method="post" th:object="${rsvpForm}">
+	  <div class="form-group">
+	    <label for="name">お名前</label>
+	    <input id="name" type="text" th:field="*{name}" required>
+	  </div>
+	  <div class="form-group">
+	  	    <label for="furigana">ふりがな</label>
+	  	    <input id="furigana" type="text" th:field="*{furigana}" required>
+	  </div>	  
+	  <div class="form-group">
+	    <label>ご出席</label>
+	    <label>
+	      <input type="radio" value="yes"  th:field="*{attendance}"  checked>出席
+	    </label>
+	    <label>
+	      <input type="radio" value="no" th:field="*{attendance}">欠席
+	    </label>
+	  </div>
+	  <div class="form-group">
+	    <label for="phone">電話番号</label>
+	    <input id="phone" type="tel" inputmode="tel" th:field="*{phone}"  required>
+	  </div>
+	  <div class="form-group">
+	    <label for="email">メールアドレス</label>
+	    <input id="email" type="email" inputmode="email" th:field="*{email}"  required>
+	  </div>
+	  <div class="form-group">
+	    <label for="post">郵便番号</label>
+	    <input id="post" type="text" inputmode="numeric" pattern="\d{3}-?\d{4}"  th:field="*{post}" required>
+	  </div>
+	  <div class="form-group">
+	  	<label for="address">住所</label>
+	  	<input id="address" type="text" th:field="*{address}"  required>
+	  </div>
+	  <div class="form-group">
+	    <label>宿泊施設ご利用有無</label>
+	    <label>
+	      <input type="radio" value="yes" th:field="*{hotel}"  >利用する
+	    </label>
+	    <label>
+	      <input type="radio" value="no" th:field="*{hotel}" checked>利用しない
+	    </label>
+	  </div>
+	  <div class="form-group">
+	  	    <label>シャトルバスのご利用有無</label>
+	  	    <label>
+	  	      <input type="radio" value="yes" th:field="*{bus}">利用する
+	  	    </label>
+	  	    <label>
+	  	      <input type="radio" value="no" th:field="*{bus}" checked>利用しない
+	  	    </label>
+	  	  </div>
+	  <div class="form-group">
+	    <label>アレルギー有無</label>
+	    <label>
+	      <input type="radio" value="yes" th:field="*{allergy}">有
+	    </label>
+	    <label>
+	      <input type="radio"value="no" th:field="*{allergy}" checked>無
+	    </label>
+	  </div>
+	  <!--アレルギー有りの場合-->
+	  <div class="form-group" id="allergy-detail" style="display:none;">
+	    <label for="allergy_text">アレルギーの詳細</label>
+	    <textarea id="allergy_text" th:field="*{allergyText}" rows="3"></textarea>
+	  </div>
+	  <div class="form-group">
+	    <label>同伴者の有無</label>
+	    <label><input type="radio" name="plusone_flag" value="yes" >有</label>
+	    <label><input type="radio" name="plusone_flag" value="no" checked>無</label>
+	  </div>
+	  <div id="plusone-area" style="display:none;">
+	    <h3>同伴者情報</h3>
+	    <div id="plusone-list"></div>
+
+	    <button type="button" id="add-plusone">＋ 同伴者を追加</button>
+	  </div>
+	  <div class="form-group">
+		<label for="message">メッセージ</label>
+		<textarea id="message" th:field="*{message}" rows="4"></textarea>
+	  </div>
+	  	  
+	  <button type="submit">確認</button>
+	</form>
+</main>
+<footer></footer>
+<script src="/js/rsvp.js"></script>
+</body>
+</html>
