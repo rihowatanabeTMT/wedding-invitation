@@ -17,7 +17,7 @@ public class MailService {
     @Autowired
     private JavaMailSender mailSender;
 
-    public void sendRsvpMail(RsvpForm form, String baseMessage, String specialMessage) throws MessagingException {
+    public void sendRsvpMail(RsvpForm form, String baseMessage) throws MessagingException {
 
         String to = form.getEmail();
         String subject = "【ご回答ありがとうございます】結婚式 RSVP";
@@ -38,11 +38,6 @@ public class MailService {
 
         // 出席/欠席メッセージ（すでに <br> が入っている）
         body.append(baseMessage).append("<br><br>");
-
-        // 役割メッセージ
-        if (specialMessage != null && !specialMessage.isEmpty()) {
-            body.append(specialMessage).append("<br><br>");
-        }
 
         // 回答内容
         body.append("―――――――――――――――――――<br>");

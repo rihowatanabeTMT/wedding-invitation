@@ -16,11 +16,14 @@ public class GuestRoleService {
 	private GuestRoleRepository guestRoleRepository;
 
 	public String detectRole(RsvpForm form) {
-		Optional<GuestRoleEntity> entity = guestRoleRepository.findByRole( form.getLastName(),
-                form.getFirstName(),
-                form.getGuestSide(),
-                form.getRelation()
-            );
+		Optional<GuestRoleEntity> entity =
+			    guestRoleRepository.findByLastNameAndFirstNameAndGuestSideAndRelation(
+			        form.getLastName(),
+			        form.getFirstName(),
+			        form.getGuestSide(),
+			        form.getRelation()
+			    );
+
 				
 		return entity.map(GuestRoleEntity::getRole).orElse("none");
 

@@ -86,14 +86,18 @@ public class RsvpController {
         rsvpForm.setRole(role);
 
         // メッセージ生成（MessageService に委譲）
-        String message = messageService.createMessage(rsvpForm);
-        String specialMessage = messageService.createSpecialMessage(rsvpForm);
+        String message = null;
+        if(role == null) {
+        	message = messageService.createMessage(rsvpForm);
+        }else{
+        	message =messageService.createSpecialMessage(rsvpForm);
+        }
 
         // メール送信
         boolean mailError = false;
 
         try {
-            mailService.sendRsvpMail(rsvpForm, message, specialMessage);
+            mailService.sendRsvpMail(rsvpForm, message);
         } catch (Exception e) {
             e.printStackTrace();
             mailError = true; // ← ★ ここがポイント
@@ -103,7 +107,6 @@ public class RsvpController {
         redirectAttributes.addFlashAttribute("name",
                 rsvpForm.getLastName() + rsvpForm.getFirstName());
         redirectAttributes.addFlashAttribute("message", message);
-        redirectAttributes.addFlashAttribute("specialMessage", specialMessage);
         redirectAttributes.addFlashAttribute("mailError", mailError); // ← ★ 完了画面へ渡す
 
 

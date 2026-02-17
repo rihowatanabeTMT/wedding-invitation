@@ -8,11 +8,12 @@ import com.wedding.kota_riho.entity.GuestRoleEntity;
 
 public interface GuestRoleRepository extends JpaRepository<GuestRoleEntity, Long> {
 	
-	Optional<GuestRoleEntity> findByRole(
-			String lastName,
-	        String firstName,
-	        String guestSide,
-	        String relation
-			);
+	Optional<GuestRoleEntity> findByLastNameAndFirstNameAndGuestSideAndRelation(
+		    String lastName,
+		    String firstName,
+		    String guestSide,
+		    String relation
+		);
+
 	
 }
