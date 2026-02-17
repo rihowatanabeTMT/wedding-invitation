@@ -232,6 +232,7 @@ p, span {
     max-width: 900px;
     aspect-ratio: 16 / 9;
     overflow: hidden;
+	color: #fff;
 }
 
 .countdown-bg {
@@ -257,12 +258,16 @@ p, span {
 .big-day {
     font-size: 80px;
     font-weight: 700;
+	flex-direction: column; /* 縦並び */
+	align-items: center;    /* 中央揃え */
+
 }
 
 .big-day-unit {
     font-size: 28px;
     margin-top: 5px;
 }
+
 
 .count-bottom {
     display: flex;
@@ -271,14 +276,28 @@ p, span {
     margin-top: 20px;
 }
 
+.count-item {
+    display: flex;
+    flex-direction: column; /* 縦並び */
+    align-items: center;    /* 中央揃え */
+}
+
+.count-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .time {
     font-size: 40px;
     font-weight: 600;
+    line-height: 1; /* ← これが重要 */
 }
 
 .unit {
     font-size: 16px;
-    margin-top: 5px;
+    margin-top: 4px; /* ← 15px は大きすぎるので調整 */
+    line-height: 1;  /* ← 行間を詰める */
 }
 
 
