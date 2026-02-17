@@ -1,16 +1,25 @@
-#wrapper {
-    max-width: 900px;          
-    margin: 0 auto;            
-    background: #fff;        
-    border-radius: 10px;       
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15); 
-    overflow: hidden;        
+/* =========================
+   基本設定（全体）
+========================= */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans JP", sans-serif;
+    background: #f5f5f5;
+    color: #000;
 }
 
+#wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    overflow: hidden;
+}
 
-/* =========================
-   全体（全セクションの横幅を統一）
-========================= */
+/* セクション共通 */
 section {
     max-width: 900px;
     margin: 0 auto;
@@ -22,262 +31,214 @@ section * {
 }
 
 section h2 {
-	font-size: 50px;
+    font-size: 50px;
+    margin-bottom: 40px;
 }
 
-p, span{
-	font-size: 23px;
+p, span {
+    font-size: 20px;
+    line-height: 1.7;
 }
+
+
 /* =========================
-   HERO 全体
+   HERO（PC）
 ========================= */
-/* 全体 */
+
 #hero {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  background: #fff;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: #fff;
 }
 
-/* 900px カード */
 .hero-card {
-  width: 900px;
-  display: flex;
-  flex-direction: column;
-  position: relative;
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 
-/* スマホ縮小 */
-.hero-scale {
-  transform-origin: top center;
-}
-
-@media (min-width: 769px) {
-  .hero-scale {
-    transform: scale(1);
-  }
-}
-
-/* 上部青帯 */
+/* 青帯 */
 .hero-topbar {
-  width: 900px;
-  background: #005BAC;
-  color: #fff;
-  height: 90px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start; /* ← 上にくっつける */
+    width: 900px;
+    background: #005BAC;
+    color: #fff;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
-/* 左：WE LOVE SPORTS（40px） */
 .hero-top-left {
-  font-size: 45px;
-  font-weight: 600;
-  line-height: 45px; 
-  margin-top: 4px;
+    font-size: 45px;
+    font-weight: 600;
+    line-height: 45px;
+    margin-top: 4px;
 }
 
-/* 右：INVITATION（60px） */
 .hero-top-right {
-  font-size: 75px;
-  font-weight: 900;
-  line-height: 75px; 
-  margin-top: -2px;
+    font-size: 75px;
+    font-weight: 900;
+    line-height: 75px;
+    margin-top: -2px;
 }
 
-/* 写真（16:9） */
+/* 写真 */
 .hero-photo-wrap {
-  width: 900px;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
+    width: 900px;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
 }
 
 .hero-photo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
+
 /* Invitation（大） */
 .hero-photo-invitation {
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(-15deg);
-  font-size: 200px;
-  font-weight: 900;
-  color: #fff;
-  line-height: 0.9;
-  text-align: center;
-  opacity: 0;
-  z-index: 10;
-  pointer-events: none;
-  animation: invitationIn 1.2s ease-out forwards,
-             invitationOut 1s ease-in forwards 2.2s; /* ← 2.2秒後に消える */
-}
-
-/* 右から出てくる */
-@keyframes invitationIn {
-  0% {
-    opacity: 0;
-    transform: translate(80%, -50%) rotate(-15deg);
-  }
-  60% {
-    opacity: 1;
-    transform: translate(-40%, -50%) rotate(-15deg);
-  }
-  100% {
-    opacity: 1;
+    position: absolute;
+    top: 40%;
+    left: 50%;
     transform: translate(-50%, -50%) rotate(-15deg);
-  }
-}
-
-/* ふわっと消える */
-@keyframes invitationOut {
-  0% {
-    opacity: 1;
-  }
-  100% {
+    font-size: 200px;
+    font-weight: 900;
+    color: #fff;
+    line-height: 0.9;
+    text-align: center;
     opacity: 0;
-  }
+    z-index: 10;
+    pointer-events: none;
+    animation: invitationIn 1.2s ease-out forwards,
+               invitationOut 1s ease-in forwards 2.2s;
 }
 
-/* 背景を薄くするクラス */
-.hero-fade-bg {
-  opacity: 0.4;
-  transition: opacity 0.5s ease;
+@keyframes invitationIn {
+    0% { opacity: 0; transform: translate(80%, -50%) rotate(-15deg); }
+    60% { opacity: 1; transform: translate(-40%, -50%) rotate(-15deg); }
+    100% { opacity: 1; transform: translate(-50%, -50%) rotate(-15deg); }
 }
 
-/* the WEDDING CELEBRATION（青背景） */
+@keyframes invitationOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* 青背景 */
 .hero-celebration {
-  width: 900px;
-  background: #005BAC;
-  color: #fff;
-  text-align: center;
-  padding: 12px 0;
-  font-size: 22px;
-  letter-spacing: 2px;
+    width: 900px;
+    background: #005BAC;
+    color: #fff;
+    padding: 12px 0;
+    font-size: 22px;
+    letter-spacing: 2px;
 }
 
-/* 白背景部分 */
+/* 白背景 */
 .hero-bottom {
-  width: 900px;
-  background: #fff;
-  padding: 24px 0 40px;
-  text-align: center;
+    width: 900px;
+    background: #fff;
+    padding: 24px 0 40px;
 }
 
-/* 名前 */
 .hero-names {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 12px;
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 12px;
 }
 
-/* メッセージ（3行） */
 .hero-message {
-  font-size: 18px;
-  line-height: 1.7;
-  margin-bottom: 24px;
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 24px;
 }
 
-/* DATE & PLACE（左600px / 右300px） */
+/* DATE & PLACE */
 .hero-dateplace {
-  width: 840px;
-  display: flex;
-  justify-content: space-between;
-  padding: 20px 30px;
+    width: 840px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 30px;
 }
 
-/* 左：600px */
 .dp-left {
-  border: 1px solid #000;
-  width: 565px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+    border: 1px solid #000;
+    width: 565px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .dp-item {
-  border-top: 1px solid #000;
-  font-size: 20px;
-  font-weight: 700;
-  text-align: center;
+    border-top: 1px solid #000;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
 }
 
-/* 右：300px */
 .dp-right {
-  width: 275px;
-  border: 1px solid #000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 275px;
+    border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .dp-day {
-  font-size: 80px;
-  font-weight: 900;
+    font-size: 80px;
+    font-weight: 900;
 }
 
 /* バーコード */
 .barcode-wrapper {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .barcode-link {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-/* スマホ縮小 */
-@media (max-width: 768px) {
-  .hero-scale {
-    transform: scale(var(--hero-scale));
-  }
-}
-
-
-/*-- =========================
-     INVITATION
-========================== */
-
-.invitation-text {
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.3;
-    text-align: center;
-}
-
-.invitation-names {
-    margin-top: 50px;
-	line-height: 2.0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 
 /* =========================
-   COUNTDOWN（常に 16:9）
+   INVITATION
 ========================= */
+
+.invitation-text {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.invitation-names {
+    margin-top: 50px;
+    line-height: 2.0;
+}
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
 .countdown-section {
     position: relative;
     width: 100%;
     max-width: 900px;
-    margin: 0 auto;
     aspect-ratio: 16 / 9;
     overflow: hidden;
-	padding: 0;
 }
 
 .countdown-bg {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center top;
     filter: brightness(60%);
-    z-index: 1;
 }
 
 .countdown-content {
@@ -286,32 +247,20 @@ p, span{
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    z-index: 2;
-}
-.section-title-white {
-    font-size: 90px;
-	margin:0;
-	font-weight: normal;
 }
 
-.section-title-white ,
-.big-day,
-.big-day-unit,
-.time,
-.unit {
-    color: #fff;
-    text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+.section-title-white {
+    font-size: 90px;
+    margin: 0;
 }
 
 .big-day {
     font-size: 80px;
     font-weight: 700;
-    display: block;
 }
 
 .big-day-unit {
     font-size: 28px;
-    display: block;
     margin-top: 5px;
 }
 
@@ -329,60 +278,51 @@ p, span{
 
 .unit {
     font-size: 16px;
-    display: block;
     margin-top: 5px;
 }
+
 
 /* =========================
    HOST
 ========================= */
+
 .host-vertical {
     display: flex;
     flex-direction: column;
-    gap: 0px;
     align-items: center;
 }
+
 .host-card {
     width: 100%;
     max-width: 840px;
     padding: 30px;
-	margin:0;
-    
 }
 
-/* 写真＋名前・役割を横並びにする */
 .host-top {
     display: flex;
-	justify-content: center;
+    justify-content: center;
     align-items: center;
     gap: 20px;
-	padding:0, 10px;
-    margin-bottom: 5px; /* コメントとの余白 */
 }
 
 .host-photo {
-    width: 150px;	
-    height: auto;
+    
     border-radius: 8px;
-    object-fit: cover;
-	flex: 1;
 }
 
 .host-info {
-	flex:1;
-    display: flex;
-    flex-direction: column;
+    flex: 1;
 }
 
 .host-name {
     font-size: 30px;
     margin: 0;
-    padding-bottom: 5px;
 }
 
-.host-comment{
+.host-comment {
     line-height: 1.7;
 }
+
 .underline {
     border-bottom: 1px solid #000;
     padding-bottom: 4px;
@@ -392,43 +332,45 @@ p, span{
 /* =========================
    EVENT
 ========================= */
+
 .event-info {
     display: flex;
     flex-direction: column;
-    align-items:center;
-    font-size: 18px;
+    align-items: center;
+    font-size: 20px;
     line-height: 1.8;
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 .event-row {
     display: flex;
-    justify-content: center; /* ← 2列セットを中央に */
+    justify-content: center;
     width: 100%;
-    gap:20px;
+    gap: 20px;
 }
 
 .event-label {
-    width: 100px;        /* ← ラベル列の幅を固定 */
-    text-align: left;   /* ← ラベルの右端を揃える（重要） */
+    width: 100px;
+    text-align: left;
     font-weight: bold;
-	padding-left:150px
+    padding-left: 150px;
 }
 
 .event-value {
-    width: 450px;        /* ← 値の列の幅を固定 */
-    text-align: left;    /* ← 値の左端を揃える（重要） */
+    width: 450px;
+    text-align: left;
 }
 
-
-.event-map iframe{
-	width: 900px;
-	height: 450px;
+.event-map iframe {
+    width: 900px;
+    height: 450px;
 }
+
 
 /* =========================
    RSVP
 ========================= */
+
 .rsvp-button {
     display: inline-block;
     padding: 18px 40px;
@@ -440,24 +382,25 @@ p, span{
     text-decoration: none;
 }
 
+
 /* =========================
    フッター
 ========================= */
+
 footer {
-	margin-top:20px;
-  text-align: center;
-  font-size: 12px;
-  color: #777;
-  padding: 25px 0;
-  border-top: 1px solid #e5e5e5;
-  letter-spacing: 0.5px;
+    text-align: center;
+    font-size: 12px;
+    color: #777;
+    padding: 15px 0;
+	margin-top: 20px;
+    border-top: 1px solid #e5e5e5;
 }
 
 
-
 /* =========================
-   フェードイン（他セクション用）
+   フェードイン
 ========================= */
+
 .fadein {
     opacity: 0;
     transform: translateY(30px);
@@ -468,29 +411,26 @@ footer {
     opacity: 1;
     transform: translateY(0);
 }
+
+
 /* =========================
-   スマホ対応（768px 以下）
+   スマホ対応（768px以下）
 ========================= */
+
 @media (max-width: 768px) {
 
-    /* 全体の余白 */
     section {
         max-width: 100%;
         padding: 40px 20px;
     }
 
-    /* wrapper をスマホ幅にフィット */
     #wrapper {
         max-width: 100%;
         border-radius: 0;
         box-shadow: none;
     }
 
-    /* =========================
-       HERO（スマホ最適化）
-    ========================== */
-
-    /* HERO 全体をスマホ幅に合わせる */
+    /* HERO */
     .hero-card,
     .hero-topbar,
     .hero-photo-wrap,
@@ -499,7 +439,6 @@ footer {
         width: 100%;
     }
 
-    /* 青帯（WE LOVE / INVITATION）をスマホ用に最適化 */
     .hero-topbar {
         flex-direction: column;
         height: auto;
@@ -511,16 +450,13 @@ footer {
     .hero-top-left {
         font-size: 22px;
         line-height: 1.2;
-        margin: 0;
     }
 
     .hero-top-right {
         font-size: 32px;
         line-height: 1.2;
-        margin: 0;
     }
 
-    /* 写真 */
     .hero-photo-wrap {
         aspect-ratio: auto;
         height: auto;
@@ -531,19 +467,16 @@ footer {
         height: auto;
     }
 
-    /* Invitation（大）位置調整 */
     .hero-photo-invitation {
         font-size: 70px;
         top: 28%;
         transform: translate(-50%, -50%) rotate(-15deg);
     }
 
-    /* 名前 */
     .hero-names {
         font-size: 32px;
     }
 
-    /* DATE & PLACE を縦並びに */
     .hero-dateplace {
         flex-direction: column;
         width: 100%;
@@ -560,9 +493,7 @@ footer {
         font-size: 60px;
     }
 
-    /* =========================
-       HOST
-    ========================== */
+    /* HOST */
     .host-top {
         flex-direction: column;
         text-align: center;
@@ -576,9 +507,7 @@ footer {
         text-align: center;
     }
 
-    /* =========================
-       EVENT
-    ========================== */
+    /* EVENT */
     .event-info {
         font-size: 18px;
     }
@@ -588,9 +517,7 @@ footer {
         height: 250px;
     }
 
-    /* =========================
-       全体の文字サイズ調整
-    ========================== */
+    /* 全体フォント */
     p, span {
         font-size: 16px;
     }
