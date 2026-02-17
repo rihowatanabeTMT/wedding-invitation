@@ -1,14 +1,17 @@
 package com.wedding.kota_riho.form;
 
-import java.io.Serializable;
+import jakarta.validation.constraints.NotBlank;
 
 import lombok.Data;
-
 @Data
-public class PlusoneForm implements Serializable {
-	private String plusOneName;
-	private String plusOneFurigana;
-	private String plusOneAllergy;
+public class PlusoneForm {
 
+    @NotBlank
+    private String plusOneName;
 
+    @NotBlank
+    private String plusOneFurigana;
+
+    private String plusOneAllergy;
 }
+

@@ -1,0 +1,78 @@
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    background: #f7f9fc;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #005BAC; /* ベイスターズ濃い青 */
+    margin-bottom: 30px;
+}
+
+form {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: 600;
+    color: #005BAC;
+    display: inline-block;
+    width: 150px;
+}
+
+span {
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 14px;
+    background: #005BAC;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background .2s;
+}
+
+button:hover {
+    background: #0073CF;
+}
+
+h3 {
+    color: #005BAC;
+    margin-top: 30px;
+}
+
+h4 {
+    color: #0073CF;
+    margin-bottom: 10px;
+}
+
+@media (max-width: 480px) {
+    label {
+        width: auto;
+        display: block;
+        margin-bottom: 4px;
+    }
+}

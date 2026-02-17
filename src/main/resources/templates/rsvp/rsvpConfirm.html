@@ -3,68 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <title>RSVP確認</title>
+	<link rel="stylesheet" href="/css/base.css">
+	<link rel="stylesheet" href="/css/rsvpComfirm.css">
 </head>
 <body>
+
 <header></header>
+
 <main>
     <h1>入力内容の確認</h1>
 
+    <!-- 送信フォーム -->
     <form action="/rsvp/submit" method="post" th:object="${rsvpForm}">
 
+        <!-- お名前 -->
         <div class="form-group">
             <label>お名前：</label>
-            <span th:text="*{name}"></span>
-            <input type="hidden" th:field="*{name}">
+            <span th:text="*{lastName + ' ' + firstName}"></span>
+
+            <input type="hidden" th:field="*{lastName}">
+            <input type="hidden" th:field="*{firstName}">
         </div>
 
+        <!-- ふりがな -->
         <div class="form-group">
             <label>ふりがな：</label>
-            <span th:text="*{furigana}"></span>
-            <input type="hidden" th:field="*{furigana}">
+            <span th:text="*{lastNameKana + ' ' + firstNameKana}"></span>
+
+            <input type="hidden" th:field="*{lastNameKana}">
+            <input type="hidden" th:field="*{firstNameKana}">
         </div>
 
+        <!-- ローマ字 -->
+        <div class="form-group">
+            <label>ローマ字：</label>
+            <span th:text="*{lastNameEn + ' ' + firstNameEn}"></span>
+
+            <input type="hidden" th:field="*{lastNameEn}">
+            <input type="hidden" th:field="*{firstNameEn}">
+        </div>
+
+        <!-- 新郎新婦どちら側 -->
+        <div class="form-group">
+            <label>区分：</label>
+            <span th:text="*{guestSide == 'groom' ? '新郎ゲスト' : '新婦ゲスト'}"></span>
+
+            <input type="hidden" th:field="*{guestSide}">
+        </div>
+
+        <!-- 関係性 -->
+        <div class="form-group">
+            <label>関係性：</label>
+            <span th:text="*{
+                relation == 'relative' ? '親族' :
+                relation == 'company' ? '会社' :
+                relation == 'friend' ? '友人' : 'その他'
+            }"></span>
+
+            <input type="hidden" th:field="*{relation}">
+        </div>
+
+        <!-- 出欠 -->
         <div class="form-group">
             <label>ご出席：</label>
             <span th:text="*{attendance == 'yes' ? '出席' : '欠席'}"></span>
+
             <input type="hidden" th:field="*{attendance}">
         </div>
 
+        <!-- 電話番号 -->
         <div class="form-group">
             <label>電話番号：</label>
             <span th:text="*{phone}"></span>
             <input type="hidden" th:field="*{phone}">
         </div>
 
+        <!-- メール -->
         <div class="form-group">
             <label>メールアドレス：</label>
             <span th:text="*{email}"></span>
             <input type="hidden" th:field="*{email}">
         </div>
 
+        <!-- 郵便番号 -->
         <div class="form-group">
             <label>郵便番号：</label>
             <span th:text="*{post}"></span>
             <input type="hidden" th:field="*{post}">
         </div>
 
+        <!-- 都道府県 -->
         <div class="form-group">
-            <label>住所：</label>
+            <label>都道府県：</label>
+            <span th:text="*{prefecture}"></span>
+            <input type="hidden" th:field="*{prefecture}">
+        </div>
+
+        <!-- 市区町村 -->
+        <div class="form-group">
+            <label>市区町村・番地：</label>
             <span th:text="*{address}"></span>
             <input type="hidden" th:field="*{address}">
         </div>
 
+        <!-- 建物名 -->
+        <div class="form-group">
+            <label>建物名：</label>
+            <span th:text="*{building}"></span>
+            <input type="hidden" th:field="*{building}">
+        </div>
+
+        <!-- 宿泊 -->
         <div class="form-group">
             <label>宿泊施設：</label>
             <span th:text="*{hotel == 'yes' ? '利用する' : '利用しない'}"></span>
             <input type="hidden" th:field="*{hotel}">
         </div>
 
+        <!-- バス -->
         <div class="form-group">
             <label>シャトルバス：</label>
             <span th:text="*{bus == 'yes' ? '利用する' : '利用しない'}"></span>
             <input type="hidden" th:field="*{bus}">
         </div>
 
+        <!-- アレルギー -->
         <div class="form-group">
             <label>アレルギー：</label>
             <span th:text="*{allergy == 'yes' ? '有' : '無'}"></span>
@@ -78,7 +141,7 @@
         </div>
 
         <!-- 同伴者 -->
-        <div class="form-group" th:if="*{plusones} != null and *{plusones.size()} > 0">
+        <div class="form-group" th:if="*{plusones.size()} > 0">
             <h3>同伴者情報</h3>
 
             <div th:each="p, i : *{plusones}">
@@ -95,6 +158,7 @@
             </div>
         </div>
 
+        <!-- メッセージ -->
         <div class="form-group">
             <label>メッセージ：</label>
             <span th:text="*{message}"></span>
@@ -104,15 +168,24 @@
         <button type="submit">送信</button>
     </form>
 
-    <!-- 戻るボタン（POSTで戻す場合） -->
+    <!-- 戻るボタン -->
     <form action="/rsvp" method="post" th:object="${rsvpForm}">
-        <input type="hidden" th:field="*{name}">
-        <input type="hidden" th:field="*{furigana}">
+        <!-- hidden は上と同じ内容を全部入れる -->
+        <input type="hidden" th:field="*{lastName}">
+        <input type="hidden" th:field="*{firstName}">
+        <input type="hidden" th:field="*{lastNameKana}">
+        <input type="hidden" th:field="*{firstNameKana}">
+        <input type="hidden" th:field="*{lastNameEn}">
+        <input type="hidden" th:field="*{firstNameEn}">
+        <input type="hidden" th:field="*{guestSide}">
+        <input type="hidden" th:field="*{relation}">
         <input type="hidden" th:field="*{attendance}">
         <input type="hidden" th:field="*{phone}">
         <input type="hidden" th:field="*{email}">
         <input type="hidden" th:field="*{post}">
+        <input type="hidden" th:field="*{prefecture}">
         <input type="hidden" th:field="*{address}">
+        <input type="hidden" th:field="*{building}">
         <input type="hidden" th:field="*{hotel}">
         <input type="hidden" th:field="*{bus}">
         <input type="hidden" th:field="*{allergy}">
@@ -129,6 +202,8 @@
     </form>
 
 </main>
+
 <footer></footer>
+
 </body>
 </html>

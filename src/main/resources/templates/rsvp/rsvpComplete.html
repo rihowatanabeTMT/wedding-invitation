@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>回答完了</title>
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/rsvpComplete.css">
 </head>
 <body>
-<p>できた</p>
+
+<main>
+    <div class="complete-box">
+        <h1>回答完了</h1>
+
+        <!-- メール送信失敗時の表示 -->
+        <div th:if="${mailError}">
+            <p style="color:red; font-weight:bold;">
+                ※ 確認メールの送信に失敗しましたが、<br>
+                回答内容は正常に受け付けておりますのでご安心ください。
+            </p>
+        </div>
+
+        <!-- 名前 -->
+        <p class="username" th:text="|${name} さん|"></p>
+
+        <!-- メッセージ（HTMLを反映） -->
+        <p class="message" th:utext="${message}"></p>
+
+        <!-- 特別メッセージ -->
+        <p class="message" th:if="${specialMessage != ''}"
+           th:utext="${specialMessage}"></p>
+
+        <!-- 迷惑メール注意文（自然で控えめ） -->
+        <p class="notice">
+            ※ 確認メールが届かない場合は、迷惑メールフォルダをご確認ください。
+        </p>
+
+        <a href="/top" class="complete-btn">トップへ戻る</a>
+    </div>
+</main>
+
 </body>
 </html>

@@ -1,0 +1,85 @@
+/* base.css */
+
+/* 全体レイアウト */
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    background: #f7f9fc;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* タイトル */
+h1 {
+    text-align: center;
+    color: #005BAC;
+    margin-bottom: 30px;
+}
+
+/* フォーム全体 */
+form {
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* 各項目 */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 6px;
+    color: #005BAC;
+}
+
+/* 入力系 */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cfd8e3;
+    border-radius: 8px;
+    font-size: 16px;
+    background: #fff;
+    transition: border-color .2s;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #0073CF;
+    outline: none;
+}
+
+/* ボタン */
+button[type="submit"],
+#add-plusone {
+    width: 100%;
+    padding: 14px;
+    background: #005BAC;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background .2s;
+}
+
+button:hover {
+    background: #0073CF;
+}

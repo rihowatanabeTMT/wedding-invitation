@@ -13,33 +13,32 @@ allergyRadios.forEach(radio => {
 /**
  * 郵便番号と住所
  */
-// 郵便番号のハイフン自動入力
 const postInput = document.getElementById('post');
 
 postInput.addEventListener('input', function () {
-  let value = this.value.replace(/[^0-9]/g, ''); // 数字以外除去
+  let value = this.value.replace(/[^0-9]/g, '');
 
   if (value.length > 3) {
     value = value.slice(0, 3) + '-' + value.slice(3, 7);
   }
 
   this.value = value;
- });
+});
 
-  
 document.getElementById('post').addEventListener('blur', function(){
-	const zipcode = this.value.replace(/[^0-9]/g,'');
-	
-	if(zipcode.length !== 7) return;
-	
-	fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${zipcode}`)
-		.then(response => response.json())
-		.then(data =>{
-			if(data.results){
-				const r = data.results[0];
-				document.getElementById('address').value = r.address1 + r.address2 + r.address3;
-			}
-		});
+  const zipcode = this.value.replace(/[^0-9]/g,'');
+
+  if(zipcode.length !== 7) return;
+
+  fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${zipcode}`)
+    .then(response => response.json())
+    .then(data =>{
+      if(data.results){
+        const r = data.results[0];
+        document.getElementById('prefecture').value = r.address1;
+        document.getElementById('address').value = r.address2 + r.address3;
+      }
+    });
 });
 
 /**
@@ -53,7 +52,6 @@ const addBtn = document.getElementById('add-plusone');
 let guestIndex = 0;
 const maxGuest = 4;
 
-// 同伴者ブロック生成
 function createGuestBlock(index) {
   const block = document.createElement('div');
   block.classList.add('form-group');
@@ -77,8 +75,6 @@ function createGuestBlock(index) {
   return block;
 }
 
-
-// 「同伴者：有」を押したら1人目を表示
 plusoneRadios.forEach(radio => {
   radio.addEventListener('change', () => {
     if (radio.value === 'yes') {
@@ -94,8 +90,6 @@ plusoneRadios.forEach(radio => {
   });
 });
 
-
-// 追加ボタン
 addBtn.addEventListener('click', () => {
   if (guestIndex >= maxGuest - 1) return;
 
@@ -103,8 +97,6 @@ addBtn.addEventListener('click', () => {
   plusoneList.appendChild(createGuestBlock(guestIndex));
 });
 
-
-// 削除ボタン
 plusoneList.addEventListener('click', (e) => {
   if (e.target.classList.contains('remove-btn')) {
     const index = e.target.getAttribute('data-index');
@@ -114,8 +106,6 @@ plusoneList.addEventListener('click', (e) => {
   }
 });
 
-
-// ゲスト番号振り直し
 function renumberGuests() {
   const blocks = plusoneList.querySelectorAll('.form-group');
   let num = 0;
@@ -142,10 +132,9 @@ function renumberGuests() {
   });
 
   guestIndex = blocks.length - 1;
+
   if (guestIndex < 0) {
-    // 同伴者がいなくなったら「無」に戻す
     document.querySelector('input[name="plusone_flag"][value="no"]').checked = true;
     plusoneArea.style.display = 'none';
   }
-
 }

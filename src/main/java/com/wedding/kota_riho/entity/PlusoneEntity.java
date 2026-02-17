@@ -1,5 +1,7 @@
 package com.wedding.kota_riho.entity;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,13 +12,10 @@ import jakarta.persistence.Table;
 
 import lombok.Data;
 
-@Data
 @Entity
+@Data
 @Table(name = "plus_one")
-public class PlusoneEntity {
-	
-	public PlusoneEntity() {}
-
+public class PlusoneEntity implements Serializable  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

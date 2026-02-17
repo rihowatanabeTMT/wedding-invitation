@@ -1,0 +1,44 @@
+/* rsvpComplete.css */
+
+/* 完了メッセージカード */
+.complete-box {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* 名前の強調 */
+.username {
+    font-size: 22px;
+    font-weight: 700;
+    color: #005BAC;
+    margin-bottom: 20px;
+}
+
+/* メッセージ */
+.message {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 15px;
+}
+
+/* ボタン */
+.complete-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 24px;
+    background: #005BAC;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    transition: background .2s;
+}
+
+.complete-btn:hover {
+    background: #0073CF;
+}
