@@ -468,10 +468,6 @@ footer {
     opacity: 1;
     transform: translateY(0);
 }
-
-/* =========================
-   スマホ対応
-========================= */
 /* =========================
    スマホ対応（768px 以下）
 ========================= */
@@ -491,7 +487,7 @@ footer {
     }
 
     /* =========================
-       HERO（ここが今回の本命）
+       HERO（スマホ最適化）
     ========================== */
 
     /* HERO 全体をスマホ幅に合わせる */
@@ -503,23 +499,23 @@ footer {
         width: 100%;
     }
 
-    /* 青帯（WE LOVE / INVITATION）を縦並びに */
+    /* 青帯（WE LOVE / INVITATION）をスマホ用に最適化 */
     .hero-topbar {
         flex-direction: column;
         height: auto;
-        padding: 10px 0;
+        padding: 12px 0;
         text-align: center;
         gap: 4px;
     }
 
     .hero-top-left {
-        font-size: 28px;
+        font-size: 22px;
         line-height: 1.2;
         margin: 0;
     }
 
     .hero-top-right {
-        font-size: 40px;
+        font-size: 32px;
         line-height: 1.2;
         margin: 0;
     }
@@ -537,8 +533,8 @@ footer {
 
     /* Invitation（大）位置調整 */
     .hero-photo-invitation {
-        font-size: 80px;
-        top: 30%;
+        font-size: 70px;
+        top: 28%;
         transform: translate(-50%, -50%) rotate(-15deg);
     }
 
@@ -596,7 +592,7 @@ footer {
        全体の文字サイズ調整
     ========================== */
     p, span {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     section h2 {
