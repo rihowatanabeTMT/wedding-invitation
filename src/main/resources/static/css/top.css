@@ -448,7 +448,7 @@ footer {
     }
 
     .hero-top-left {
-        font-size: 22px;
+        font-size: 15px;
         line-height: 1.2;
     }
 
@@ -519,7 +519,7 @@ footer {
 
     /* 全体フォント */
     p, span {
-        font-size: 16px;
+        font-size: 12px;
     }
 
     section h2 {
