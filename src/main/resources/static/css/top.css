@@ -472,57 +472,134 @@ footer {
 /* =========================
    スマホ対応
 ========================= */
+/* =========================
+   スマホ対応（768px 以下）
+========================= */
 @media (max-width: 768px) {
 
+    /* 全体の余白 */
     section {
         max-width: 100%;
         padding: 40px 20px;
     }
 
-    .hero-wrapper {
-      padding: 20px 0;
-      min-height: auto;
+    /* wrapper をスマホ幅にフィット */
+    #wrapper {
+        max-width: 100%;
+        border-radius: 0;
+        box-shadow: none;
     }
 
-    .hero-card {
-      border-radius: 0;
+    /* =========================
+       HERO（ここが今回の本命）
+    ========================== */
+
+    /* HERO 全体をスマホ幅に合わせる */
+    .hero-card,
+    .hero-topbar,
+    .hero-photo-wrap,
+    .hero-celebration,
+    .hero-bottom {
+        width: 100%;
     }
 
-    .hero-invitation {
-      font-size: 36px;
+    /* 青帯（WE LOVE / INVITATION）を縦並びに */
+    .hero-topbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+        text-align: center;
+        gap: 4px;
     }
 
-    .hero-bottom-invitation {
-      font-size: 32px;
+    .hero-top-left {
+        font-size: 28px;
+        line-height: 1.2;
+        margin: 0;
     }
 
+    .hero-top-right {
+        font-size: 40px;
+        line-height: 1.2;
+        margin: 0;
+    }
+
+    /* 写真 */
+    .hero-photo-wrap {
+        aspect-ratio: auto;
+        height: auto;
+    }
+
+    .hero-photo {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Invitation（大）位置調整 */
+    .hero-photo-invitation {
+        font-size: 80px;
+        top: 30%;
+        transform: translate(-50%, -50%) rotate(-15deg);
+    }
+
+    /* 名前 */
     .hero-names {
         font-size: 32px;
     }
 
+    /* DATE & PLACE を縦並びに */
+    .hero-dateplace {
+        flex-direction: column;
+        width: 100%;
+        padding: 10px 0;
+        gap: 10px;
+    }
+
+    .dp-left,
+    .dp-right {
+        width: 100%;
+    }
+
     .dp-day {
-        font-size: 32px;
+        font-size: 60px;
     }
 
-    .section-title {
-        font-size: 28px;
+    /* =========================
+       HOST
+    ========================== */
+    .host-top {
+        flex-direction: column;
+        text-align: center;
     }
 
+    .host-photo {
+        width: 140px;
+    }
+
+    .host-info {
+        text-align: center;
+    }
+
+    /* =========================
+       EVENT
+    ========================== */
     .event-info {
         font-size: 18px;
     }
-	
-	.host-top {
-	    flex-direction: column;
-	    text-align: center;
-	}
 
-	.host-photo {
-	    width: 140px;
-	}
+    .event-map iframe {
+        width: 100%;
+        height: 250px;
+    }
 
-	.host-info {
-	    text-align: center;
-	}
+    /* =========================
+       全体の文字サイズ調整
+    ========================== */
+    p, span {
+        font-size: 18px;
+    }
 
+    section h2 {
+        font-size: 32px;
+    }
 }
