@@ -406,40 +406,40 @@ hhtml, body {
     body {
       margin: 0;
       padding: 0;
-      background: #fff; /* スマホは影なし */
+      background: #fff;
     }
 
     #wrapper {
-      width: 900px; /* レイアウトは絶対固定 */
-      margin: 0 auto;
-      transform: scale(calc(100vw / 900));
-      transform-origin: top center;
-      box-shadow: none;
+      width: 100%;          /* ← スマホ幅に合わせる */
+      max-width: 900px;     /* ← PC と同じレイアウト幅 */
+      margin: 0 auto;       /* ← 中央寄せ */
+      box-shadow: none;     /* ← スマホは影なし */
     }
 
-    /* wrapper の縮小で高さが足りなくなるので補正 */
-    body {
-      height: calc(900px * (100vw / 900));
+    section {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
     }
   }
-  
   @media (min-width: 480px) and (max-width: 899px) {
 
     body {
       margin: 0;
       padding: 0;
+      background: #f5f5f5;
     }
 
     #wrapper {
-      width: 900px;
+      width: 100%;
+      max-width: 900px;
       margin: 0 auto;
-      transform: scale(calc(100vw / 900));
-      transform-origin: top center;
       box-shadow: 0 10px 40px rgba(0,0,0,0.15);
     }
 
-    body {
-      height: calc(900px * (100vw / 900));
+    section {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
     }
   }
-
