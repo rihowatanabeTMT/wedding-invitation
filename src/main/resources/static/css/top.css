@@ -1,396 +1,376 @@
 /* =========================
-   基本設定（全体）
+   PC（900px以上）完全固定
 ========================= */
 
-body {
+  body {
     margin: 0;
     padding: 0;
     font-family: "Noto Sans JP", sans-serif;
     background: #f5f5f5;
     color: #000;
-}
+  }
 
-#wrapper {
-    max-width: 900px;
-    margin: 0 auto;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-    overflow: hidden;
+  @media (min-width: 900px) {
+	#wrapper {
+	   width: 900px;
+	   margin: 0 auto;
+	   background: #fff;
+	   border-radius: 10px;
+	   box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+	   overflow: hidden;
+	 }
 }
-
-/* セクション共通 */
-section {
-    max-width: 900px;
+  section {
+    width: 900px;
     margin: 0 auto;
     text-align: center;
-}
+  }
 
-section * {
-    max-width: 100%;
-}
-
-section h2 {
-    font-size: 50px;
-    margin-bottom: 40px;
-}
-
-p, span {
+  p,
+  span {
     font-size: 20px;
     line-height: 1.7;
-}
+  }
 
+  section h2 {
+    font-size: 50px;
+    margin-bottom: 40px;
+  }
+  /* =========================
+       HERO
+  ========================= */
 
-/* =========================
-   HERO（PC）
-========================= */
-
-#hero {
+  #hero {
     width: 100%;
     display: flex;
     justify-content: center;
     background: #fff;
-}
+  }
 
-.hero-card {
+  .hero-card {
     width: 900px;
     display: flex;
     flex-direction: column;
     position: relative;
-}
+  }
 
-/* 青帯 */
-.hero-topbar {
+  /* 上部青帯 */
+  .hero-topbar {
     width: 900px;
+    height: 90px;
     background: #005BAC;
     color: #fff;
-    height: 90px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-}
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
 
-.hero-top-left {
+  .hero-top-left p {
     font-size: 45px;
     font-weight: 600;
-    line-height: 45px;
     margin-top: 4px;
-}
+    line-height: 1.1;
+  }
 
-.hero-top-right {
+  .hero-top-right p {
     font-size: 75px;
     font-weight: 900;
-    line-height: 75px;
     margin-top: -2px;
-}
+    line-height: 1.1;
+  }
 
-/* 写真 */
-.hero-photo-wrap {
+  /* 写真 */
+  .hero-photo-wrap {
     width: 900px;
     aspect-ratio: 16 / 9;
     overflow: hidden;
-}
+    position: relative;
+  }
 
-.hero-photo {
+  .hero-photo {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}
+  }
 
-/* Invitation（大） */
-.hero-photo-invitation {
+  /* Invitation（大） */
+  .hero-photo-invitation {
     position: absolute;
-    top: 40%;
+    top: 35%;
     left: 50%;
-    transform: translate(-50%, -50%) rotate(-15deg);
+    transform: translate(50%, -50%) rotate(-15deg); 
+    /* ← scale を入れない。右側から登場 */
     font-size: 200px;
     font-weight: 900;
     color: #fff;
     line-height: 0.9;
     text-align: center;
+    z-index: 10000;
     opacity: 0;
-    z-index: 10;
+    transition: opacity 0.8s ease, transform 0.8s ease;
     pointer-events: none;
-    animation: invitationIn 1.2s ease-out forwards,
-               invitationOut 1s ease-in forwards 2.2s;
-}
+  }
 
-@keyframes invitationIn {
-    0% { opacity: 0; transform: translate(80%, -50%) rotate(-15deg); }
-    60% { opacity: 1; transform: translate(-40%, -50%) rotate(-15deg); }
-    100% { opacity: 1; transform: translate(-50%, -50%) rotate(-15deg); }
-}
 
-@keyframes invitationOut {
-    0% { opacity: 1; }
-    100% { opacity: 0; }
-}
+  .hero-photo-invitation.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(-15deg);
+  }
+  
+  .hero-photo-invitation.hide {
+    opacity: 0;
+    transform: translate(-50%, -50%) rotate(-15deg);
+  }
 
-/* 青背景 */
-.hero-celebration {
+
+  /* ★ ぼかしレイヤー */
+  .hero-blur-overlay {
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height:100vh;
+    backdrop-filter: blur(6px);
+    background: rgba(255, 255, 255, 0.08);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+    z-index: 9999; /* Invitation より下、写真より上 */
+  }
+
+  /* the WEDDING CELEBRATION */
+  .hero-celebration p {
     width: 900px;
     background: #005BAC;
     color: #fff;
     padding: 12px 0;
     font-size: 22px;
     letter-spacing: 2px;
-}
+    margin: 0;
+  }
 
-/* 白背景 */
-.hero-bottom {
+  /* 白背景 */
+  .hero-bottom {
     width: 900px;
     background: #fff;
-    padding: 24px 0 40px;
-}
+    padding: 40px 0;
+  }
 
-.hero-names {
+  .hero-names {
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 12px;
-}
+  }
 
-.hero-message {
+  .hero-message {
     font-size: 18px;
     line-height: 1.7;
     margin-bottom: 24px;
-}
+  }
 
-/* DATE & PLACE */
-.hero-dateplace {
-    width: 840px;
+  /* DATE & PLACE */
+  .hero-dateplace {
+    width: 900px;
     display: flex;
     justify-content: space-between;
     padding: 20px 30px;
-}
+    box-sizing: border-box;
+  }
 
-.dp-left {
-    border: 1px solid #000;
+  .dp-left {
     width: 565px;
+    border: 1px solid #000;
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
+  }
 
-.dp-item {
+  .dp-item {
     border-top: 1px solid #000;
     font-size: 20px;
     font-weight: 700;
-    text-align: center;
-}
+    padding: 8px 0;
+  }
 
-.dp-right {
+  .dp-right {
     width: 275px;
     border: 1px solid #000;
     display: flex;
     justify-content: center;
     align-items: center;
-}
+  }
 
-.dp-day {
+  .dp-day {
     font-size: 80px;
     font-weight: 900;
-}
+  }
+  
+  #barcode{
+	width: 100%;
+  }
+  /* =========================
+     INVITATION
+  ========================= */
 
-/* バーコード */
-.barcode-wrapper {
-    position: relative;
-    display: inline-block;
-}
-
-.barcode-link {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-
-/* =========================
-   INVITATION
-========================= */
-
-.invitation-text {
+  .invitation-text {
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.7;
-}
+  }
 
-.invitation-names {
+  .invitation-names {
     margin-top: 50px;
     line-height: 2.0;
-}
+  }
 
+  /* =========================
+     COUNTDOWN
+  ========================= */
 
-/* =========================
-   COUNTDOWN
-========================= */
-
-.countdown-section {
-    position: relative;
-    width: 100%;
-    max-width: 900px;
+  .countdown-section {
+    width: 900px;
     aspect-ratio: 16 / 9;
+    position: relative;
     overflow: hidden;
-	color: #fff;
-}
+    color: #fff;
+  }
 
-.countdown-bg {
+  .countdown-bg {
     width: 100%;
     height: 100%;
     object-fit: cover;
     filter: brightness(60%);
-}
+  }
 
-.countdown-content {
+  .countdown-content {
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-}
+  }
 
-.section-title-white {
+  .section-title-white {
     font-size: 90px;
-    margin: 0;
-}
+    margin-bottom: 30px;
+  }
+  .count-top {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+  }
 
-.big-day {
+  .big-day {
     font-size: 80px;
     font-weight: 700;
-	flex-direction: column; /* 縦並び */
-	align-items: center;    /* 中央揃え */
+	line-height: 1;
+  }
 
-}
-
-.big-day-unit {
+  .big-day-unit {
     font-size: 28px;
     margin-top: 5px;
-}
+  }
 
-
-.count-bottom {
+  .count-bottom {
     display: flex;
     justify-content: center;
     gap: 40px;
     margin-top: 20px;
-}
-
-.count-item {
+  }
+  .count-item {
     display: flex;
-    flex-direction: column; /* 縦並び */
-    align-items: center;    /* 中央揃え */
-}
-
-.count-item {
-    display: flex;
-    flex-direction: column;
+    flex-direction: column; /* ← 数字と単位を縦に */
     align-items: center;
-}
+  }
 
-.time {
+
+  .time {
     font-size: 40px;
     font-weight: 600;
-    line-height: 1; /* ← これが重要 */
-}
+	line-height: 1;
+  }
 
-.unit {
+  .unit {
     font-size: 16px;
-    margin-top: 4px; /* ← 15px は大きすぎるので調整 */
-    line-height: 1;  /* ← 行間を詰める */
-}
+  }
 
+  /* =========================
+     HOST
+  ========================= */
 
-/* =========================
-   HOST
-========================= */
+  .host-card {
+    width: 880px;
+    margin: 0 auto;
+    padding: 10px;
+  }
 
-.host-vertical {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.host-card {
-    width: 100%;
-    max-width: 840px;
-    padding: 30px;
-}
-
-.host-top {
+  .host-top {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
-}
+  }
 
-.host-photo {
-    
-    border-radius: 8px;
-}
+  .host-info {
+    width: 50%;
+    font-size: 18px;
+  }
 
-.host-info {
-    flex: 1;
-}
+  .host-photo {
+    width: 50%;
+	padding: 0 10px;
+  }
 
-.host-name {
+  .host-name {
     font-size: 30px;
     margin: 0;
-}
+  }
 
-.host-comment {
-    line-height: 1.7;
-}
-
-.underline {
+  .small {
     border-bottom: 1px solid #000;
-    padding-bottom: 4px;
-}
+	display: inline-block;
+  }
 
+  /* =========================
+     EVENT（PC固定）
+  ========================= */
 
-/* =========================
-   EVENT
-========================= */
-
-.event-info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 20px;
-    line-height: 1.8;
-    margin-bottom: 20px;
-}
-
-.event-row {
+  .event-row {
     display: flex;
     justify-content: center;
     width: 100%;
-    gap: 20px;
-}
+    gap: 15px;
+    margin-right: 50px;
+	padding-bottom: 10px;
+  }
 
-.event-label {
-    width: 100px;
+  .event-label {
+    flex: 0 0 120px;
+    padding-left: 130px; /* ← PC版はこれで確定 */
     text-align: left;
     font-weight: bold;
-    padding-left: 150px;
-}
+    font-size: 18px;
+  }
 
-.event-value {
-    width: 450px;
+  .event-value {
+    flex: 1 1 auto;
+    max-width: 450px;
     text-align: left;
-}
+    font-size: 18px;
+  }
 
-.event-map iframe {
+  .event-map iframe {
     width: 900px;
     height: 450px;
-}
+  }
 
+  /* =========================
+     RSVP
+  ========================= */
 
-/* =========================
-   RSVP
-========================= */
-
-.rsvp-button {
+  .rsvp-button {
     display: inline-block;
     padding: 18px 40px;
     background: #005BAC;
@@ -399,149 +379,60 @@ p, span {
     font-weight: 700;
     border-radius: 50px;
     text-decoration: none;
-}
+  }
 
+  /* =========================
+     FOOTER
+  ========================= */
 
-/* =========================
-   フッター
-========================= */
-
-footer {
+  footer {
     text-align: center;
     font-size: 12px;
     color: #777;
     padding: 15px 0;
-	margin-top: 20px;
+    margin-top: 20px;
     border-top: 1px solid #e5e5e5;
-}
+  }
 
+  @media (max-width: 479px) {
 
-/* =========================
-   フェードイン
-========================= */
-
-.fadein {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.8s ease-out;
-}
-
-.fadein.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-
-/* =========================
-   スマホ対応（768px以下）
-========================= */
-
-@media (max-width: 768px) {
-
-    section {
-        max-width: 100%;
-        padding: 40px 20px;
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff; /* スマホは影なし */
     }
 
     #wrapper {
-        max-width: 100%;
-        border-radius: 0;
-        box-shadow: none;
+      width: 900px; /* レイアウトは絶対固定 */
+      margin: 0 auto;
+      transform: scale(calc(100vw / 900));
+      transform-origin: top center;
+      box-shadow: none;
     }
 
-    /* HERO */
-    .hero-card,
-    .hero-topbar,
-    .hero-photo-wrap,
-    .hero-celebration,
-    .hero-bottom {
-        width: 100%;
+    /* wrapper の縮小で高さが足りなくなるので補正 */
+    body {
+      height: calc(900px * (100vw / 900));
+    }
+  }
+  
+  @media (min-width: 480px) and (max-width: 899px) {
+
+    body {
+      margin: 0;
+      padding: 0;
     }
 
-    .hero-topbar {
-        flex-direction: column;
-        height: auto;
-        padding: 12px 0;
-        text-align: center;
-        gap: 4px;
+    #wrapper {
+      width: 900px;
+      margin: 0 auto;
+      transform: scale(calc(100vw / 900));
+      transform-origin: top center;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.15);
     }
 
-    .hero-top-left {
-        font-size: 15px;
-        line-height: 1.2;
+    body {
+      height: calc(900px * (100vw / 900));
     }
+  }
 
-    .hero-top-right {
-        font-size: 32px;
-        line-height: 1.2;
-    }
-
-    .hero-photo-wrap {
-        aspect-ratio: auto;
-        height: auto;
-    }
-
-    .hero-photo {
-        width: 100%;
-        height: auto;
-    }
-
-    .hero-photo-invitation {
-        font-size: 70px;
-        top: 28%;
-        transform: translate(-50%, -50%) rotate(-15deg);
-    }
-
-    .hero-names {
-        font-size: 32px;
-    }
-
-    .hero-dateplace {
-        flex-direction: column;
-        width: 100%;
-        padding: 10px 0;
-        gap: 10px;
-    }
-
-    .dp-left,
-    .dp-right {
-        width: 100%;
-    }
-
-    .dp-day {
-        font-size: 60px;
-    }
-
-    /* HOST */
-    .host-top {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .host-photo {
-        width: 140px;
-    }
-
-    .host-info {
-        text-align: center;
-    }
-
-    /* EVENT */
-    .event-info {
-        font-size: 18px;
-    }
-
-    .event-map iframe {
-        width: 100%;
-        height: 250px;
-    }
-
-    /* 全体フォント */
-    p, span {
-        font-size: 12px;
-    }
-
-    section h2 {
-        font-size: 32px;
-    }
-}

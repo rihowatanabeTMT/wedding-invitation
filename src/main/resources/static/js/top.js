@@ -45,22 +45,6 @@ function fadeInOnScroll() {
 window.addEventListener('scroll', fadeInOnScroll);
 fadeInOnScroll();
 
-//背景戻し
-
-window.addEventListener('load', () => {
-  const card = document.querySelector('.hero-card');
-
-  // Invitation（大）のアニメ開始と同時に背景を薄くする
-  setTimeout(() => {
-    card.classList.add('hero-fade-bg');
-  }, 0.1);
-
-  // Invitation（大）が消えたら背景を元に戻す（3.2秒後）
-  setTimeout(() => {
-    card.classList.remove('hero-fade-bg');
-  }, 3200);
-});
-
 //バーコード
 JsBarcode("#barcode", "2026.05.09-Kota & Riho Wedding Invitation", {
   format: "code128",
@@ -68,6 +52,22 @@ JsBarcode("#barcode", "2026.05.09-Kota & Riho Wedding Invitation", {
   width: 2,
   height: 60,
   displayValue: false
+});
+	
+window.addEventListener('load', () => {
+  const blur = document.querySelector('.hero-blur-overlay');
+  const inv = document.querySelector('.hero-photo-invitation');
+
+  // Invitation 出現（横から）
+  inv.classList.add('show');
+  blur.style.opacity = 1;
+
+  // Invitation が消えるタイミング
+  setTimeout(() => {
+    inv.classList.remove('show');
+    inv.classList.add('hide'); // ← ふわっと消える
+    blur.style.opacity = 0;
+  }, 2000);
 });
 
 
