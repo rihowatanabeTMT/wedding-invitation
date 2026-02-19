@@ -1,0 +1,757 @@
+/* =========================
+   共通（全デバイス）
+========================= */
+
+html, body {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans JP", sans-serif;
+  background: #f5f5f5;
+  color: #000;
+}
+
+/* セクションの基本構造 */
+section {
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* 基本文字 */
+p, span {
+  line-height: 1.7;
+  font-size: 22px;
+}
+
+/* HERO 共通 */
+#hero {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: #fff;
+  padding: 0;
+}
+
+.hero-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* 青帯の色は共通 */
+.hero-topbar {
+  background: #005BAC;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+/* 写真の比率は共通 */
+.hero-photo-wrap {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Invitation アニメーション */
+.hero-photo-invitation {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(50%, -50%) rotate(-15deg);
+  font-weight: 900;
+  color: #fff;
+  line-height: 0.9;
+  text-align: center;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  pointer-events: none;
+}
+
+.hero-photo-invitation.show {
+  opacity: 1;
+  transform: translate(-50%, -50%) rotate(-15deg);
+}
+
+.hero-photo-invitation.hide {
+  opacity: 0;
+  transform: translate(-50%, -50%) rotate(-15deg);
+}
+
+/* ぼかしレイヤー */
+.hero-blur-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height:100vh;
+  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.08);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  z-index: 9999;
+}
+
+/* CELEBRATION 青帯（色は共通） */
+.hero-celebration p {
+  background: #005BAC;
+  color: #fff;
+  margin: 0;
+}
+
+/* DATE & PLACE 共通構造 */
+.hero-dateplace {
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.dp-left {
+  border: 1px solid #000;
+  display: flex;
+  flex-direction: column;
+}
+
+.dp-item {
+  border-top: 1px solid #000;
+}
+
+.dp-right {
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#barcode {
+  width: 100%;
+}
+
+/* HOST 共通構造 */
+.host-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.host-info {
+  width: 50%;
+}
+
+.host-photo {
+  width: 50%;
+  padding: 0 10px;
+}
+
+.small {
+  border-bottom: 1px solid #000;
+  display: inline-block;
+}
+
+/* COUNTDOWN 共通構造 */
+.countdown-section {
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+
+.countdown-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(60%);
+}
+
+.countdown-content {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.count-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.big-day {
+  line-height: 1;
+}
+
+.count-bottom {
+  display: flex;
+  justify-content: center;
+}
+
+.count-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.time {
+  line-height: 1;
+}
+
+/* EVENT 共通構造 */
+.event-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 15px;
+  padding-bottom: 10px;
+}
+
+.event-value {
+  flex: 1 1 auto;
+  text-align: left;
+}
+
+/* RSVP */
+.rsvp-button {
+  display: inline-block;
+  background: #005BAC;
+  color: #fff;
+  border-radius: 50px;
+  text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* =========================
+   PC（900px以上）
+========================= */
+@media (min-width: 900px) {
+
+  #wrapper {
+    width: 900px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    overflow: hidden;
+  }
+
+  section {
+    width: 900px;
+  }
+
+  p, span {
+    font-size: 20px;
+  }
+
+  section h2 {
+    font-size: 50px;
+    margin-bottom: 40px;
+  }
+
+  .hero-topbar {
+    width: 900px;
+    height: 80px;
+    padding: 0 20px;
+  }
+
+  .hero-top-left p {
+    font-size: 45px;
+    line-height: 45px;
+    margin: 0;
+  }
+
+  .hero-top-right p {
+    font-size: 75px;
+    line-height: 75px;
+    margin: 0;
+    margin-top: -10px;
+  }
+
+  .hero-photo-wrap {
+    width: 900px;
+  }
+
+  .hero-photo-invitation {
+    font-size: 200px;
+  }
+
+  .hero-celebration p {
+    width: 900px;
+    padding: 12px 0;
+    font-size: 30px;
+    letter-spacing: 2px;
+  }
+
+  .hero-bottom {
+    width: 900px;
+    padding: 40px 0;
+  }
+
+  .hero-names {
+    font-size: 36px;
+  }
+
+  .hero-message p {
+    line-height: 1.7;
+    letter-spacing: 0.15em;
+    margin-bottom: 24px;
+  }
+
+  .hero-dateplace {
+    width: 900px;
+    padding: 20px 30px;
+  }
+
+  .dp-left {
+    width: 565px;
+  }
+
+  .dp-right {
+    width: 275px;
+  }
+
+  .dp-item {
+    font-size: 20px;
+  }
+
+  .dp-day {
+    font-size: 80px;
+  }
+
+  .countdown-section {
+    width: 900px;
+  }
+
+  .section-title-white {
+    font-size: 90px;
+    margin-bottom: 30px;
+  }
+
+  .big-day {
+    font-size: 80px;
+    font-weight: 700;
+  }
+
+  .big-day-unit {
+    font-size: 28px;
+    margin-top: 5px;
+  }
+
+  .count-bottom {
+    gap: 40px;
+    margin-top: 20px;
+  }
+
+  .time {
+    font-size: 40px;
+    font-weight: 600;
+  }
+
+  .unit {
+    font-size: 16px;
+  }
+
+  .host-card {
+    width: 880px;
+    padding: 10px;
+  }
+
+  .host-info {
+    font-size: 18px;
+  }
+
+  .host-name {
+    font-size: 30px;
+  }
+
+  .event-label {
+    flex: 0 0 120px;
+    padding-left: 250px;
+    font-size: 18px;
+  }
+
+  .event-map iframe {
+    width: 900px;
+    height: 450px;
+  }
+
+  .rsvp-button {
+    font-size: 20px;
+    padding: 18px 40px;
+  }
+
+  footer {
+    font-size: 12px;
+    padding: 15px 0;
+    margin-top: 20px;
+  }
+}
+/* =========================
+   スマホ（〜479px）
+========================= */
+@media (max-width: 479px) {
+
+  #wrapper {
+    width: 100%;
+    margin: 0 auto;
+    box-shadow: none;
+  }
+
+  section {
+    width: 100%;
+    padding: clamp(20px, 6vw, 40px) 0;
+  }
+
+  p, span {
+    font-size: clamp(12px, 3.5vw, 18px);
+  }
+
+  section h2 {
+    font-size: clamp(26px, 8vw, 40px);
+    margin-bottom: clamp(20px, 5vw, 30px);
+  }
+
+  /* HERO */
+  .hero-topbar {
+    width: 100%;
+    height: clamp(25px, 10vw, 80px);
+    padding: 0 clamp(2px, 3vw, 20px);
+  }
+
+  .hero-top-left p {
+    font-size: clamp(18px, 4.5vw, 25px);
+    line-height: 1.1;
+	margin:0;
+  }
+
+  .hero-top-right p {
+    font-size: clamp(23px, 9vw, 40px);
+    line-height: 1.1;
+    margin: 0;
+	margin-top: -5px;
+  }
+
+  .hero-photo-wrap {
+    width: 100%;
+  }
+
+  .hero-photo-invitation {
+    font-size: clamp(60px, 20vw, 150px);
+	top: 26%;
+	left: 50%;
+  }
+
+  .hero-celebration p {
+    width: 100%;
+    padding: clamp(8px, 2vw, 12px) 0;
+    font-size: clamp(16px, 5vw, 22px);
+  }
+
+  .hero-bottom {
+    width: 100%;
+    padding: clamp(20px, 6vw, 40px) 0;
+  }
+
+  .hero-names {
+    font-size: clamp(20px, 6vw, 32px);
+  }
+
+  .hero-message p {
+    font-size: clamp(14px, 4vw, 18px);
+    letter-spacing: 0em;
+  }
+
+  /* DATE & PLACE（横並び維持） */
+  .hero-dateplace {
+    width: 100%;
+    padding: clamp(10px, 4vw, 20px);
+    flex-direction: row;
+  }
+
+  .dp-left {
+    width: 60%;
+  }
+
+  .dp-right {
+    width: 40%;
+  }
+
+  .dp-item {
+    font-size: clamp(12px, 3.5vw, 16px);
+    padding: clamp(4px, 1vw, 8px) 0;
+  }
+
+  .dp-day {
+    font-size: clamp(40px, 12vw, 70px);
+  }
+
+  /* COUNTDOWN */
+  .countdown-section {
+    width: 100%;
+  }
+
+  .section-title-white {
+    font-size: clamp(40px, 12vw, 70px);
+	margin-bottom:clamp(5px,3vw, 20px);
+  }
+
+  .big-day {
+    font-size: clamp(40px, 10vw, 60px);
+	font-weight: 700;
+  }
+
+  .big-day-unit {
+    font-size: clamp(12px, 4vw, 20px);
+  }
+  
+  .count-item{
+	margin: 0 clamp(10px, 4vw, 30px);
+  }
+
+  .time {
+    font-size: clamp(20px, 8vw, 36px);	
+	font-weight: 600;
+  }
+
+  .unit {
+    font-size: clamp(10px, 3vw, 16px);
+  }
+
+  /* HOST */
+  .host-card {
+    width: 95%;
+    padding: clamp(10px, 4vw, 20px);
+  }
+
+  .host-info {
+    font-size: clamp(14px, 4vw, 18px);
+  }
+
+  .host-name {
+    font-size: clamp(18px, 6vw, 28px);
+	margin: clamp(8px, 1vw, 30px);
+  }
+
+  /* EVENT（横並び維持） */
+  .event-row {
+    flex-direction: row;
+    gap: clamp(8px, 3vw, 15px);
+    margin-right: 0;
+  }
+
+  .event-label {
+    flex: 0 0 clamp(50px, 20vw, 120px);
+    padding-left: clamp(20px, 6vw, 50px);
+    font-size: clamp(14px, 4vw, 18px);
+    text-align: left;
+  }
+
+  .event-value {
+    font-size: clamp(14px, 4vw, 18px);
+  }
+
+  .event-map iframe {
+    width: 100%;
+    height: clamp(200px, 50vw, 350px);
+  }
+
+  /* RSVP */
+  .rsvp-button {
+    font-size: 18px;
+   padding: 15px 20px;
+  }
+  
+  footer{
+	font-size: 10px;
+  }
+}
+
+@media (max-width: 350px) {
+  .hero-top-left p {
+    font-size: 18px;
+  }
+  .hero-top-right p {
+    font-size: 24px;
+  }
+}
+
+
+/* =========================
+   タブレット（480〜899px）
+========================= */
+@media (min-width: 480px) and (max-width: 899px) {
+
+  #wrapper {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+  }
+
+  section {
+    width: 100%;
+    padding: clamp(30px, 5vw, 50px) 0;
+  }
+
+  p, span {
+    font-size: clamp(16px, 2.5vw, 20px);
+  }
+
+  section h2 {
+    font-size: clamp(32px, 6vw, 50px);
+  }
+
+  /* HERO */
+  .hero-topbar {
+    width: 100%;
+    height: clamp(45px, 10vw, 80px);
+    padding: 0 clamp(10px, 3vw, 20px);
+  }
+
+  .hero-top-left p {
+    font-size: clamp(25px, 5vw, 45px);
+	line-height: 1.1;
+	 margin:0;
+  }
+
+  .hero-top-right p {
+    font-size: clamp(40px, 8vw, 75px);
+	line-height: 1.1;
+	margin: 0;
+	margin-top: -5px;
+  }
+  
+  .hero-photo-wrap {
+    width: 100%;
+  }
+
+  .hero-photo-invitation {
+    font-size: clamp(100px, 23vw, 200px);
+	top:34%	;
+	left: 50%;
+  }
+
+  .hero-celebration p {
+    width: 100%;
+    padding: clamp(10px, 2vw, 12px) 0;
+    font-size: clamp(20px, 3vw, 30px);
+  }
+
+  .hero-bottom {
+    width: 100%;
+    padding: clamp(30px, 5vw, 40px) 0;
+  }
+
+  .hero-names {
+    font-size: clamp(26px, 4vw, 36px);
+  }
+
+  .hero-message p {
+    font-size: clamp(14px, 2.5vw, 18px);
+  }
+
+  /* DATE & PLACE（横並び維持） */
+  .hero-dateplace {
+    width: 100%;
+    padding: clamp(15px, 3vw, 20px);
+    flex-direction: row;
+  }
+
+  .dp-left {
+    width: 60%;
+  }
+
+  .dp-right {
+    width: 40%;
+  }
+
+  .dp-item {
+    font-size: clamp(14px, 2.5vw, 20px);
+  }
+
+  .dp-day {
+    font-size: clamp(50px, 8vw, 80px);
+  }
+
+  /* COUNTDOWN */
+  .countdown-section {
+    width: 100%;
+  }
+
+  .section-title-white {
+    font-size: clamp(50px, 9vw, 90px);
+	margin-bottom:clamp(5px,3vw, 20px);
+  }
+
+  .big-day {
+    font-size: clamp(40px, 9vw, 80px);
+	font-weight: 700;
+  }
+
+  .big-day-unit {
+    font-size: clamp(14px, 3vw, 28px);
+  }
+  
+
+  .count-item{
+  margin: 0 clamp(10px, 4vw, 30px);
+  }
+
+  .time {
+    font-size: clamp(24px, 5vw, 40px);
+	font-weight: 600;
+  }
+
+  /* HOST */
+  .host-card {
+    width: 95%;
+    padding: clamp(10px, 3vw, 20px);
+  }
+
+  .host-name {
+    font-size: clamp(22px, 4vw, 30px);
+  }
+
+  /* EVENT（横並び維持） */
+  .event-label {
+    padding-left: clamp(100px, 25vw, 360px);
+    font-size: clamp(14px, 2.5vw, 18px);
+	flex: 0 0 clamp(100px, 20vw, 120px);
+	text-align: left;
+  }
+
+  .event-value {
+    font-size: clamp(14px, 2.5vw, 18px);
+  }
+
+  .event-map iframe {
+    width: 100%;
+    height: clamp(250px, 40vw, 450px);
+  }
+  .rsvp-button {
+     font-size: clamp(18px, 2.5vw, 20px);
+     padding: clamp(20px, 2.38vw, 30px) clamp(10px, 4.76vw, 30px);
+   }
+}
+
