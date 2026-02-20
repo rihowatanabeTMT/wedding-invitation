@@ -588,10 +588,10 @@ footer {
 
 @media (max-width: 350px) {
   .hero-top-left p {
-    font-size: 18px;
+    font-size: 15px;
   }
   .hero-top-right p {
-    font-size: 24px;
+    font-size: 22px;
   }
 }
 
