@@ -29,46 +29,63 @@ const timerId = setInterval(countDown, 1000);
 countDown();
 
 
-// フェードイン
-const fadeElems = document.querySelectorAll('.fadein');
+//スライドショー
+const slides = document.querySelector('.slides');
+const images = document.querySelectorAll('.slides img');
+const dots = document.querySelectorAll('.dot');
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
 
-function fadeInOnScroll() {
-  fadeElems.forEach(el => {
-    const rect = el.getBoundingClientRect().top;
-    const trigger = window.innerHeight * 0.85;
-    if (rect < trigger) {
-      el.classList.add('show');
-    }
-  });
+// ★ 本物の1枚目は index=1（左に複製5があるため）
+let index = 1;
+
+function updateSlider(animate = true) {
+  const slideWidth = images[0].offsetWidth + 20; // 800 + gap20 = 820
+
+  slides.style.transition = animate ? "transform 0.6s ease" : "none";
+  slides.style.transform = `translateX(${-index * slideWidth}px)`;
+
+  // ★ ドット更新（本物の1〜5に合わせる）
+  dots.forEach(d => d.classList.remove('active'));
+  dots[(index - 1 + 5) % 5].classList.add('active');
 }
 
-window.addEventListener('scroll', fadeInOnScroll);
-fadeInOnScroll();
+// → ボタン
+nextBtn.addEventListener('click', () => {
+  index++;
+  updateSlider();
 
-//バーコード
-JsBarcode("#barcode", "2026.05.09-Kota & Riho Wedding Invitation", {
-  format: "code128",
-  lineColor: "#000",
-  width: 2,
-  height: 60,
-  displayValue: false
+  // ★ 最後の複製1に来たら、本物1へ瞬間移動
+  if (index === images.length - 1) {
+    setTimeout(() => {
+      index = 1;
+      updateSlider(false);
+    }, 600);
+  }
 });
-	
-window.addEventListener('load', () => {
-  const blur = document.querySelector('.hero-blur-overlay');
-  const inv = document.querySelector('.hero-photo-invitation');
 
-  // Invitation 出現（横から）
-  inv.classList.add('show');
-  blur.style.opacity = 1;
+// ← ボタン
+prevBtn.addEventListener('click', () => {
+  index--;
+  updateSlider();
 
-  // Invitation が消えるタイミング
-  setTimeout(() => {
-    inv.classList.remove('show');
-    inv.classList.add('hide'); // ← ふわっと消える
-    blur.style.opacity = 0;
-  }, 2000);
+  // ★ 最初の複製5に来たら、本物5へ瞬間移動
+  if (index === 0) {
+    setTimeout(() => {
+      index = images.length - 2;
+      updateSlider(false);
+    }, 600);
+  }
 });
+
+// 自動スライド
+setInterval(() => {
+  nextBtn.click();
+}, 5000);
+
+// ★ 初期位置（本物1）へ
+updateSlider(false);
+
 
 
 //スマホ縮小

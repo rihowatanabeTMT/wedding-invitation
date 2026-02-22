@@ -17,6 +17,29 @@
     margin-right: 6px;
 }
 
+.title-and-options {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* 余白はお好みで調整 */
+    flex-wrap: wrap; /* スマホで折り返し可能に */
+}
+
+.title {
+    font-weight: bold;
+}
+
+.pdf-link {
+    font-size: 0.9rem;
+    text-decoration: underline;
+    color: #007bff;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
 /* 同伴者エリア */
 #plusone-area {
     background: #f0f6ff;

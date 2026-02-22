@@ -160,11 +160,19 @@
         </div>
 
         <!-- 宿泊 -->
-        <div class="form-group">
-            <label>宿泊施設ご利用有無</label>
-            <label><input type="radio" th:field="*{hotel}" value="yes"> 利用する</label>
-            <label><input type="radio" th:field="*{hotel}" value="no"> 利用しない</label>
-        </div>
+		<div class="form-group hotel-group">
+		    <div class="title-and-options">
+		        <label class="title">宿泊施設ご利用有無</label>
+		        <a href="/pdf/hotel.pdf" target="_blank" class="pdf-link">宿泊案内（PDF）</a>
+
+		        <label class="option">
+		            <input type="radio" th:field="*{hotel}" value="yes"> 利用する
+		        </label>
+		        <label class="option">
+		            <input type="radio" th:field="*{hotel}" value="no"> 利用しない
+		        </label>
+		    </div>
+		</div>
 
         <!-- バス -->
         <div class="form-group">
