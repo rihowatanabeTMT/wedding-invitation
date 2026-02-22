@@ -36,26 +36,40 @@ const dots = document.querySelectorAll('.dot');
 const nextBtn = document.querySelector('.next');
 const prevBtn = document.querySelector('.prev');
 
-// ★ 本物の1枚目は index=1（左に複製5があるため）
 let index = 1;
 
+/* スライド幅（画像幅 + gap + padding） */
+function getSlideWidth() {
+  const imgWidth = images[0].offsetWidth;
+  const gap = 20;
+  const paddingLeft = parseFloat(getComputedStyle(slides).paddingLeft);
+  const paddingRight = parseFloat(getComputedStyle(slides).paddingRight);
+
+  return imgWidth + gap + paddingLeft + paddingRight;
+}
+
+/* 中央基準でスライダーを動かす */
 function updateSlider(animate = true) {
-  const slideWidth = images[0].offsetWidth + 20; // 800 + gap20 = 820
+  const slideWidth = getSlideWidth();
+
+  // ★ 中央に合わせるための補正
+  const containerWidth = slides.parentElement.offsetWidth;
+  const imgWidth = images[0].offsetWidth;
+  const centerOffset = (containerWidth - imgWidth) / 2;
 
   slides.style.transition = animate ? "transform 0.6s ease" : "none";
-  slides.style.transform = `translateX(${-index * slideWidth}px)`;
+  slides.style.transform =
+    `translateX(${centerOffset - index * slideWidth}px)`;
 
-  // ★ ドット更新（本物の1〜5に合わせる）
   dots.forEach(d => d.classList.remove('active'));
   dots[(index - 1 + 5) % 5].classList.add('active');
 }
 
-// → ボタン
+/* → ボタン */
 nextBtn.addEventListener('click', () => {
   index++;
   updateSlider();
 
-  // ★ 最後の複製1に来たら、本物1へ瞬間移動
   if (index === images.length - 1) {
     setTimeout(() => {
       index = 1;
@@ -64,12 +78,11 @@ nextBtn.addEventListener('click', () => {
   }
 });
 
-// ← ボタン
+/* ← ボタン */
 prevBtn.addEventListener('click', () => {
   index--;
   updateSlider();
 
-  // ★ 最初の複製5に来たら、本物5へ瞬間移動
   if (index === 0) {
     setTimeout(() => {
       index = images.length - 2;
@@ -78,14 +91,18 @@ prevBtn.addEventListener('click', () => {
   }
 });
 
-// 自動スライド
+/* 自動スライド */
 setInterval(() => {
   nextBtn.click();
 }, 5000);
 
-// ★ 初期位置（本物1）へ
+/* 初期位置 */
 updateSlider(false);
 
+/* リサイズ時も中央維持 */
+window.addEventListener('resize', () => {
+  updateSlider(false);
+});
 
 
 //スマホ縮小
