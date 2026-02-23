@@ -18,7 +18,6 @@ body {
 section {
   margin: 0 auto;
   text-align: center;
-  font-family: 'Allura', cursive;
 }
 
 /* 基本文字 */
@@ -30,6 +29,9 @@ p, span {
   display: none;
 }
 
+h2{
+	font-family: 'Allura', cursive;
+}
 
 /* =========================
    HERO 共通（構造のみ）
@@ -183,9 +185,10 @@ p, span {
   position: relative;
   overflow: hidden;
   color: #fff;
-  font-family: "Noto Sans JP", sans-serif;
 }
-
+.countdown-section h2{
+ font-family: "Noto Sans JP", sans-serif;
+}
 .countdown-bg {
   width: 100%;
   height: 100%;
@@ -379,7 +382,7 @@ footer {
   }
 
   section h2 {
-    font-size: 90px;
+    font-size: 5rem;
     margin-bottom: 40px;
 	letter-spacing: 0.5px;
   }
@@ -518,7 +521,9 @@ footer {
   }
 
   section h2 {
-    font-size: clamp(32px, 6vw, 50px);
+    font-size: clamp(4rem, 9vw, 5rem);
+	    margin-bottom: 40px;
+		letter-spacing: 0.5px;
   }
 
   .curved-text svg {
@@ -632,10 +637,11 @@ footer {
      display: block;
    }
 
-  section h2 {
-    font-size: clamp(28px, 8vw, 50px);
-    margin-bottom: clamp(20px, 6vw, 40px);
-  }
+   section h2 {
+      font-size: clamp(3.5rem, 3vw, 4rem);
+       margin-bottom: 40px;
+   	letter-spacing: 0.5px;
+    }
 
   /* ===== HERO ===== */
   .curved-text svg {
