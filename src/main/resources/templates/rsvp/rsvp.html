@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="/css/rsvp.css">
 </head>
 <body>
-
-<header></header>
-
+	<div class ="wrapper" >
+	<div th:replace="header :: globalHeader"></div>
 <main>
     <h1>RSVP</h1>
 
@@ -216,10 +215,10 @@
 
     </form>
 </main>
+<div th:replace="footer :: globalFooter"></div>
+	</div>
 
-<footer></footer>
-
-<script src="/js/rsvp.js"></script>
-
+	<script src="/js/rsvp.js"></script>
+	<script src="/js/header.js"></script>
 </body>
 </html>

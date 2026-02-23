@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<header class="header" th:fragment="globalHeader">
+
+	    <img src="/img/logo.png" class="header-logo">
+
+	    <button class="menu-btn" id="js-menu-btn">
+	        <span class="bar"></span>
+	        <span class="bar"></span>
+	        <span class="bar"></span>
+	        <span class="menu-text">MENU</span>
+	    </button>
+
+	    <nav class="nav" id="js-global-nav">
+	        <ul>
+	            <li><a href="/top">TOP</a></li>
+	            <li><a href="/rsvp">RSVP</a></li>
+
+	            <!-- INFOMATION の中に info-sub を入れる（ここが最重要） -->
+	            <li>
+					<button class="info-toggle">
+					    INFOMATION <span class="arrow">▼</span>
+					</button>
+	                <ul class="info-sub">
+	                    <li><a href="/info">情報一覧</a></li>
+	                    <li><a href="/hotel">宿泊</a></li>
+	                </ul>
+	            </li>
+	        </ul>
+	    </nav>
+
+	</header>
+
+</body>
+</html>

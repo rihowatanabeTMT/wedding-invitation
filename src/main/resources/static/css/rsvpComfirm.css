@@ -6,11 +6,6 @@ body {
     color: #333;
 }
 
-main {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 20px;
-}
 
 h1 {
     text-align: center;

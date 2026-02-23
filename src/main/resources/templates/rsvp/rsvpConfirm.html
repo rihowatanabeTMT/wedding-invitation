@@ -7,8 +7,31 @@
 	<link rel="stylesheet" href="/css/rsvpComfirm.css">
 </head>
 <body>
+	<header class="header">
+			<img src="/img/logo.png" alt="logo" class="header-logo">
+		  <button class="hamburger" id="hamburger">
+		    <span></span><span></span><span></span>
+		  </button>
 
-<header></header>
+		  <nav class="nav" id="nav">
+		    <ul>
+		      <li><a href="/top">Top</a></li>
+		      <li><a href="/rsvp">RSVP</a></li>
+
+		      <!-- Info（クリックで展開） -->
+		      <li class="info-item">
+		        <button class="info-toggle" id="infoToggle">Information</button>
+
+		        <ul class="info-sub" id="infoSub">
+		          <li><a href="/info">情報一覧</a></li>
+		          <li><a href="/pdf/hotel.pdf" target="_blank">ホテル</a></li>
+		          <!--<li><a href="/seat" target="_blank">席次表</a></li>
+		          <li><a href="/menu" target="_blank">メニュー表</a></li>-->
+		        </ul>
+		      </li>
+		    </ul>
+		  </nav>
+		</header>
 
 <main>
     <h1>入力内容の確認</h1>
@@ -202,8 +225,7 @@
     </form>
 
 </main>
-
-<footer></footer>
-
+<div th:replace="footer :: globalFooter"></div>
+<script src="/js/rsvp.js"></script>
 </body>
 </html>

@@ -138,3 +138,4 @@ function renumberGuests() {
     plusoneArea.style.display = 'none';
   }
 }
+
