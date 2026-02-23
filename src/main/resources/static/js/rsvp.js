@@ -1,3 +1,38 @@
+
+/**
+ * 郵便番号と住所
+ */
+const postInput = document.getElementById('post');
+
+postInput.addEventListener('input', function () {
+  let value = this.value.replace(/[^0-9]/g, '');
+
+  if (value.length > 3) {
+    value = value.slice(0, 3) + '-' + value.slice(3, 7);
+  }
+
+  this.value = value;
+});
+
+document.getElementById('post').addEventListener('blur', function(){
+  const zipcode = this.value.replace(/[^0-9]/g,'');
+
+  if(zipcode.length !== 7) return;
+
+  fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${zipcode}`)
+    .then(response => response.json())
+    .then(data =>{
+      if(data.results){
+        const r = data.results[0];
+        document.getElementById('prefecture').value = r.address1;
+        document.getElementById('address').value = r.address2 + r.address3;
+      }
+    });
+});
+
+
+
+
 /**
  * アレルギー
  */
