@@ -2,223 +2,270 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>RSVP</title>
-	<link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/rsvp.css">
 </head>
+
 <body>
-	<div class ="wrapper" >
-	<div th:replace="header :: globalHeader"></div>
-<main>
-    <h1>RSVP</h1>
 
-    <form action="/rsvp/confirm" method="post" th:object="${rsvpForm}">
+    <!-- ★ wrapper の外に header を置く（絶対条件） -->
+    <div th:replace="~{header :: globalHeader}"></div>
 
-        <!-- エラー一覧 -->
-        <div th:if="${#fields.hasErrors()}" class="error-box" style="color:red; margin-bottom:20px;">
-            <p>入力内容に誤りがあります。以下をご確認ください。</p>
-            <ul>
-                <li th:each="err : ${#fields.errors('*')}"
-                    th:text="${err}"></li>
-            </ul>
-        </div>
+    <!-- ★ wrapper は main と footer だけを包む -->
+    <div class="wrapper">
 
-        <!-- お名前 -->
-        <div class="form-group">
-            <label>お名前</label>
-            <div class="name-row">
-                <input type="text" th:field="*{lastName}" placeholder="姓">
-                <input type="text" th:field="*{firstName}" placeholder="名">
-            </div>
-        </div>
+        <main>
+            <h1>RSVP</h1>
 
-        <!-- ふりがな -->
-        <div class="form-group">
-            <label>ふりがな</label>
-            <div class="name-row">
-                <input type="text" th:field="*{lastNameKana}" placeholder="せい">
-                <input type="text" th:field="*{firstNameKana}" placeholder="めい">
-            </div>
-        </div>
+            <form action="/rsvp/confirm" method="post" th:object="${rsvpForm}">
 
-        <!-- ローマ字 -->
-        <div class="form-group">
-            <label>ローマ字</label>
-            <div class="name-row">
-                <input type="text" th:field="*{lastNameEn}" placeholder="SEI">
-                <input type="text" th:field="*{firstNameEn}" placeholder="MEI">
-            </div>
-        </div>
+                <!-- エラー一覧 -->
+                <div th:if="${#fields.hasErrors()}" class="error-box" style="color:red; margin-bottom:20px;">
+                    <p>入力内容に誤りがあります。以下をご確認ください。</p>
+                    <ul>
+                        <li th:each="err : ${#fields.errors('*')}"
+                            th:text="${err}"></li>
+                    </ul>
+                </div>
 
-        <!-- 新郎新婦どちら側 -->
-        <div class="form-group">
-            <label>いずれかをお選びください</label>
-            <label><input type="radio" th:field="*{guestSide}" value="groom"> 新郎ゲスト</label>
-            <label><input type="radio" th:field="*{guestSide}" value="bride"> 新婦ゲスト</label>
-        </div>
+                <!-- お名前 -->
+                <div class="form-group">
+                    <label>お名前</label>
+                    <div class="name-row">
+                        <input type="text" th:field="*{lastName}" placeholder="姓">
+                        <input type="text" th:field="*{firstName}" placeholder="名">
+                    </div>
+                </div>
 
-        <!-- 関係性 -->
-        <div class="form-group">
-            <label>新郎新婦との関係性</label>
-            <label><input type="radio" th:field="*{relation}" value="relative"> 親族</label>
-            <label><input type="radio" th:field="*{relation}" value="senior"> 先輩・上司</label>
-            <label><input type="radio" th:field="*{relation}" value="friend"> 友人</label>
-            <label><input type="radio" th:field="*{relation}" value="other"> その他</label>
-        </div>
+                <!-- ふりがな -->
+                <div class="form-group">
+                    <label>ふりがな</label>
+                    <div class="name-row">
+                        <input type="text" th:field="*{lastNameKana}" placeholder="せい">
+                        <input type="text" th:field="*{firstNameKana}" placeholder="めい">
+                    </div>
+                </div>
 
-        <!-- 出欠 -->
-        <div class="form-group">
-            <label>ご出席</label>
-            <label><input type="radio" th:field="*{attendance}" value="yes"> 出席</label>
-            <label><input type="radio" th:field="*{attendance}" value="no"> 欠席</label>
-        </div>
+                <!-- ローマ字 -->
+                <div class="form-group">
+                    <label>ローマ字</label>
+                    <div class="name-row">
+                        <input type="text" th:field="*{lastNameEn}" placeholder="SEI">
+                        <input type="text" th:field="*{firstNameEn}" placeholder="MEI">
+                    </div>
+                </div>
 
-        <!-- 電話番号 -->
-        <div class="form-group">
-            <label for="phone">電話番号</label>
-            <input id="phone" type="tel" th:field="*{phone}">
-        </div>
+                <!-- 新郎新婦どちら側 -->
+                <div class="form-group">
+                    <label>いずれかをお選びください</label>
+                    <div class="radio-row">
+                        <label><input type="radio" th:field="*{guestSide}" value="groom"> 新郎ゲスト</label>
+                        <label><input type="radio" th:field="*{guestSide}" value="bride"> 新婦ゲスト</label>
+                    </div>
+                </div>
 
-        <!-- メール -->
-        <div class="form-group">
-            <label for="email">メールアドレス</label>
-            <input id="email" type="email" th:field="*{email}">
-        </div>
+                <!-- 関係性 -->
+                <div class="form-group">
+                    <label>新郎新婦との関係性</label>
+                    <div class="radio-row">
+                        <label><input type="radio" th:field="*{relation}" value="relative"> 親族</label>
+                        <label><input type="radio" th:field="*{relation}" value="senior"> 先輩・上司</label>
+                        <label><input type="radio" th:field="*{relation}" value="friend"> 友人</label>
+                        <label><input type="radio" th:field="*{relation}" value="other"> その他</label>
+                    </div>
+                </div>
 
-        <!-- 郵便番号 -->
-        <div class="form-group">
-            <label for="post">郵便番号</label>
-            <input id="post" type="text" th:field="*{post}">
-        </div>
+                <!-- 出欠 -->
+                <div class="form-group">
+                    <label>ご出席</label>
+                    <div class="radio-row">
+                        <label><input type="radio" th:field="*{attendance}" value="yes"> 出席</label>
+                        <label><input type="radio" th:field="*{attendance}" value="no"> 欠席</label>
+                    </div>
+                </div>
 
-        <!-- 都道府県 -->
-        <div class="form-group">
-            <label for="prefecture">都道府県</label>
-            <select id="prefecture" th:field="*{prefecture}">
-                <option value="">選択してください</option>
-                <option value="北海道">北海道</option>
-                <option value="青森県">青森県</option>
-                <option value="岩手県">岩手県</option>
-                <option value="宮城県">宮城県</option>
-                <option value="秋田県">秋田県</option>
-                <option value="山形県">山形県</option>
-                <option value="福島県">福島県</option>
-                <option value="茨城県">茨城県</option>
-                <option value="栃木県">栃木県</option>
-                <option value="群馬県">群馬県</option>
-                <option value="埼玉県">埼玉県</option>
-                <option value="千葉県">千葉県</option>
-                <option value="東京都">東京都</option>
-                <option value="神奈川県">神奈川県</option>
-                <option value="新潟県">新潟県</option>
-                <option value="富山県">富山県</option>
-                <option value="石川県">石川県</option>
-                <option value="福井県">福井県</option>
-                <option value="山梨県">山梨県</option>
-                <option value="長野県">長野県</option>
-                <option value="岐阜県">岐阜県</option>
-                <option value="静岡県">静岡県</option>
-                <option value="愛知県">愛知県</option>
-                <option value="三重県">三重県</option>
-                <option value="滋賀県">滋賀県</option>
-                <option value="京都府">京都府</option>
-                <option value="大阪府">大阪府</option>
-                <option value="兵庫県">兵庫県</option>
-                <option value="奈良県">奈良県</option>
-                <option value="和歌山県">和歌山県</option>
-                <option value="鳥取県">鳥取県</option>
-                <option value="島根県">島根県</option>
-                <option value="岡山県">岡山県</option>
-                <option value="広島県">広島県</option>
-                <option value="山口県">山口県</option>
-                <option value="徳島県">徳島県</option>
-                <option value="香川県">香川県</option>
-                <option value="愛媛県">愛媛県</option>
-                <option value="高知県">高知県</option>
-                <option value="福岡県">福岡県</option>
-                <option value="佐賀県">佐賀県</option>
-                <option value="長崎県">長崎県</option>
-                <option value="熊本県">熊本県</option>
-                <option value="大分県">大分県</option>
-                <option value="宮崎県">宮崎県</option>
-                <option value="鹿児島県">鹿児島県</option>
-                <option value="沖縄県">沖縄県</option>
-            </select>
-        </div>
+                <!-- 電話番号 -->
+                <div class="form-group">
+                    <label for="phone">電話番号</label>
+                    <input id="phone" type="tel" th:field="*{phone}">
+                </div>
 
-        <!-- 市区町村 -->
-        <div class="form-group">
-            <label for="address">市区町村・番地</label>
-            <input id="address" type="text" th:field="*{address}">
-        </div>
+                <!-- メール -->
+                <div class="form-group">
+                    <label for="email">メールアドレス</label>
+                    <input id="email" type="email" th:field="*{email}">
+                </div>
 
-        <!-- 建物名 -->
-        <div class="form-group">
-            <label for="building">マンション・建物名</label>
-            <input id="building" type="text" th:field="*{building}">
-        </div>
+                <!-- 郵便番号 -->
+                <div class="form-group">
+                    <label for="post">郵便番号</label>
+                    <input id="post" type="text" th:field="*{post}">
+                </div>
 
-        <!-- 宿泊 -->
-		<div class="form-group hotel-group">
-		    <div class="title-and-options">
-		        <label class="title">宿泊施設ご利用有無</label>
-		        <a href="/pdf/hotel.pdf" target="_blank" class="pdf-link">宿泊案内（PDF）</a>
+                <!-- 都道府県 -->
+                <div class="form-group">
+                    <label for="prefecture">都道府県</label>
+                    <select id="prefecture" th:field="*{prefecture}">
+                        <option value="">選択してください</option>
+                        <!-- 47都道府県 -->
+                        <option value="北海道">北海道</option>
+                        <option value="青森県">青森県</option>
+                        <option value="岩手県">岩手県</option>
+                        <option value="宮城県">宮城県</option>
+                        <option value="秋田県">秋田県</option>
+                        <option value="山形県">山形県</option>
+                        <option value="福島県">福島県</option>
+                        <option value="茨城県">茨城県</option>
+                        <option value="栃木県">栃木県</option>
+                        <option value="群馬県">群馬県</option>
+                        <option value="埼玉県">埼玉県</option>
+                        <option value="千葉県">千葉県</option>
+                        <option value="東京都">東京都</option>
+                        <option value="神奈川県">神奈川県</option>
+                        <option value="新潟県">新潟県</option>
+                        <option value="富山県">富山県</option>
+                        <option value="石川県">石川県</option>
+                        <option value="福井県">福井県</option>
+                        <option value="山梨県">山梨県</option>
+                        <option value="長野県">長野県</option>
+                        <option value="岐阜県">岐阜県</option>
+                        <option value="静岡県">静岡県</option>
+                        <option value="愛知県">愛知県</option>
+                        <option value="三重県">三重県</option>
+                        <option value="滋賀県">滋賀県</option>
+                        <option value="京都府">京都府</option>
+                        <option value="大阪府">大阪府</option>
+                        <option value="兵庫県">兵庫県</option>
+                        <option value="奈良県">奈良県</option>
+                        <option value="和歌山県">和歌山県</option>
+                        <option value="鳥取県">鳥取県</option>
+                        <option value="島根県">島根県</option>
+                        <option value="岡山県">岡山県</option>
+                        <option value="広島県">広島県</option>
+                        <option value="山口県">山口県</option>
+                        <option value="徳島県">徳島県</option>
+                        <option value="香川県">香川県</option>
+                        <option value="愛媛県">愛媛県</option>
+                        <option value="高知県">高知県</option>
+                        <option value="福岡県">福岡県</option>
+                        <option value="佐賀県">佐賀県</option>
+                        <option value="長崎県">長崎県</option>
+                        <option value="熊本県">熊本県</option>
+                        <option value="大分県">大分県</option>
+                        <option value="宮崎県">宮崎県</option>
+                        <option value="鹿児島県">鹿児島県</option>
+                        <option value="沖縄県">沖縄県</option>
+                    </select>
+                </div>
 
-		        <label class="option">
-		            <input type="radio" th:field="*{hotel}" value="yes"> 利用する
-		        </label>
-		        <label class="option">
-		            <input type="radio" th:field="*{hotel}" value="no"> 利用しない
-		        </label>
-		    </div>
-		</div>
+                <!-- 市区町村 -->
+                <div class="form-group">
+                    <label for="address">市区町村・番地</label>
+                    <input id="address" type="text" th:field="*{address}">
+                </div>
 
-        <!-- バス -->
-        <div class="form-group">
-            <label>シャトルバスのご利用有無</label>
-            <label><input type="radio" th:field="*{bus}" value="yes"> 利用する</label>
-            <label><input type="radio" th:field="*{bus}" value="no"> 利用しない</label>
-        </div>
+                <!-- 建物名 -->
+                <div class="form-group">
+                    <label for="building">マンション・建物名</label>
+                    <input id="building" type="text" th:field="*{building}">
+                </div>
 
-        <!-- アレルギー -->
-        <div class="form-group">
-            <label>アレルギー有無</label>
-            <label><input type="radio" th:field="*{allergy}" value="yes"> 有</label>
-            <label><input type="radio" th:field="*{allergy}" value="no"> 無</label>
-        </div>
+                <!-- 宿泊 -->
+				<div class="form-group hotel-group">
 
-        <div class="form-group" id="allergy-detail" style="display:none;">
-            <label for="allergyText">アレルギーの詳細</label>
-            <textarea id="allergyText" th:field="*{allergyText}" rows="3"></textarea>
-        </div>
+				    <!-- タイトル行（PDFと横並び） -->
+				    <div class="title-and-options">
+				        <label class="title">宿泊施設ご利用有無</label>
+				        <a href="/pdf/hotel.pdf" target="_blank" class="pdf-link">宿泊案内（PDF）</a>
+				    </div>
 
-        <!-- 同伴者 -->
-        <div class="form-group">
-            <label>同伴者の有無</label>
-            <label><input type="radio" name="plusone_flag" value="yes"> 有</label>
-            <label><input type="radio" name="plusone_flag" value="no" checked> 無</label>
-        </div>
+				    <!-- ラジオボタン行（横並び） -->
+				    <div class="radio-row">
+				        <label><input type="radio" th:field="*{hotel}" value="yes"> 利用する</label>
+				        <label><input type="radio" th:field="*{hotel}" value="no"> 利用しない</label>
+				    </div>
 
-        <div id="plusone-area" style="display:none;">
-            <h3>同伴者情報</h3>
-            <div id="plusone-list"></div>
-            <button type="button" id="add-plusone">＋ 同伴者を追加</button>
-        </div>
+				</div>
 
-        <!-- メッセージ -->
-        <div class="form-group">
-            <label for="message">メッセージ</label>
-            <textarea id="message" th:field="*{message}" rows="4"></textarea>
-        </div>
+                <!-- バス -->
+                <div class="form-group">
+                    <label>シャトルバスのご利用有無</label>
+                    <div class="radio-row">
+                        <label><input type="radio" th:field="*{bus}" value="yes"> 利用する</label>
+                        <label><input type="radio" th:field="*{bus}" value="no"> 利用しない</label>
+                    </div>
+                </div>
 
-        <button type="submit">確認</button>
+                <!-- アレルギー -->
+                <div class="form-group">
+                    <label>アレルギー有無</label>
+                    <div class="radio-row">
+                        <label><input type="radio" th:field="*{allergy}" value="yes"> 有</label>
+                        <label><input type="radio" th:field="*{allergy}" value="no"> 無</label>
+                    </div>
+                </div>
 
-    </form>
-</main>
-<div th:replace="footer :: globalFooter"></div>
-	</div>
+                <div class="form-group" id="allergy-detail" style="display:none;">
+                    <label for="allergyText">アレルギーの詳細</label>
+                    <textarea id="allergyText" th:field="*{allergyText}" rows="3"></textarea>
+                </div>
 
-	<script src="/js/rsvp.js"></script>
-	<script src="/js/header.js"></script>
+				<!-- 同伴者の有無 -->
+				<div class="form-group">
+				    <label>同伴者の有無</label>
+				    <div class="radio-row">
+				        <label><input type="radio" th:field="*{plusone_flag}" value="yes"> 有</label>
+				        <label><input type="radio" th:field="*{plusone_flag}" value="no"> 無</label>
+				    </div>
+				</div>
+
+				<!-- 同伴者情報（最初は非表示、戻る時はサーバが描画） -->
+				<div id="plusone-area" style="display:none;">
+
+				    <h3>同伴者情報</h3>
+
+				    <div id="plusone-list">
+				        <!-- ★ 戻る時だけサーバ側で描画される -->
+				        <div class="form-group" th:each="p, i : *{plusones}">
+				            <h4 th:text="'同伴者 ' + (${i.index} + 1)"></h4>
+
+				            <label>お名前</label>
+				            <input type="text" th:field="*{plusones[__${i.index}__].plusOneName}">
+
+				            <label>ふりがな</label>
+				            <input type="text" th:field="*{plusones[__${i.index}__].plusOneFurigana}">
+
+				            <label>アレルギー</label>
+				            <textarea rows="2" th:field="*{plusones[__${i.index}__].plusOneAllergy}"></textarea>
+							
+							<button type="button" class="remove-btn" data-index="${index}">削除</button>
+						</div>
+						
+				    </div>
+
+				    <button type="button" id="add-plusone">＋ 同伴者を追加</button>
+				</div>
+
+                <!-- メッセージ -->
+                <div class="form-group">
+                    <label for="message">メッセージ</label>
+                    <textarea id="message" th:field="*{message}" rows="4"></textarea>
+                </div>
+
+                <button type="submit">確認</button>
+
+            </form>
+        </main>
+
+        <!-- ★ footer も wrapper の中に置く（正しい構造） -->
+		<div th:replace="~{footer :: globalFooter}"></div>
+
+    </div>
+
+    <script src="/js/rsvp.js"></script>
+    <script src="/js/header.js"></script>
+
 </body>
 </html>

@@ -87,7 +87,9 @@ public class RsvpForm {
 
     // 同伴者
     private List<PlusoneForm> plusones = new ArrayList<>();
-
+    
+    private String plusone_flag= "no";
+    
     // メッセージ
     private String message;
     

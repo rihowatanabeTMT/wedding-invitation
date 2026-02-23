@@ -3,24 +3,35 @@
 /* 全体レイアウト */
 body {
     font-family: "Helvetica Neue", Arial, "Hiragino Sans", "Noto Sans JP", sans-serif;
-    margin: 0 auto;
     padding: 0;
     color: #333;
-	max-width: 900px;
-	box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin: 0;
 }
 
-main {
+/* wrapper が全体を包む */
+.wrapper {
     max-width: 900px;
     margin: 0 auto;
-    padding: 100px 0px 0 0px;
-	
 }
+
+/* main は幅を固定しない（← これが重要） */
+main {
+    padding: 100px 0 0 0;
+}
+
 /* タイトル */
 h1 {
     text-align: center;
     color: #005BAC;
     margin-bottom: 30px;
+    font-family: "Helvetica Neue", Arial, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    font-weight: 600;
+    font-size: 2.4rem;
+    letter-spacing: 1px;
+}
+
+.br-sp {
+  display: none;
 }
 
 /* フォーム全体 */
@@ -28,7 +39,6 @@ form {
     background: #fff;
     padding: 25px;
     border-radius: 12px;
-    
 }
 
 /* 各項目 */
@@ -49,7 +59,7 @@ input[type="email"],
 input[type="tel"],
 select,
 textarea {
-    width: 100%;
+    width: 95%;
     padding: 12px;
     border: 1px solid #cfd8e3;
     border-radius: 8px;
@@ -65,16 +75,20 @@ textarea:focus {
     outline: none;
 }
 
-/* ボタン */
+/* =========================
+   RSVP 全ページ共通ボタン
+========================= */
+
 button[type="submit"],
-#add-plusone {
+#add-plusone,
+form button {
     width: 100%;
-    padding: 14px;
+    padding: clamp(10px, 2.5vw, 16px);
+    font-size: clamp(10px, 5vw, 18px);
     background: #005BAC;
     color: #fff;
     border: none;
     border-radius: 8px;
-    font-size: 18px;
     font-weight: 600;
     cursor: pointer;
     margin-top: 20px;
@@ -93,8 +107,7 @@ button:hover {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
-  max-width: 900px;
+  width: 900px;
   height: 70px;
   background: #ffffffcc;
   backdrop-filter: blur(8px);
@@ -113,10 +126,7 @@ button:hover {
   transform: translateX(-50%);
 }
 
-
-/* =========================
-   MENU ボタン（青い小箱）
-========================= */
+/* MENU ボタン */
 .menu-btn {
   position: absolute;
   right: 0;
@@ -135,7 +145,6 @@ button:hover {
   justify-content: center;
 }
 
-/* 白いハンバーガー線 */
 .menu-btn .bar {
   width: 24px;
   height: 3px;
@@ -143,17 +152,13 @@ button:hover {
   border-radius: 2px;
 }
 
-/* MENU の白文字 */
 .menu-btn .menu-text {
   color: #fff;
   font-size: 12px;
   margin-top: 2px;
 }
 
-
-/* =========================
-   NAV（白いポップアップ）
-========================= */
+/* NAV */
 .nav {
   position: absolute;
   top: 70px;
@@ -171,14 +176,12 @@ button:hover {
   display: block;
 }
 
-/* ●を消す */
 .nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-/* リンクの visited 色を消す（常に同じ色） */
 .nav a:link,
 .nav a:visited {
   color: #333;
@@ -187,18 +190,12 @@ button:hover {
   padding: 10px 20px;
 }
 
-/* hover */
 .nav a:hover,
 .info-toggle:hover {
   background: #f0f6ff;
 }
 
-
-/* =========================
-   INFO（サブメニュー）
-========================= */
-
-/* INFOMATION の見た目（ボタン風を消す） */
+/* INFO */
 .info-toggle {
   background: none;
   border: none;
@@ -213,19 +210,16 @@ button:hover {
   justify-content: space-between;
 }
 
-/* ▼ 矢印 */
 .info-toggle .arrow {
   font-size: 12px;
   margin-left: 6px;
   transition: transform 0.2s ease;
 }
 
-/* 開いたときに矢印を回転 */
 .info-toggle.open .arrow {
   transform: rotate(180deg);
 }
 
-/* サブメニュー（縦並び） */
 .info-sub {
   display: none;
   padding-left: 20px;
@@ -237,36 +231,81 @@ button:hover {
   display: flex;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
+/* FOOTER */
 footer {
   text-align: center;
   color: #777;
   border-top: 1px solid #e5e5e5;
+  white-space: normal;
+  word-break: break-word;
 }
+/* 画面いっぱいに main を広げる */
+.wrapper main {
+    min-height: calc(100vh - 120px - 80px);
+}
+/* =========================
+   メディアクエリ
+========================= */
 
+/* PC（900px以上） */
 @media (min-width: 900px) {
   footer {
     font-size: 12px;
     padding: 15px 0;
     margin-top: 20px;
   }
+
+  .wrapper {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+  
+  .header{
+    max-width: 900px;
+  }
+  
 }
 
+/* タブレット（680〜899px） */
 @media (min-width: 680px) and (max-width: 899px) {
   footer {
-    font-size:12px;
+    font-size: 12px;
     padding: 15px 0;
     margin-top: 20px;
   }
+
+  .wrapper {
+    width: 100%;
+    box-shadow: none;
+  }
+  
+  .header{
+    max-width: 100%;
+  }
 }
 
+/* スマホ（〜679px） */
 @media (max-width: 679px) {
   footer {
     font-size: clamp(4px, 4vw, 12px);
     padding: 15px 0;
     margin-top: 20px;
   }
+
+  .wrapper {
+    box-shadow: none;
+  }
+
+  .header{
+    max-width: 100%;
+  }
+  h1 {
+      font-size: clamp(20px, 2.85vw, 28px);
+  }
+  
+  .br-sp {
+     display: block;
+   }
+
+
 }
+

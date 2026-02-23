@@ -3,35 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>回答完了</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="/css/base.css">
     <link rel="stylesheet" href="/css/rsvpComplete.css">
 </head>
 <body>
-	<header class="header">
-			<img src="/img/logo.png" alt="logo" class="header-logo">
-		  <button class="hamburger" id="hamburger">
-		    <span></span><span></span><span></span>
-		  </button>
-
-		  <nav class="nav" id="nav">
-		    <ul>
-		      <li><a href="/top">Top</a></li>
-		      <li><a href="/rsvp">RSVP</a></li>
-
-		      <!-- Info（クリックで展開） -->
-		      <li class="info-item">
-		        <button class="info-toggle" id="infoToggle">Information</button>
-
-		        <ul class="info-sub" id="infoSub">
-		          <li><a href="/info">情報一覧</a></li>
-		          <li><a href="/pdf/hotel.pdf" target="_blank">ホテル</a></li>
-		          <!--<li><a href="/seat" target="_blank">席次表</a></li>
-		          <li><a href="/menu" target="_blank">メニュー表</a></li>-->
-		        </ul>
-		      </li>
-		    </ul>
-		  </nav>
-		</header>
+	<div th:replace="~{header :: globalHeader}"></div>
+	<div class="wrapper">
 <main>
     <div class="complete-box">
         <h1>回答完了</h1>
@@ -56,13 +34,15 @@
 
         <!-- 迷惑メール注意文（自然で控えめ） -->
         <p class="notice">
-            ※ 確認メールが届かない場合は、迷惑メールフォルダをご確認ください。
+            ※ 確認メールが届かない場合は、<span class="br-sp"></span>迷惑メールフォルダをご確認ください。
         </p>
 
         <a href="/top" class="complete-btn">トップへ戻る</a>
     </div>
 </main>
 <script src="/js/rsvp.js"></script>
-<div th:replace="footer :: globalFooter"></div>
+<script src="/js/header.js"></script>
+<div th:replace="~{footer :: globalFooter}"></div>
+	</div>
 </body>
 </html>

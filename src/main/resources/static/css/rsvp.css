@@ -1,46 +1,70 @@
 /* RSVP 専用 CSS */
 
-/* 名前の横並び（base にあっても OK だが RSVP だけならここ） */
+/* 名前の横並び */
 .name-row {
     display: flex;
     gap: 10px;
 }
+.name-row input,
+.name-row select {
+    width: calc(50% - 5px);
+}
 
-/* ラジオボタンの並び */
-.form-group label {
+/* =========================
+   ラジオボタンの横並び統一
+========================= */
+
+/* ラジオボタン専用の横並び */
+.radio-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap; /* スマホで自然に折れる */
+}
+
+/* ラジオボタンの label */
+.radio-row label {
     display: inline-flex;
     align-items: center;
-    margin-right: 15px;
+    gap: 6px;
+    margin: 0;
 }
 
-.form-group label input[type="radio"] {
-    margin-right: 6px;
+/* 既存の form-group label の干渉を避けるため */
+.form-group > label {
+    display: block;
+    margin-bottom: 6px;
 }
 
+/* タイトル＋PDFリンクを横並びに */
 .title-and-options {
     display: flex;
     align-items: center;
-    gap: 12px; /* 余白はお好みで調整 */
-    flex-wrap: wrap; /* スマホで折り返し可能に */
+    gap: 12px;
+    flex-wrap: wrap; /* スマホで折れる */
 }
 
-.title {
+.title-and-options .title {
     font-weight: bold;
 }
 
 .pdf-link {
-    font-size: 0.9rem;
+    font-size: clamp(10px, 2.5vw, 14px);
     text-decoration: underline;
     color: #007bff;
 }
 
+/* ラジオボタンの option */
 .option {
     display: flex;
     align-items: center;
     gap: 4px;
 }
 
-/* 同伴者エリア */
+/* =========================
+   同伴者エリア
+========================= */
+
 #plusone-area {
     background: #f0f6ff;
     padding: 15px;
@@ -71,7 +95,9 @@
     background: #c9302c;
 }
 
-/* エラー一覧（フォーム専用） */
+/* =========================
+   エラー一覧
+========================= */
 .error-box {
     border: 2px solid #d9534f;
     background: #ffecec;
@@ -90,9 +116,62 @@
     font-weight: 600;
 }
 
-/* スマホ対応 */
+/* =========================
+   スマホ（〜480px）
+========================= */
 @media (max-width: 480px) {
+
+    /* h1 をスマホ用に小さく */
+    h1 {
+        font-size: clamp(20px, 2.85vw, 28px);
+        letter-spacing: 0.5px;
+    }
+
+    /* form の余白を少し減らす */
+    form {
+        padding: 18px;
+    }
+
+    /* ラベルの文字サイズを少し小さく */
+    label {
+        font-size: clamp(12px, 3vw, 14px);
+    }
+
+    /* 入力欄のフォントサイズも少し小さく */
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+        font-size: clamp(12px, 3vw, 14px);
+        width: 95%;
+        padding: 10px;
+    }
+
+    /* 姓・名の横並びが崩れないように */
     .name-row {
+        display: flex;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .name-row input {
+        width: 100%;
+    }
+
+    /* タイトル＋PDFリンクは縦並びに */
+    .title-and-options {
         flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    /* ラジオボタンは横並び維持（自然に折れる） */
+    .radio-row {
+        gap: 10px;
+    }
+
+    .pdf-link {
+        font-size: 12px;
     }
 }

@@ -1,43 +1,49 @@
-/* rsvpComplete.css */
-
-/* 完了メッセージカード */
+/* =========================
+   完了メッセージカード
+========================= */
 .complete-box {
-    background: #fff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     text-align: center;
-    margin-top: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: clamp(24px, 5vw, 40px) clamp(16px, 4vw, 20px);
 }
 
 /* 名前の強調 */
 .username {
-    font-size: 22px;
+    font-size: clamp(18px, 4vw, 24px);
     font-weight: 700;
     color: #005BAC;
-    margin-bottom: 20px;
+    margin-bottom: clamp(12px, 3vw, 20px);
 }
 
 /* メッセージ */
 .message {
-    font-size: 18px;
+    font-size: clamp(15px, 3.5vw, 18px);
     line-height: 1.7;
-    margin-bottom: 15px;
+    margin-bottom: clamp(10px, 3vw, 15px);
+}
+
+/* 注意文 */
+.notice {
+    font-size: clamp(11px, 3vw, 14px);
+    color: #666;
+    margin-top: clamp(12px, 3vw, 20px);
 }
 
 /* ボタン */
 .complete-btn {
     display: inline-block;
-    margin-top: 25px;
-    padding: 14px 24px;
+    margin-top: clamp(20px, 4vw, 25px);
+    padding: clamp(10px, 2.5vw, 16px) clamp(18px, 4vw, 24px);
     background: #005BAC;
     color: #fff;
     border-radius: 8px;
     text-decoration: none;
-    font-size: 18px;
+    font-size: clamp(14px, 5vw, 18px);
     font-weight: 600;
     transition: background .2s;
 }
+
 
 .complete-btn:hover {
     background: #0073CF;

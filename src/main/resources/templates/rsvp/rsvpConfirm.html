@@ -2,198 +2,210 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>RSVP確認</title>
-	<link rel="stylesheet" href="/css/base.css">
-	<link rel="stylesheet" href="/css/rsvpComfirm.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/rsvpComfirm.css">
 </head>
+
 <body>
-	<header class="header">
-			<img src="/img/logo.png" alt="logo" class="header-logo">
-		  <button class="hamburger" id="hamburger">
-		    <span></span><span></span><span></span>
-		  </button>
 
-		  <nav class="nav" id="nav">
-		    <ul>
-		      <li><a href="/top">Top</a></li>
-		      <li><a href="/rsvp">RSVP</a></li>
+<div th:replace="~{header :: globalHeader}"></div>
 
-		      <!-- Info（クリックで展開） -->
-		      <li class="info-item">
-		        <button class="info-toggle" id="infoToggle">Information</button>
-
-		        <ul class="info-sub" id="infoSub">
-		          <li><a href="/info">情報一覧</a></li>
-		          <li><a href="/pdf/hotel.pdf" target="_blank">ホテル</a></li>
-		          <!--<li><a href="/seat" target="_blank">席次表</a></li>
-		          <li><a href="/menu" target="_blank">メニュー表</a></li>-->
-		        </ul>
-		      </li>
-		    </ul>
-		  </nav>
-		</header>
-
+<div class="wrapper">
 <main>
     <h1>入力内容の確認</h1>
 
-    <!-- 送信フォーム -->
     <form action="/rsvp/submit" method="post" th:object="${rsvpForm}">
 
-        <!-- お名前 -->
+        <!-- 基本情報 -->
         <div class="form-group">
-            <label>お名前：</label>
-            <span th:text="*{lastName + ' ' + firstName}"></span>
-
+            <div class="confirm-line">
+                <label>お名前：</label>
+                <span th:text="*{lastName + ' ' + firstName}"></span>
+            </div>
             <input type="hidden" th:field="*{lastName}">
             <input type="hidden" th:field="*{firstName}">
         </div>
 
-        <!-- ふりがな -->
         <div class="form-group">
-            <label>ふりがな：</label>
-            <span th:text="*{lastNameKana + ' ' + firstNameKana}"></span>
-
+            <div class="confirm-line">
+                <label>ふりがな：</label>
+                <span th:text="*{lastNameKana + ' ' + firstNameKana}"></span>
+            </div>
             <input type="hidden" th:field="*{lastNameKana}">
             <input type="hidden" th:field="*{firstNameKana}">
         </div>
 
-        <!-- ローマ字 -->
         <div class="form-group">
-            <label>ローマ字：</label>
-            <span th:text="*{lastNameEn + ' ' + firstNameEn}"></span>
-
+            <div class="confirm-line">
+                <label>ローマ字：</label>
+                <span th:text="*{lastNameEn + ' ' + firstNameEn}"></span>
+            </div>
             <input type="hidden" th:field="*{lastNameEn}">
             <input type="hidden" th:field="*{firstNameEn}">
         </div>
 
-        <!-- 新郎新婦どちら側 -->
         <div class="form-group">
-            <label>区分：</label>
-            <span th:text="*{guestSide == 'groom' ? '新郎ゲスト' : '新婦ゲスト'}"></span>
-
+            <div class="confirm-line">
+                <label>区分：</label>
+                <span th:text="*{guestSide == 'groom' ? '新郎ゲスト' : '新婦ゲスト'}"></span>
+            </div>
             <input type="hidden" th:field="*{guestSide}">
         </div>
 
-        <!-- 関係性 -->
         <div class="form-group">
-            <label>関係性：</label>
-            <span th:text="*{
-                relation == 'relative' ? '親族' :
-                relation == 'company' ? '会社' :
-                relation == 'friend' ? '友人' : 'その他'
-            }"></span>
-
+            <div class="confirm-line">
+                <label>関係性：</label>
+                <span th:text="*{
+                    relation == 'relative' ? '親族' :
+                    relation == 'company' ? '会社' :
+                    relation == 'friend' ? '友人' : 'その他'
+                }"></span>
+            </div>
             <input type="hidden" th:field="*{relation}">
         </div>
 
-        <!-- 出欠 -->
         <div class="form-group">
-            <label>ご出席：</label>
-            <span th:text="*{attendance == 'yes' ? '出席' : '欠席'}"></span>
-
+            <div class="confirm-line">
+                <label>ご出席：</label>
+                <span th:text="*{attendance == 'yes' ? '出席' : '欠席'}"></span>
+            </div>
             <input type="hidden" th:field="*{attendance}">
         </div>
 
-        <!-- 電話番号 -->
         <div class="form-group">
-            <label>電話番号：</label>
-            <span th:text="*{phone}"></span>
+            <div class="confirm-line">
+                <label>電話番号：</label>
+                <span th:text="*{phone}"></span>
+            </div>
             <input type="hidden" th:field="*{phone}">
         </div>
 
-        <!-- メール -->
         <div class="form-group">
-            <label>メールアドレス：</label>
-            <span th:text="*{email}"></span>
+            <div class="confirm-line">
+                <label>メールアドレス：</label>
+                <span th:text="*{email}"></span>
+            </div>
             <input type="hidden" th:field="*{email}">
         </div>
 
-        <!-- 郵便番号 -->
         <div class="form-group">
-            <label>郵便番号：</label>
-            <span th:text="*{post}"></span>
+            <div class="confirm-line">
+                <label>郵便番号：</label>
+                <span th:text="*{post}"></span>
+            </div>
             <input type="hidden" th:field="*{post}">
         </div>
 
-        <!-- 都道府県 -->
         <div class="form-group">
-            <label>都道府県：</label>
-            <span th:text="*{prefecture}"></span>
+            <div class="confirm-line">
+                <label>都道府県：</label>
+                <span th:text="*{prefecture}"></span>
+            </div>
             <input type="hidden" th:field="*{prefecture}">
         </div>
 
-        <!-- 市区町村 -->
         <div class="form-group">
-            <label>市区町村・番地：</label>
-            <span th:text="*{address}"></span>
+            <div class="confirm-line">
+                <label>市区町村・番地：</label>
+                <span th:text="*{address}"></span>
+            </div>
             <input type="hidden" th:field="*{address}">
         </div>
 
-        <!-- 建物名 -->
         <div class="form-group">
-            <label>建物名：</label>
-            <span th:text="*{building}"></span>
+            <div class="confirm-line">
+                <label>建物名：</label>
+                <span th:text="*{building}"></span>
+            </div>
             <input type="hidden" th:field="*{building}">
         </div>
 
-        <!-- 宿泊 -->
         <div class="form-group">
-            <label>宿泊施設：</label>
-            <span th:text="*{hotel == 'yes' ? '利用する' : '利用しない'}"></span>
+            <div class="confirm-line">
+                <label>宿泊施設：</label>
+                <span th:text="*{hotel == 'yes' ? '利用する' : '利用しない'}"></span>
+            </div>
             <input type="hidden" th:field="*{hotel}">
         </div>
 
-        <!-- バス -->
         <div class="form-group">
-            <label>シャトルバス：</label>
-            <span th:text="*{bus == 'yes' ? '利用する' : '利用しない'}"></span>
+            <div class="confirm-line">
+                <label>シャトルバス：</label>
+                <span th:text="*{bus == 'yes' ? '利用する' : '利用しない'}"></span>
+            </div>
             <input type="hidden" th:field="*{bus}">
         </div>
 
-        <!-- アレルギー -->
         <div class="form-group">
-            <label>アレルギー：</label>
-            <span th:text="*{allergy == 'yes' ? '有' : '無'}"></span>
+            <div class="confirm-line">
+                <label>アレルギー：</label>
+                <span th:text="*{allergy == 'yes' ? '有' : '無'}"></span>
+            </div>
             <input type="hidden" th:field="*{allergy}">
         </div>
 
         <div class="form-group" th:if="*{allergy} == 'yes'">
-            <label>アレルギー詳細：</label>
-            <span th:text="*{allergyText}"></span>
+            <div class="confirm-line">
+                <label>アレルギー詳細：</label>
+                <span th:text="*{allergyText}"></span>
+            </div>
             <input type="hidden" th:field="*{allergyText}">
         </div>
 
-        <!-- 同伴者 -->
-        <div class="form-group" th:if="*{plusones.size()} > 0">
-            <h3>同伴者情報</h3>
+		<!-- ★ 同伴者情報（plusones） -->
+		<div class="form-group" th:if="*{plusones.size()} > 0">
 
-            <div th:each="p, i : *{plusones}">
-                <h4 th:text="'同伴者 ' + (${i.index} + 1)"></h4>
+		    <!-- タイトル（ラベル列に揃える） -->
+		    <div class="plusone-title-line">
+		        <label>同伴者情報</label>
+		        <span></span>
+		    </div>
 
-                <p>お名前：<span th:text="${p.plusOneName}"></span></p>
-                <input type="hidden" th:name="|plusones[${i.index}].plusOneName|" th:value="${p.plusOneName}">
+		    <div th:each="p, i : *{plusones}">
 
-                <p>ふりがな：<span th:text="${p.plusOneFurigana}"></span></p>
-                <input type="hidden" th:name="|plusones[${i.index}].plusOneFurigana|" th:value="${p.plusOneFurigana}">
+		        <!-- 同伴者1（ラベル列に揃える） -->
+		        <div class="plusone-header">
+		            <label>同伴者１</label>
+		            <span></span>
+		        </div>
 
-                <p>アレルギー：<span th:text="${p.plusOneAllergy}"></span></p>
-                <input type="hidden" th:name="|plusones[${i.index}].plusOneAllergy|" th:value="${p.plusOneAllergy}">
-            </div>
-        </div>
+		        <!-- 名前（ラベルを1マス左にインデント） -->
+		        <div class="confirm-line">
+		            <label class="indent-label">お名前：</label>
+		            <span th:text="${p.plusOneName}"></span>
+		        </div>
+
+		        <!-- ふりがな -->
+		        <div class="confirm-line">
+		            <label class="indent-label">ふりがな：</label>
+		            <span th:text="${p.plusOneFurigana}"></span>
+		        </div>
+
+		        <!-- アレルギー -->
+		        <div class="confirm-line">
+		            <label class="indent-label">アレルギー：</label>
+		            <span th:text="${p.plusOneAllergy}"></span>
+		        </div>
+
+		    </div>
+		</div>
 
         <!-- メッセージ -->
         <div class="form-group">
-            <label>メッセージ：</label>
-            <span th:text="*{message}"></span>
+            <div class="confirm-line">
+                <label>メッセージ：</label>
+                <span th:text="*{message}"></span>
+            </div>
             <input type="hidden" th:field="*{message}">
         </div>
 
         <button type="submit">送信</button>
     </form>
 
-    <!-- 戻るボタン -->
+    <!-- 戻る -->
     <form action="/rsvp" method="post" th:object="${rsvpForm}">
-        <!-- hidden は上と同じ内容を全部入れる -->
         <input type="hidden" th:field="*{lastName}">
         <input type="hidden" th:field="*{firstName}">
         <input type="hidden" th:field="*{lastNameKana}">
@@ -215,17 +227,22 @@
         <input type="hidden" th:field="*{allergyText}">
         <input type="hidden" th:field="*{message}">
 
-        <div th:each="p, i : *{plusones}">
-            <input type="hidden" th:name="|plusones[${i.index}].plusOneName|" th:value="${p.plusOneName}">
-            <input type="hidden" th:name="|plusones[${i.index}].plusOneFurigana|" th:value="${p.plusOneFurigana}">
-            <input type="hidden" th:name="|plusones[${i.index}].plusOneAllergy|" th:value="${p.plusOneAllergy}">
-        </div>
+		<div th:each="p, i : *{plusones}">
+		    <input type="hidden" th:field="*{plusones[__${i.index}__].plusOneName}">
+		    <input type="hidden" th:field="*{plusones[__${i.index}__].plusOneFurigana}">
+		    <input type="hidden" th:field="*{plusones[__${i.index}__].plusOneAllergy}">
+		</div>
 
         <button type="submit">戻る</button>
     </form>
 
 </main>
-<div th:replace="footer :: globalFooter"></div>
+<div th:replace="~{footer :: globalFooter}"></div>
+
+</div>
+
 <script src="/js/rsvp.js"></script>
+<script src="/js/header.js"></script>
+
 </body>
 </html>

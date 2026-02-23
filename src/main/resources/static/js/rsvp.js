@@ -4,42 +4,19 @@
 const allergyRadios = document.getElementsByName('allergy');
 const allergyDetail = document.getElementById('allergy-detail');
 
+// ラジオ変更時
 allergyRadios.forEach(radio => {
   radio.addEventListener('change', () => {
     allergyDetail.style.display = (radio.value === 'yes') ? 'block' : 'none';
   });
 });
 
-/**
- * 郵便番号と住所
- */
-const postInput = document.getElementById('post');
+// ★ 初期表示（戻る時に必要）
+const checkedAllergy = document.querySelector('input[name="allergy"]:checked');
+if (checkedAllergy && checkedAllergy.value === 'yes') {
+  allergyDetail.style.display = 'block';
+}
 
-postInput.addEventListener('input', function () {
-  let value = this.value.replace(/[^0-9]/g, '');
-
-  if (value.length > 3) {
-    value = value.slice(0, 3) + '-' + value.slice(3, 7);
-  }
-
-  this.value = value;
-});
-
-document.getElementById('post').addEventListener('blur', function(){
-  const zipcode = this.value.replace(/[^0-9]/g,'');
-
-  if(zipcode.length !== 7) return;
-
-  fetch(`https://zipcloud.ibsnet.co.jp/api/search?zipcode=${zipcode}`)
-    .then(response => response.json())
-    .then(data =>{
-      if(data.results){
-        const r = data.results[0];
-        document.getElementById('prefecture').value = r.address1;
-        document.getElementById('address').value = r.address2 + r.address3;
-      }
-    });
-});
 
 /**
  * 同伴者
@@ -52,6 +29,9 @@ const addBtn = document.getElementById('add-plusone');
 let guestIndex = 0;
 const maxGuest = 4;
 
+/**
+ * 同伴者ブロック生成
+ */
 function createGuestBlock(index) {
   const block = document.createElement('div');
   block.classList.add('form-group');
@@ -75,13 +55,22 @@ function createGuestBlock(index) {
   return block;
 }
 
+
+/**
+ * 同伴者ラジオ変更時
+ */
 plusoneRadios.forEach(radio => {
   radio.addEventListener('change', () => {
+
     if (radio.value === 'yes') {
       plusoneArea.style.display = 'block';
-      plusoneList.innerHTML = '';
-      guestIndex = 0;
-      plusoneList.appendChild(createGuestBlock(guestIndex));
+
+      // ★ 既にサーバ描画された同伴者がある場合は初期化しない
+      if (plusoneList.children.length === 0) {
+        guestIndex = 0;
+        plusoneList.appendChild(createGuestBlock(guestIndex));
+      }
+
     } else {
       plusoneArea.style.display = 'none';
       plusoneList.innerHTML = '';
@@ -90,6 +79,10 @@ plusoneRadios.forEach(radio => {
   });
 });
 
+
+/**
+ * 同伴者追加
+ */
 addBtn.addEventListener('click', () => {
   if (guestIndex >= maxGuest - 1) return;
 
@@ -97,6 +90,10 @@ addBtn.addEventListener('click', () => {
   plusoneList.appendChild(createGuestBlock(guestIndex));
 });
 
+
+/**
+ * 同伴者削除
+ */
 plusoneList.addEventListener('click', (e) => {
   if (e.target.classList.contains('remove-btn')) {
     const index = e.target.getAttribute('data-index');
@@ -106,6 +103,10 @@ plusoneList.addEventListener('click', (e) => {
   }
 });
 
+
+/**
+ * 削除後の番号振り直し
+ */
 function renumberGuests() {
   const blocks = plusoneList.querySelectorAll('.form-group');
   let num = 0;
@@ -139,3 +140,13 @@ function renumberGuests() {
   }
 }
 
+
+/**
+ * ★ 初期表示（戻る時に必要）
+ * サーバ側で plusones が描画されている場合はそのまま表示
+ */
+if (plusoneList.children.length > 0) {
+  plusoneArea.style.display = 'block';
+  document.querySelector('input[name="plusone_flag"][value="yes"]').checked = true;
+  guestIndex = plusoneList.querySelectorAll('.form-group').length - 1;
+}
