@@ -174,7 +174,7 @@
                 <span th:text="${rsvpForm.message}"></span>
             </div>
         </div>
-
+		<input type="hidden" name="from" th:value="${from}">
         <button type="submit">送信</button>
     </form>
 
@@ -200,7 +200,7 @@
         <input type="hidden" th:field="*{allergy}">
         <input type="hidden" th:field="*{allergyText}">
         <input type="hidden" th:field="*{message}">
-
+		<input type="hidden" name="from" th:value="${from}">
         <div th:each="p, i : *{plusones}">
             <input type="hidden" th:field="*{plusones[__${i.index}__].plusOneName}">
             <input type="hidden" th:field="*{plusones[__${i.index}__].plusOneFurigana}">

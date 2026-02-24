@@ -253,7 +253,7 @@
                     <label for="message">メッセージ</label>
                     <textarea id="message" th:field="*{message}" rows="4"></textarea>
                 </div>
-
+				<input type="hidden" name="from" th:value="${from}">
                 <button type="submit">確認</button>
 
             </form>
