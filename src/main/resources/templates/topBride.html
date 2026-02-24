@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Wedding Invitation</title>
+	<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/css/top.css">
+</head>
+<body>
+<div id ="wrapper">
+<main>
+		
+    <!-- =========================
+         HERO
+    ========================== -->
+	<section id="hero">
+
+	  <!-- 背景写真（最背面） -->
+	  <div class="hero-photo-wrap fade-in">
+	    <img src="img/top.jpg" class="hero-photo photo-dim" alt="">
+	  </div>
+
+	  <!-- 上部タイトル -->
+	  <div class="hero-seat curved-text fade-in-delay">
+	    <svg viewBox="0 30 300 150">
+	      <defs>
+	        <path id="curvePath"
+	          d="M 20 120 Q 150 10 280 120" />
+	      </defs>
+
+	      <text width="300">
+	        <textPath href="#curvePath" startOffset="50%" text-anchor="middle">
+	          INVITATION
+	        </textPath>
+	      </text>
+	    </svg>
+	  </div>
+
+	  <!-- 中央 INVITATION -->
+	  <div class="hero-center fade-in-delay">
+	    <p class="hero-invitation">Kota & Riho Wedding Ceremony</p>
+	    <p class="hero-sub">at GRAND ORIENTAL MINATOMIRAI</p>
+	   </div>
+	   
+	  <!-- 下部 左：対戦カード / 右：QR -->
+	  <div class="hero-bottom fade-in-delay">
+
+	    <div class="hero-left">
+	      <p class="match-title">WEDDDING SEAT</p>
+	      <p class="match-date">2026.05.09 SAT 10:30 START</p>
+	      <p class="match-seat">BRIDE SIDE</p>
+	      <p class="match-info">GATE YN / S2 通路 / 3段 / 2番</p>
+	    </div>
+
+		<div class="hero-right">
+		  <div class="qr-placeholder">
+		    <a href="https://kota-riho-wedding.site/info" target="_blank">
+		      <img src="img/qr-info.png" alt="QRコード">
+		    </a>
+		  </div>
+
+		  <p class="qr-note">
+		    SCAN OR TAP FOR <br>SEATING & MENU<br>
+		    ※席次表・メニュー表は<br>順次更新予定です
+		  </p>
+		</div>
+
+	  </div>
+	</section>
+	<!-- =========================
+	     INVITATION
+	========================== -->
+	<section id="invitation" class="content-section fadein">
+	    <h2 class="section-title">Message</h2>
+
+	    <div class="invitation-text">
+	        <p>春寒の候</p>
+	        <p>皆さまいかがお過ごしでしょうか</p>
+	        <p>このたび私たちは結婚式を挙げることになりました</p>
+	        <p>つきましてはご挨拶をかねて　</p>
+			<p>ささやかなパーティーを催したいと思います</p>
+	        <p>ご多用中　誠に恐縮ではございますが</p>
+			<p>ぜひご出席いただきたくご案内申し上げます</p>
+	        <p class="invitation-names">
+				敬具<br>
+	        	令和8年3月吉日</p>
+
+	        <p class="invitation-names">
+	            三瓶　航太<br>
+	            渡邉　莉帆
+	        </p>
+	    </div>
+	</section>
+
+    <!-- =========================
+         COUNTDOWN（背景写真）
+    ========================== -->
+    <section id="countdown" class="countdown-section fadein">
+        <img src="/img/coutdown.jpg" class="countdown-bg">
+
+        <div class="countdown-content">
+            <h2 class="section-title-white">CountDown</h2>
+
+            <!-- DAY（大きく中央で改行） -->
+            <div class="count-top">
+                <span id="days" class="big-day"></span>
+                <span class="big-day-unit">DAY</span>
+            </div>
+
+            <!-- 時間は横並び -->
+            <div class="count-bottom">
+                <div class="count-item">
+                    <span id="hours" class="time"></span>
+                    <span class="unit">HOUR</span>
+                </div>
+                <div class="count-item">
+                    <span id="minutes" class="time"></span>
+                    <span class="unit">MINUTE</span>
+                </div>
+                <div class="count-item">
+                    <span id="seconds" class="time"></span>
+                    <span class="unit">SECOND</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         HOST（縦並び）
+    ========================== -->
+    <section id="host" class="fadein content-section">
+        <h2 class="section-title">Profile</h2>
+
+        <div class="host-vertical">
+
+			<div class="host-card">
+			    <div class="host-top">
+			        <img src="/img/groom.png" class="host-photo">
+
+			        <div class="host-info">
+			            <p class="host-name">三瓶 航太</p>
+			            <p class="small"><span class="underline">Groom</span></p>
+			        </div>
+			    </div>
+
+			    <p class="host-comment">
+					1997年3月生まれです！　<br>
+					大学で気象に関する研究をしていたこともあり<br>
+					数年前に趣味で気象予報士の資格を取ってみました！<br>					
+					ですが…いざ予報してみると全然当たりません笑<br>
+					当日の天気もお空に聞いてください！笑<br>
+					皆様にお会いできることを楽しみにしております！！
+				</p>
+			</div>
+
+
+			<div class="host-card">
+			    <div class="host-top">
+
+			        <div class="host-info">
+			            <p class="host-name">渡邉 莉帆</p>
+			            <p class="small"><span class="underline">Bride</span></p>
+			        </div>
+
+			        <img src="/img/bride.png" class="host-photo">
+			    </div>
+
+			    <p class="host-comment">
+			        2000年3月生まれです！仕事はIT関係です<br>
+					この招待状も 一からプログラムしました！<br>
+					バグが発生しても笑ってお許しください笑<br>
+					精一杯おもてなしさせていただきますので
+					 <span class="br-sp"></span>ぜひお越しください！
+			    </p>
+			</div>
+
+        </div>
+    </section>
+	<!-- =========================
+	        GALLERY
+	   ========================== -->
+	   <section class="gallery">
+	     <h2>Gallery</h2>
+	     <p class="jp">ギャラリー</p>
+
+	     <div class="slider">
+	       <button class="prev"><</button>
+
+		   <div class="slides">
+		     <img src="img/photo5.jpg" class="clone">
+		     <img src="img/photo1.jpg">
+		     <img src="img/photo2.jpg">
+		     <img src="img/photo3.jpg">
+		     <img src="img/photo4.jpg">
+		     <img src="img/photo5.jpg">
+		     <img src="img/photo1.jpg" class="clone">
+		   </div>
+
+	       <button class="next">></button>
+
+	       <div class="dots">
+	         <span class="dot"></span>
+	         <span class="dot"></span>
+	         <span class="dot"></span>
+	         <span class="dot"></span>
+	         <span class="dot"></span>
+	       </div>
+	     </div>
+	   </section>
+    <!-- =========================
+         EVENT（住所・電話番号追加）
+    ========================== -->
+    <section id="event" class="fadein content-section">
+        <h2 class="section-title">Infomation</h2>
+
+		<div class="event-info">
+
+		    <div class="event-row">
+		        <span class="event-label">日　時</span>
+		        <span class="event-value">2026年 5月 9日(土)</span>
+		    </div>
+
+		    <div class="event-row">
+		        <span class="event-label">受　付</span>
+		        <span class="event-value">10時00分</span>
+		    </div>
+
+		    <div class="event-row">
+		        <span class="event-label">挙　式</span>
+		        <span class="event-value">10時30分</span>
+		    </div>
+
+		    <div class="event-row">
+		        <span class="event-label">披露宴</span>
+		        <span class="event-value">11時30分</span>
+		    </div>
+
+		    <div class="event-row">
+		        <span class="event-label">場　所</span>
+		        <span class="event-value">グランドオリエンタルみなとみらい</span>
+		    </div>
+
+		    <div class="event-row">
+		        <span class="event-label">住　所</span>
+		        <span class="event-value">神奈川県横浜市中区新港2-3-2</span>
+		    </div>
+
+		    <div class="event-row">
+		        <span class="event-label">電話番号</span>
+		        <span class="event-value">045-227-1221</span>
+		    </div>
+			<div class="event-row">
+				<span class="event-label">交通アクセス</span>
+				<span class="event-value">
+					馬車道４番から徒歩7分<br>
+					みなとみらい駅から徒歩8分<br>
+					桜木町から徒歩12分
+				</span>
+			</div>
+			<div class="event-row">
+				<span class="event-label">シャトルバス</span>
+				<span class="event-value">
+					桜木町駅・馬車道から20分間隔運行
+					<br> <a href ="https://www.bridal-produce.co.jp/bridal/yokohama/grandoriental/access/">詳しくは式場ホームページ</a>
+				</span>
+			</div>			
+		</div>
+
+        <div class="event-map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3249.9991449059858!2d139.6396624!3d35.454815599999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60185c59e0b77919%3A0xca7d65f71af5430e!2z44Kw44Op44Oz44OJ44Kq44Oq44Ko44Oz44K_44Or44G_44Gq44Go44G_44KJ44GE!5e0!3m2!1sja!2sjp!4v1768546552951!5m2!1sja!2sjp"
+                    style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         RSVP
+    ========================== -->
+    <section id="rsvp" >
+		<p>お手数ではございますが<br>
+		ご都合の程を4月9日迄に<br>
+		ご一報賜りますようお願い申し上げます</p>
+        <a href="/rsvp" class="rsvp-button">RSVP 回答はこちら</a>
+    </section>
+
+</main>
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="/js/top.js"></script>
+ <div th:replace="~{footer :: globalFooter}"></div>
+</div>
+</body>
+</html>
+
