@@ -11,7 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.wedding.kota_riho.form.RsvpForm;
@@ -49,22 +48,17 @@ public class RsvpController {
 
     // 入力画面
     @GetMapping("/rsvp")
-    public String getTop(
-            @RequestParam(required = false) String from,
-            Model model
+    public String getTop(Model model
     ) {
-        model.addAttribute("from", from);
+       
         model.addAttribute("rsvpForm", new RsvpForm());
         return "rsvp/rsvp";
     }
 
     @PostMapping("/rsvp")
-    public String backToForm(
-            @RequestParam(required = false) String from,
-            @ModelAttribute RsvpForm rsvpForm,
+    public String backToForm(@ModelAttribute RsvpForm rsvpForm,
             Model model
     ) {
-        model.addAttribute("from", from);
         model.addAttribute("rsvpForm", rsvpForm);
         return "rsvp/rsvp";
     }
@@ -72,19 +66,16 @@ public class RsvpController {
     // 確認画面
     @PostMapping("/rsvp/confirm")
     public String confirm(
-            @RequestParam(required = false) String from,
             @Valid @ModelAttribute RsvpForm rsvpForm,
             BindingResult bindingResult,
             Model model,
             HttpSession session
     ) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("from", from);
             return "rsvp/rsvp";
         }
 
         session.setAttribute("rsvpForm", rsvpForm);
-        model.addAttribute("from", from);
 
         return "rsvp/rsvpConfirm";
     }
@@ -140,11 +131,9 @@ public class RsvpController {
     // 完了画面
     @GetMapping("/rsvp/complete")
     public String complete(
-            @RequestParam(required = false) String from,
             Model model,
             HttpSession session
     ) {
-        model.addAttribute("from", from);
         session.invalidate();
         return "rsvp/rsvpComplete";
     }
