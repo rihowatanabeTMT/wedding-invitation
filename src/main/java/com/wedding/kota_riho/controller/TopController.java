@@ -10,11 +10,11 @@ public class TopController {
 	@GetMapping("/top")
 	public String top(@RequestParam(required = false) String from) {
 	    if ("groom".equals(from)) {
-	        return "topGroom"; // TopGroom.html
+	        return "top/topGroom"; // TopGroom.html
 	    } else if ("bride".equals(from)) {
-	        return "topBride"; // TopBride.html
+	        return "top/topBride"; // TopBride.html
 	    } else {
-	        return "top"; // 通常版
+	        return "top/top"; // 通常版
 	    }
 	}
 
