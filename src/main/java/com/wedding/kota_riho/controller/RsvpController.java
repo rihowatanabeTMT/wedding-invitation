@@ -130,7 +130,6 @@ public class RsvpController {
     @GetMapping("/rsvp/complete")
     public String complete(HttpSession session) {
         session.invalidate();
-        if (true) throw new RuntimeException("test");
         return "rsvp/rsvpComplete";
 
     }

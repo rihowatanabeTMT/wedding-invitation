@@ -309,3 +309,21 @@ footer {
 
 }
 
+
+.error-btn {
+    display: inline-block;
+    background: #005BAC;
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 30px;
+    transition: background .2s;
+}
+
+.error-btn:hover {
+    background: #0073CF;
+}
+
