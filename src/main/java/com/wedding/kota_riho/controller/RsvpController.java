@@ -1,6 +1,7 @@
 package com.wedding.kota_riho.controller;
 
 import jakarta.mail.MessagingException;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,7 @@ public class RsvpController {
     @GetMapping("/rsvp")
     public String getTop(Model model) {
         model.addAttribute("rsvpForm", new RsvpForm());
+        
         return "rsvp/rsvp";
     }
 
@@ -64,58 +66,72 @@ public class RsvpController {
     public String confirm(
             @Valid @ModelAttribute RsvpForm rsvpForm,
             BindingResult bindingResult,
-            Model model
+            Model model,
+            HttpSession session
     ) {
         if (bindingResult.hasErrors()) {
             return "rsvp/rsvp";
         }
+     // ★ セッションに保存
+        session.setAttribute("rsvpForm", rsvpForm);
+
         return "rsvp/rsvpConfirm";
     }
 
     // 保存処理
     @PostMapping("/rsvp/submit")
     public String submit(
-            @ModelAttribute RsvpForm rsvpForm,
+            HttpSession session,
             RedirectAttributes redirectAttributes
     ) throws MessagingException {
 
+        // ★ セッションから取得
+        RsvpForm rsvpForm = (RsvpForm) session.getAttribute("rsvpForm");
+
+        // ★ セッション切れチェック
+        if (rsvpForm == null) {
+            return "error/sessionExpired"; // ← 専用エラー画面へ
+        }
+
+        // DB保存
         rsvpService.saveRsvp(rsvpForm);
 
-        // 役割を自動判定
+        // 役割判定
         String role = guestRoleService.detectRole(rsvpForm);
         rsvpForm.setRole(role);
 
-        // メッセージ生成（MessageService に委譲）
-        String message = null;
-        if(role == null) {
-        	message = messageService.createMessage(rsvpForm);
-        }else{
-        	message =messageService.createSpecialMessage(rsvpForm);
-        }
+        // メッセージ生成
+        String message = (role == null)
+                ? messageService.createMessage(rsvpForm)
+                : messageService.createSpecialMessage(rsvpForm);
 
         // メール送信
         boolean mailError = false;
-
         try {
             mailService.sendRsvpMail(rsvpForm, message);
         } catch (Exception e) {
             e.printStackTrace();
-            mailError = true; // ← ★ ここがポイント
+            mailError = true;
         }
 
         // 完了画面用
         redirectAttributes.addFlashAttribute("name",
                 rsvpForm.getLastName() + rsvpForm.getFirstName());
         redirectAttributes.addFlashAttribute("message", message);
-        redirectAttributes.addFlashAttribute("mailError", mailError); // ← ★ 完了画面へ渡す
+        redirectAttributes.addFlashAttribute("mailError", mailError);
 
+        // ★ 完了後にセッション破棄（重要）
+        session.invalidate();
 
         return "redirect:/rsvp/complete";
     }
 
     // 完了画面
     @GetMapping("/rsvp/complete")
-    public String complete() {
+    public String complete(HttpSession session) {
+        session.invalidate();
+        if (true) throw new RuntimeException("test");
         return "rsvp/rsvpComplete";
+
     }
 }

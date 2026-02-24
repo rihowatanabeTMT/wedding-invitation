@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>ページが見つかりません</title>
+    <link rel="stylesheet" href="/css/base.css">
+</head>
+
+<body>
+
+<div th:replace="~{header :: globalHeader}"></div>
+
+<div class="wrapper">
+<main>
+    <h1>ページが見つかりません</h1>
+
+    <p style="margin-top:20px;">
+        アクセスされたページは存在しないか、URL が間違っている可能性があります。
+    </p>
+
+    <div style="margin-top:30px;">
+        <a href="/top" class="btn">トップページへ戻る</a>
+    </div>
+</main>
+
+<div th:replace="~{footer :: globalFooter}"></div>
+</div>
+
+</body>
+</html>
