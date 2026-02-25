@@ -60,14 +60,18 @@ public class MailService {
 
         body.append("メッセージ：").append(form.getMessage()).append("<br>");
         body.append("―――――――――――――――――――<br>");
-
+        
+        body.append("公式サイト：<br>");
+        body.append("<a href=\"https://kota-riho-wedding.site\">https://kota-riho-wedding.site</a><br>");
+        
+        body.append("―――――――――――――――――――<br>");
         // ★ HTMLメールとして送る
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");
 
         helper.setTo(to);
         helper.setSubject(subject);
-        helper.setFrom("weddingInfomation@kota-riho-wedding.site");
+        helper.setFrom("Kota & Riho Wedding <weddingInfomation@kota-riho-wedding.site>");
         helper.setText(body.toString(), true); // ← HTML対応
 
         mailSender.send(message);
