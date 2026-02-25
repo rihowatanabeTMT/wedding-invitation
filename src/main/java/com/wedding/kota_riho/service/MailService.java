@@ -67,7 +67,7 @@ public class MailService {
 
         helper.setTo(to);
         helper.setSubject(subject);
-        helper.setFrom("mikame20260509weeding@gmail.com");
+        helper.setFrom("weddingInfomation@kota-riho-wedding.site");
         helper.setText(body.toString(), true); // ← HTML対応
 
         mailSender.send(message);
