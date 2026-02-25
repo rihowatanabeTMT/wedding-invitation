@@ -102,7 +102,7 @@ public class RsvpController {
         
         // メッセージ生成
         String message = null;
-        if(role != null) {
+        if(role != "none") {
         	message = messageService.createSpecialMessage(rsvpForm);
         }else{
         	message = messageService.createMessage(rsvpForm);
