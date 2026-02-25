@@ -30,41 +30,69 @@ public class MailService {
 
         StringBuilder body = new StringBuilder();
 
-        // 名前
-        body.append(form.getLastName())
-            .append(" ")
-            .append(form.getFirstName())
-            .append(" 様<br><br>");
+     // タイトル
+     body.append("<h2 style=\"font-weight:bold; font-size:20px; margin-bottom:16px;\">")
+         .append("RSVP ご回答ありがとうございます")
+         .append("</h2>");
 
-        // 出席/欠席メッセージ（すでに <br> が入っている）
-        body.append(baseMessage).append("<br><br>");
+     // 名前
+     body.append(form.getLastName())
+         .append(" ")
+         .append(form.getFirstName())
+         .append(" 様<br><br>");
 
-        // 回答内容
-        body.append("―――――――――――――――――――<br>");
-        body.append("■ ご回答内容<br>");
-        body.append("お名前：")
-            .append(form.getLastName()).append(" ").append(form.getFirstName()).append("<br>");
-        body.append("ふりがな：")
-            .append(form.getLastNameKana()).append(" ").append(form.getFirstNameKana()).append("<br>");
-        body.append("メール：").append(form.getEmail()).append("<br>");
-        body.append("電話番号：").append(form.getPhone()).append("<br>");
-        body.append("出欠：").append(form.getAttendance().equals("yes") ? "出席" : "欠席").append("<br>");
-        body.append("関係性：").append(relationJp).append("<br>");
-        body.append("宿泊：").append(hotelJp).append("<br>");
-        body.append("バス：").append(busJp).append("<br>");
-        body.append("アレルギー：").append(allergyJp).append("<br>");
+     // 出席/欠席メッセージ
+     body.append(baseMessage).append("<br><br>");
 
-        if ("yes".equals(form.getAllergy())) {
-            body.append("アレルギー詳細：").append(form.getAllergyText()).append("<br>");
-        }
+     // ■ 会場案内（地図リンク付き）
+     body.append("<div style=\"margin-bottom:20px;\">")
+         .append("<strong style=\"font-size:16px;\">■ 会場のご案内</strong><br><br>")
+         .append("会場名：THE GRAND ORIENTAL MINATOMIRAI（グランドオリエンタルみなとみらい）<br>")
+         .append("<a href=\"https://maps.app.goo.gl/6tq8mJp8u1xJtQ2x7\" ")
+         .append("style=\"color:#005BAC; text-decoration:underline;\">Googleマップで開く</a><br>")
+         .append("</div>");
 
-        body.append("メッセージ：").append(form.getMessage()).append("<br>");
-        body.append("―――――――――――――――――――<br>");
+     // ■ 回答内容（枠で囲む）
+     body.append("<div style=\"border:1px solid #ddd; padding:16px; border-radius:8px; background:#fafafa;\">");
+     body.append("<strong style=\"font-size:16px;\">■ ご回答内容</strong><br><br>");
+
+     body.append("お名前：")
+         .append(form.getLastName()).append(" ").append(form.getFirstName()).append("<br>");
+
+     body.append("出席：")
+     .append(form.getAttendance().equals("yes") ? "出席" : "欠席")
+     .append("<br>");
+
+     body.append("新郎新婦どちら側：")
+     .append(form.getGuestSide().equals("groom") ? "新郎側" : "新婦側")
+     .append("<br>");
+
+     body.append("関係性：").append(relationJp).append("<br>");
+     body.append("宿泊：").append(hotelJp).append("<br>");
+     body.append("バス：").append(busJp).append("<br>");
+     body.append("アレルギー：").append(allergyJp).append("<br>");
+
+     if ("yes".equals(form.getAllergy())) {
+    	    body.append("アレルギー詳細：").append(form.getAllergyText()).append("<br>");
+    	}
+
+     // 同伴者
+     if (form.getPlusones() != null && !form.getPlusones().isEmpty()) {
+         body.append("<br><strong>■ 同伴者</strong><br>");
+         form.getPlusones().forEach(plusOne -> {
+             body.append("・ ").append(plusOne.getPlusOneName()).append("<br>");
+         });
+     }
+
+     body.append("</div><br>");
+
+     // 招待状ページボタン
+     body.append("<a href=\"https://kota-riho-wedding.site\" "
+             + "style=\"display:inline-block; padding:12px 20px; background:#005BAC; color:#fff; "
+             + "text-decoration:none; border-radius:6px; font-weight:bold; margin-top:12px;\">"
+             + "招待状ページはこちら"
+             + "</a><br><br>");
         
-        body.append("公式サイト：<br>");
-        body.append("<a href=\"https://kota-riho-wedding.site\">https://kota-riho-wedding.site</a><br>");
-        
-        body.append("―――――――――――――――――――<br>");
         // ★ HTMLメールとして送る
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, "UTF-8");

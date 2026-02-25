@@ -94,19 +94,20 @@ public class RsvpController {
         if (rsvpForm == null) {
             return "error/sessionExpired"; // ← 専用エラー画面へ
         }
-
-        // DB保存
-        rsvpService.saveRsvp(rsvpForm);
-
         // 役割判定
         String role = guestRoleService.detectRole(rsvpForm);
         rsvpForm.setRole(role);
-
+        // DB保存
+        rsvpService.saveRsvp(rsvpForm);
+        
         // メッセージ生成
-        String message = (role == null)
-                ? messageService.createMessage(rsvpForm)
-                : messageService.createSpecialMessage(rsvpForm);
-
+        String message = null;
+        if(role != null) {
+        	message = messageService.createSpecialMessage(rsvpForm);
+        }else{
+        	message = messageService.createMessage(rsvpForm);
+        }
+               
         // メール送信
         boolean mailError = false;
         try {
