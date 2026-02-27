@@ -48,8 +48,10 @@ public class MailService {
      body.append("<div style=\"margin-bottom:20px;\">")
      .append("<strong style=\"font-size:16px;\">■ 会場のご案内</strong><br><br>")
      .append("会場名：THE GRAND ORIENTAL MINATOMIRAI（グランドオリエンタルみなとみらい）<br>")
-     .append("<a href=\"https://www.google.com/maps?q=35.454356,139.642558\" ")
+     .append("<a href=\"https://www.google.com/maps/place/?q=グランドオリエンタルみなとみらい\" ")
      .append("style=\"color:#005BAC; text-decoration:underline;\">Googleマップで開く</a><br>")
+
+
      .append("</div>");
 
 
