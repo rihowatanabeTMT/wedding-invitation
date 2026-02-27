@@ -46,11 +46,12 @@ public class MailService {
 
      // ■ 会場案内（地図リンク付き）
      body.append("<div style=\"margin-bottom:20px;\">")
-         .append("<strong style=\"font-size:16px;\">■ 会場のご案内</strong><br><br>")
-         .append("会場名：THE GRAND ORIENTAL MINATOMIRAI（グランドオリエンタルみなとみらい）<br>")
-         .append("<a href=\"https://maps.app.goo.gl/6tq8mJp8u1xJtQ2x7\" ")
-         .append("style=\"color:#005BAC; text-decoration:underline;\">Googleマップで開く</a><br>")
-         .append("</div>");
+     .append("<strong style=\"font-size:16px;\">■ 会場のご案内</strong><br><br>")
+     .append("会場名：THE GRAND ORIENTAL MINATOMIRAI（グランドオリエンタルみなとみらい）<br>")
+     .append("<a href=\"https://www.google.com/maps/search/?api=1&query=35.454356,139.642558\" ")
+     .append("style=\"color:#005BAC; text-decoration:underline;\">Googleマップで開く</a><br>")
+     .append("</div>");
+
 
      // ■ 回答内容（枠で囲む）
      body.append("<div style=\"border:1px solid #ddd; padding:16px; border-radius:8px; background:#fafafa;\">");
