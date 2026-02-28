@@ -5,13 +5,8 @@
 const postInput = document.getElementById('post');
 
 postInput.addEventListener('input', function () {
-  let value = this.value.replace(/[^0-9]/g, '');
-
-  if (value.length > 3) {
-    value = value.slice(0, 3) + '-' + value.slice(3, 7);
-  }
-
-  this.value = value;
+  // 数字以外を削除するだけ（ハイフンは入れない）
+  this.value = this.value.replace(/[^0-9]/g, '');
 });
 
 document.getElementById('post').addEventListener('blur', function(){
@@ -29,8 +24,6 @@ document.getElementById('post').addEventListener('blur', function(){
       }
     });
 });
-
-
 
 
 /**
