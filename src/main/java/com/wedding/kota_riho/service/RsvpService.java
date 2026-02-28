@@ -76,6 +76,8 @@ public class RsvpService {
                 rsvp.getPlusones().add(plus);  // 親のリストに追加
             }
         }
+        
+        rsvp.setRole(form.getRole());
 
         // --- 保存 ---
         repo.save(rsvp);
