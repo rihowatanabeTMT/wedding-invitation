@@ -121,7 +121,6 @@ button:hover {
 /* ロゴ（中央固定） */
 .header-logo {
   height: 60px;
-  position: absolute;
   left: 50%;
   transform: translateX(-50%);
 }
