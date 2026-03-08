@@ -51,6 +51,8 @@ public class RsvpService {
         rsvp.setPrefecture(form.getPrefecture());
         rsvp.setAddress(form.getAddress());
         rsvp.setBuilding(form.getBuilding());
+        
+        rsvp.setBirth(form.getBirth());
 
         // 宿泊・バス
         rsvp.setHotel(form.getHotel());

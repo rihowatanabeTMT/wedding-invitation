@@ -1,6 +1,7 @@
 package com.wedding.kota_riho.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,6 +51,9 @@ public class RsvpEntity implements Serializable {
     private String prefecture;
     private String address;
     private String building;
+    
+    
+    private LocalDate birth;
 
     // 宿泊・バス
     private String hotel;

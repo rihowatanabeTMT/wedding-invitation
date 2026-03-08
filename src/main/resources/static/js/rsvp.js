@@ -1,3 +1,11 @@
+const input = document.getElementById("birth");
+
+input.addEventListener("input", () => {
+  const v = input.value;
+  if (/^\d{8}$/.test(v)) {
+    input.value = `${v.slice(0,4)}-${v.slice(4,6)}-${v.slice(6,8)}`;
+  }
+});
 
 /**
  * 郵便番号と住所

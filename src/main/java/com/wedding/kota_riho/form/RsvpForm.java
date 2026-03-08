@@ -1,10 +1,13 @@
 package com.wedding.kota_riho.form;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Pattern;
 
 import com.wedding.kota_riho.Validation.AllergyDetailRequired;
@@ -55,6 +58,11 @@ public class RsvpForm {
     @NotBlank(message = "メールアドレスは必須入力です")
     private String email;
 
+    //誕生日
+    @NotNull(message = "誕生日を入力してください")
+    @Past(message = "誕生日は過去の日付を入力してください")
+    private LocalDate birth;
+    
     // 郵便番号
     @NotBlank(message = "郵便番号は必須入力です")
     @Pattern(regexp = "\\d{3}-?\\d{4}")

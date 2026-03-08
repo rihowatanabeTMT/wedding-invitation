@@ -80,6 +80,13 @@
             </div>
         </div>
 
+		<div class="form-group">
+		    <div class="confirm-line">
+		        <label>誕生日：</label>
+		        <span th:text="${rsvpForm.birth}"></span>
+		    </div>
+		</div>
+
         <div class="form-group">
             <div class="confirm-line">
                 <label>郵便番号：</label>
@@ -190,6 +197,7 @@
         <input type="hidden" th:field="*{attendance}">
         <input type="hidden" th:field="*{phone}">
         <input type="hidden" th:field="*{email}">
+		<input type="hidden" th:field="*{birth}">
         <input type="hidden" th:field="*{post}">
         <input type="hidden" th:field="*{prefecture}">
         <input type="hidden" th:field="*{address}">
