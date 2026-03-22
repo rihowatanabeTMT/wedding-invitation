@@ -98,7 +98,7 @@
                     <input id="email" type="email" th:field="*{email}">
                 </div>
 
-				<!-- メール -->
+				<!-- 誕生日 -->
 				<div class="form-group">
 				    <label for="birth">誕生日</label>
 					<input id="birth" type="date" name="birth" max="2026-03-08" th:field="*{birth}">
@@ -244,10 +244,11 @@
 
 				            <label>アレルギー</label>
 				            <textarea rows="2" th:field="*{plusones[__${i.index}__].plusOneAllergy}"></textarea>
-							
+							<label>誕生日</label>
+							<input id="birth" type="date" max="2026-03-08" th:field="*{plusones[__${i.index}__].plusOneBirth}">
+
 							<button type="button" class="remove-btn" data-index="${index}">削除</button>
-						</div>
-						
+							
 				    </div>
 
 				    <button type="button" id="add-plusone">＋ 同伴者を追加</button>

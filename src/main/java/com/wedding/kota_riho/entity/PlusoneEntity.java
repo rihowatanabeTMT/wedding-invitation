@@ -1,6 +1,7 @@
 package com.wedding.kota_riho.entity;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,8 +25,10 @@ public class PlusoneEntity implements Serializable  {
     private String plusOneName;
     private String plusOneFurigana;
     private String plusOneAllergy;
+    private LocalDate plusOneBirth;
 
     @ManyToOne
     @JoinColumn(name = "rsvp_id")
     private RsvpEntity rsvpEntity;
+
 }

@@ -171,6 +171,10 @@
                     <label class="indent-label">アレルギー：</label>
                     <span th:text="${p.plusOneAllergy}"></span>
                 </div>
+				<div class="confirm-line">
+				     <label class="indent-label">誕生日：</label>
+				     <span th:text="${p.plusOneBirth}"></span>
+				</div>
             </div>
         </div>
 
@@ -211,6 +215,7 @@
             <input type="hidden" th:field="*{plusones[__${i.index}__].plusOneName}">
             <input type="hidden" th:field="*{plusones[__${i.index}__].plusOneFurigana}">
             <input type="hidden" th:field="*{plusones[__${i.index}__].plusOneAllergy}">
+			<input type="hidden" th:field="*{plusones[__${i.index}__].plusOneBirth}">
         </div>
 
         <button type="submit">戻る</button>

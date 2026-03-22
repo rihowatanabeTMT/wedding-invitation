@@ -84,6 +84,9 @@ function createGuestBlock(index) {
 
     <label>アレルギー</label>
     <textarea name="plusones[${index}].plusOneAllergy" rows="2"></textarea>
+	
+	<label>誕生日</label>
+	<input type="date" max="2026-03-08" name="{plusones[${index}].plusOneBirth}">
 
     <button type="button" class="remove-btn" data-index="${index}">削除</button>
   `;

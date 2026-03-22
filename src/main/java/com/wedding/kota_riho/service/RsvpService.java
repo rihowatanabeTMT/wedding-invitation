@@ -73,7 +73,7 @@ public class RsvpService {
                 plus.setPlusOneName(p.getPlusOneName());
                 plus.setPlusOneFurigana(p.getPlusOneFurigana());
                 plus.setPlusOneAllergy(p.getPlusOneAllergy());
-
+                plus.setPlusOneBirth(p.getPlusOneBirth());
                 plus.setRsvpEntity(rsvp);      // 親をセット
                 rsvp.getPlusones().add(plus);  // 親のリストに追加
             }
