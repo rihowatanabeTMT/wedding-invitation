@@ -226,7 +226,7 @@
 				    </div>
 				</div>
 
-				<!-- 同伴者情報（最初は非表示、戻る時はサーバが描画） -->
+				<!-- 同伴者情報 -->
 				<div id="plusone-area" style="display:none;">
 
 				    <h3>同伴者情報</h3>
@@ -244,14 +244,18 @@
 
 				            <label>アレルギー</label>
 				            <textarea rows="2" th:field="*{plusones[__${i.index}__].plusOneAllergy}"></textarea>
-							<label>誕生日</label>
-							<input id="birth" type="date" max="2026-03-08" th:field="*{plusones[__${i.index}__].plusOneBirth}">
 
-							<button type="button" class="remove-btn" data-index="${index}">削除</button>
-							
+				            <label>誕生日</label>
+				            <input id="birth" type="date" max="2026-03-08"
+				                   th:field="*{plusones[__${i.index}__].plusOneBirth}">
+
+				            <button type="button" class="remove-btn" th:attr="data-index=${i.index}">削除</button>
+				        </div>
 				    </div>
 
+				    <!-- ★ これが正しい位置！ -->
 				    <button type="button" id="add-plusone">＋ 同伴者を追加</button>
+
 				</div>
 
                 <!-- メッセージ -->
