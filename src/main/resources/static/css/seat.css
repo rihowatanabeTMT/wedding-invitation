@@ -1,0 +1,332 @@
+/* =========================
+   ページ全体
+========================= */
+
+.wrapper {
+    min-height: calc(100vh); /* 60px はヘッダーの高さに合わせて調整 */
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper main {
+    flex: 1; /* main が余白を埋める */
+}
+
+.seating-page {
+    padding: 20px;
+}
+
+.seating-page h1 {
+    text-align: center;
+    margin-bottom: 6px;
+    margin-top: 80px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+/* =========================
+   自分の席を探す
+========================= */
+.search-area {
+    background: #f4f8ff;
+    border: 1px solid #dce6f5;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.search-title {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #005bac;
+}
+
+.search-select select {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #d0d7e6;
+}
+
+.search-btn {
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 999px;
+    border: none;
+    background: #005bac;
+    color: #fff;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* =========================
+   上段：位置関係の図
+========================= */
+.layout-map {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 20px 0;
+}
+
+.table-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid #b8c7e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #005bac;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.table-icon.active {
+    background: #005bac;
+    color: #fff;
+    border-color: #005bac;
+}
+
+.groom, .bride {
+    font-weight: bold;
+    color: #005bac;
+    font-size: 1.2rem;
+}
+
+/* =========================
+   下段：選択された卓の拡大表示
+========================= */
+.selected-table-area {
+    margin-top: 40px;
+    text-align: center;
+    display: none;
+}
+
+.selected-table-circle {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid #b8c7e6;
+    margin: 0 auto;
+    position: relative;
+    padding: 10px;
+}
+
+.selected-table-name {
+    white-space: pre-line;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #005bac;
+}
+
+.selected-seat-left-column,
+.selected-seat-right-column {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: max-content;
+}
+
+/* 左側：円の中心から 140px 左へ */
+.selected-seat-left-column {
+    left: 50%;
+    transform: translate(calc(-90px - 100%), -50%);
+}
+
+/* 右側：円の中心から 140px 右へ */
+.selected-seat-right-column {
+    left: 50%;
+    transform: translate(90px, -50%);
+}
+
+/* relation + name の縦並び */
+.seat-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.2;
+}
+
+/* relation（上・小さめ・左寄せ） */
+.relation {
+    font-size: 10px;
+    color: #777;
+    margin-bottom: 2px;
+    text-align: left;
+}
+
+/* name（下・太字） */
+.name {
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;   /* ← 苗字と名前の間の余白（自然で上品） */
+}
+
+/* ハイライト */
+.highlight {
+    padding: 4px 6px;
+    border-radius: 4px;
+}
+
+/* =========================================
+   900px 以下（タブレット）
+========================================= */
+@media (max-width: 900px) {
+
+    /* タイトルの余白を少し詰める */
+    .seating-page h1 {
+        margin-top: 80px;
+        font-size: 1.8rem;
+    }
+
+    /* テーブルアイコンの間隔を縮める */
+    .row {
+        gap: 24px;
+    }
+
+    .table-icon {
+        width: 52px;
+        height: 52px;
+        font-size: 1.2rem;
+    }
+
+    /* 左右の席カラムを少し内側へ */
+    .selected-seat-left-column {
+        transform: translate(calc(-70px - 100%), -50%);
+    }
+
+    .selected-seat-right-column {
+        transform: translate(70px, -50%);
+    }
+}
+
+
+/* =========================================
+   600px 以下（スマホ）
+========================================= */
+@media (max-width: 600px) {
+
+    /* タイトルを小さく */
+    .seating-page h1 {
+       margin-top: 80px;
+        font-size: 1.6rem;
+    }
+
+    /* 検索エリアの余白調整 */
+    .search-area {
+        padding: 12px;
+    }
+
+    /* テーブルアイコンをさらに小さく */
+    .table-icon {
+        width: 46px;
+        height: 46px;
+        font-size: 1.1rem;
+    }
+
+    .row {
+        gap: 18px;
+    }
+
+    /* 円のサイズを少し小さく */
+    .selected-table-circle {
+        width: 70px;
+        height: 70px;
+    }
+
+    /* 左右の席カラムをさらに内側へ */
+    .selected-seat-left-column {
+        transform: translate(calc(-60px - 100%), -50%);
+    }
+
+    .selected-seat-right-column {
+        transform: translate(60px, -50%);
+    }
+
+    /* 名前のフォントを少し小さく */
+    .name {
+        font-size: 12px;
+        gap: 3px;
+    }
+
+    .relation {
+        font-size: 9px;
+    }
+}
+
+
+/* =========================================
+   400px 以下（超小型スマホ）
+========================================= */
+@media (max-width: 400px) {
+	
+	#sideSelect,#guestSelect{
+		font-size: 0.72rem;
+	}
+	#searchSeatBtn,.search-title{
+			font-size: 0.9rem;
+	}
+	.groom, .bride{
+		font-size:1rem ;
+	}
+    .seating-page h1 {
+        margin-top: 80px;
+        font-size: 1.4rem;
+    }
+
+    /* テーブルアイコンを最小サイズに */
+    .table-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .row {
+        gap: 14px;
+    }
+
+    /* 円をさらに小さく */
+    .selected-table-circle {
+        width: 55px;
+        height: 55px;
+    }
+
+    /* 左右の席カラムをもっと内側へ */
+    .selected-seat-left-column {
+        transform: translate(calc(-50px - 100%), -50%);
+    }
+
+    .selected-seat-right-column {
+        transform: translate(50px, -50%);
+    }
+
+    /* 名前・relation をさらに小さく */
+    .name {
+        font-size: 11px;
+        gap: 2px;
+    }
+
+    .relation {
+        font-size: 8px;
+    }
+}

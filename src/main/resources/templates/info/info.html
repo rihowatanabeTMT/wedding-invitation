@@ -17,15 +17,25 @@
 <body>
 
     <!-- ★ header fragment -->
-    <div th:replace="~{header :: globalHeader}"></div>
+    <div th:replace="~{headerInfo :: globalHeader}"></div>
 
     <div class="wrapper">
         <main>
 
             <h1 class="info-title">Infomation</h1>
  
-            <p class="info-note">席次表、メニュー表は順次更新予定です</p>
-
+			<a href="/info2" target="_blank" class="info-button">
+			     新郎・新婦の紹介
+			</a>
+			<a href="/menu" target="_blank" class="info-button">
+				Food & Drink Menu
+			</a>
+			<a href="/seat" target="_blank" class="info-button">
+			    席次表
+			</a>
+			<a href="https://www.weddingshare.me/weddings/7xn0kdvwbdes0vfu/JBUasbTf4oRtVHVkm5xfmIzlrsshyEC4?openExternalBrowser=1&type=link" target="_blank" class="info-button">
+				写真共有(Wedding Share)
+			</a>
             <a href="/pdf/hotel.pdf" target="_blank" class="info-button">
                 提携先ホテル
             </a>
@@ -33,7 +43,7 @@
         </main>
 
         <!-- ★ footer fragment -->
-        <div th:replace="~{footer :: globalFooter}"></div>
+        <div th:replace="~{footerInfo :: globalFooter}"></div>
     </div>
 
     <!-- JS -->

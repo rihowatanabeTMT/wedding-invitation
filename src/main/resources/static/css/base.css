@@ -103,7 +103,7 @@ button:hover {
 /* =========================
    HEADER（白背景）
 ========================= */
-.header {
+.header , .headerInfo{
   position: fixed;
   top: 0;
   left: 50%;
@@ -259,7 +259,7 @@ footer {
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   }
   
-  .header{
+  .header, .headerInfo{
     max-width: 900px;
   }
   
@@ -278,7 +278,7 @@ footer {
     box-shadow: none;
   }
   
-  .header{
+  .header, .headerInfo{
     max-width: 100%;
   }
 }
@@ -295,7 +295,7 @@ footer {
     box-shadow: none;
   }
 
-  .header{
+  .header, .headerInfo{
     max-width: 100%;
   }
   h1 {

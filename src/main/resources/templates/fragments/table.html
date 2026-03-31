@@ -1,0 +1,16 @@
+<th:block th:fragment="tableCircle(tableId)">
+
+    <div class="table-circle"
+         th:classappend="' seat-count-' + ${seatsMap[tableId] != null ? #lists.size(seatsMap[tableId]) : 0}">
+
+        <div th:each="seat : ${seatsMap[tableId] != null ? seatsMap[tableId] : {}}"
+             class="seat"
+             th:classappend="' seat-pos-' + ${seat.positionNo}"
+             th:data-guest-id="${seat.guest != null ? seat.guest.id : ''}"
+             th:data-name="${seat.guest != null ? seat.guest.name : '未定'}">
+        </div>
+
+        <div class="table-name" th:text="${tableId}"></div>
+    </div>
+
+</th:block>

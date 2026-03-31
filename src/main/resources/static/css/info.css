@@ -29,8 +29,10 @@ body {
 
 /* ボタン（base.css の RSVP ボタンと統一） */
 .info-button {
-  display: inline-block;
-  margin:0 auto;
+  display: block;          /* ← これが決め手 */
+  width: 80%;              /* ← 横幅を揃える（お好みで） */
+  max-width: 320px;        /* ← スマホで綺麗に見える */
+  margin: 12px auto;       /* ← 上下に余白をつけて中央寄せ */
   padding: clamp(10px, 3vw, 16px) clamp(18px, 4vw, 28px);
   background: #005BAC;
   color: #fff;
@@ -40,6 +42,7 @@ body {
   font-weight: 600;
   transition: 0.2s;
 }
+
 
 .info-button:hover {
   background: #004080;

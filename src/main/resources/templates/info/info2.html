@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Information</title>
+
+	<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+	<link rel="stylesheet" th:href="@{/css/top.css}">
+	<link rel="stylesheet" th:href="@{/css/info2.css}">
+</head>
+
+<body>
+<div id="wrapper">
+<main>
+
+<!-- =========================
+     HERO
+========================== -->
+<section id="hero" class="info-hero">
+
+  <div class="hero-photo-wrap fade-in">
+    <img src="/img/top.jpg" class="hero-photo photo-dim" alt="">
+  </div>
+
+  <div class="hero-seat curved-text fade-in-delay">
+    <svg viewBox="0 30 300 150">
+      <defs>
+        <path id="curvePath" d="M 20 120 Q 150 10 280 120" />
+      </defs>
+      <text width="300">
+        <textPath href="#curvePath" startOffset="50%" text-anchor="middle">
+          INFORMATION
+        </textPath>
+      </text>
+    </svg>
+  </div>
+
+  <div class="hero-center fade-in-delay">
+    <p class="hero-invitation">Kota & Riho Wedding</p>
+    <p class="hero-sub">Profile & Guide</p>
+  </div>
+
+</section>
+<div class="guide-intro">
+    <p class="guide-label">▼ 当日のご案内はこちら</p>
+    <a href="#guide" class="guide-scroll">Guide</a>
+</div>
+
+
+<!-- =========================
+     GREETING
+========================== -->
+<section id="greeting" class="content-section fadein">
+    <h2 class="section-title">Greeting</h2>
+
+    <div class="greeting-text">
+        <p>本日はお越しいただきありがとうございます。</p>
+        <p>ふたりが出会ってから今日までの時間は<br>
+           小さな出来事の積み重ねが<br>
+           大切な思い出となっていきました。</p>
+        <p>このページでは、そんな私たちのことを<br>
+           少しだけ知っていただけたら嬉しいです。</p>
+    </div>
+</section>
+
+
+<!-- =========================
+     PROFILE（新郎）
+========================== -->
+<section id="profile-groom" class="content-section fadein">
+    <h2 class="section-title">Profile</h2>
+
+    <div class="profile-card">
+        <div class="profile-left">
+            <img src="/img/groom.png" class="profile-photo">
+        </div>
+
+        <div class="profile-right groom-align">
+            <p class="profile-name">三瓶 航太</p>
+            <p class="profile-role">Groom</p>
+
+            <div class="profile-items">
+                <p>Birthday：1997年3月6日</p>
+                <p>Blood Type：O</p>
+                <p>From：横浜</p>
+                <p>Job：公務員</p>
+                <p>Personality：おだやか・少し抜けているところも</p>
+                <p>Calling：航太くん / 莉帆</p>
+                <p>Favorite：＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿</p>
+            </div>
+        </div>
+    </div>
+
+    <p class="profile-message">
+        （招待状と同じメッセージ文が入ります）
+    </p>
+</section>
+
+
+<!-- =========================
+     PROFILE（新婦）
+========================== -->
+<section id="profile-bride" class="content-section fadein">
+
+    <div class="profile-card reverse">
+
+        <div class="profile-left">
+            <div class="profile-info">
+                <p class="profile-name">渡邉 莉帆</p>
+                <p class="profile-role">Bride</p>
+
+                <div class="profile-items">
+                    <p>Birthday：2000年3月28日</p>
+                    <p>Blood Type：O</p>
+                    <p>From：茅ヶ崎</p>
+                    <p>Job：エンジニア</p>
+                    <p>Personality：おしゃべり好き・明るい</p>
+                    <p>Calling：航太くん / 莉帆</p>
+                    <p>Favorite：しっかりしているところ</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-right">
+            <img src="/img/bride.png" class="profile-photo">
+        </div>
+    </div>
+
+    <p class="profile-message">
+        （招待状と同じメッセージ文が入ります）
+    </p>
+
+</section>
+
+
+<!-- =========================
+     GUIDE（リンク集）
+========================== -->
+<section id="guide" class="content-section fadein">
+    <h2 class="section-title">Guide</h2>
+
+    <div class="guide-buttons">
+
+        <a href="/menu" target="_blank" class="info-button">
+            Food & Drink Menu
+        </a>
+
+        <a href="/seat" target="_blank" class="info-button">
+            席次表
+        </a>
+
+        <a href="https://www.weddingshare.me/weddings/7xn0kdvwbdes0vfu/JBUasbTf4oRtVHVkm5xfmIzlrsshyEC4?openExternalBrowser=1&type=link" target="_blank" class="info-button">
+            写真共有（WeddingShare）
+        </a>
+
+        <a href="/pdf/hotel.pdf" target="_blank" class="info-button">
+            提携先ホテル
+        </a>
+
+    </div>
+</section>
+
+
+</main>
+
+<div th:replace="~{footerInfo :: globalFooter}"></div>
+
+</div>
+</body>
+</html>

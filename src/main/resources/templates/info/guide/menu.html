@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Menu</title>
+
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/menu.css">
+</head>
+
+<body>
+
+    <!-- ヘッダー（共通） -->
+    <div th:replace="~{headerInfo :: globalHeader}"></div>
+
+    <div class="wrapper">
+
+        <main class="menu-page">
+
+            <h1>Food &amp; Drink Menu</h1>
+            <p class="subtitle">本日の特別なコースをご紹介します</p>
+
+            <!-- コース料理 -->
+            <section class="menu-card">
+                <h2 class="section-title">Course Menu</h2>
+
+                <div class="menu-item">
+                    <div class="label">Appetizer｜前菜</div>
+                    <p class="ja">季節野菜と魚介のマリネ</p>
+                    <p class="en">Marinated seasonal vegetables &amp; seafood</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="label">Bread｜パン</div>
+                    <p class="ja">自家製パン</p>
+                    <p class="en">Homemade bread</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="label">Soup｜スープ</div>
+                    <p class="ja">季節のポタージュ</p>
+                    <p class="en">Seasonal potage soup</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="label">Fish｜魚料理</div>
+                    <p class="ja">白身魚のポワレ　シトラス香るソース</p>
+                    <p class="en">Pan-fried white fish with citrus sauce</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="label">Meat｜肉料理</div>
+                    <p class="ja">国産牛ロースのロティ　赤ワインソース</p>
+                    <p class="en">Roasted Japanese beef loin with red wine sauce</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="label">Dessert｜デザート</div>
+                    <p class="ja">季節のデザート盛り合わせ</p>
+                    <p class="en">Assorted seasonal desserts</p>
+                </div>
+
+                <div class="menu-item">
+                    <div class="label">Coffee / Tea｜食後のお飲み物</div>
+                    <p class="ja">コーヒー または 紅茶</p>
+                    <p class="en">Coffee or tea</p>
+                </div>
+            </section>
+
+            <!-- ドリンク -->
+            <section class="menu-card">
+                <h2 class="section-title">Drink Menu</h2>
+
+                <div class="menu-item">
+                    <div class="label">Alcohol｜アルコール</div>
+                    <ul class="drink-list">
+                        <li>ビール</li>
+                        <li>白ワイン</li>
+                        <li>赤ワイン</li>
+                        <li>ウイスキー</li>
+                        <li>カクテル（ジン / カシス / ピーチ）</li>
+                    </ul>
+                </div>
+
+                <div class="menu-item">
+                    <div class="label">Soft Drink｜ソフトドリンク</div>
+                    <ul class="drink-list">
+                        <li>オレンジジュース</li>
+                        <li>烏龍茶</li>
+                        <li>ジンジャーエール</li>
+                        <li>コーラ</li>
+                    </ul>
+                </div>
+
+                <p class="note">※ メニューは仕入れ状況により<span class="br-sp"></span>変更となる場合がございます。</p>
+            </section>
+
+            <!-- アレルギー案内 -->
+            <section class="menu-card">
+                <h2 class="section-title">Allergy Menu</h2>
+                <p>
+                    アレルギー有とご回答いただいたゲストの皆さまには、<span class="br-sp"></span>別途、専用のメニューをご用意しております。<br>
+                    以下のボタンより内容をご確認ください。
+                </p>
+
+                <a href="/pdf/allergy.pdf" class="btn-allergy">アレルギー対応メニューはこちら</a>
+            </section>
+
+        </main>
+
+        <!-- フッター（共通） -->
+        <div th:replace="~{footerInfo :: globalFooter}"></div>
+
+    </div>
+	<script src="/js/header.js"></script>
+
+</body>
+</html>

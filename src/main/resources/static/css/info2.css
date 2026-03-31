@@ -1,0 +1,157 @@
+/* =========================
+   HERO（TOP と同じ縦幅にする）
+========================= */
+#hero.info-hero {
+  padding-bottom: 180px !important;
+}
+
+.hero-guide-button {
+  text-align: center;
+  margin-top: 20px;
+}
+/* =========================
+   GUIDE案内
+========================= */
+
+.guide-intro {
+  text-align: center;
+  margin: 20px 0 40px;
+}
+
+.guide-label {
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.guide-scroll {
+  display: inline-block;
+  padding: 16px 0px;
+  background: #005BAC;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  width: 20%;
+  transition: 0.2s;
+  font-size: 20px;
+  
+}
+
+
+
+/* =========================
+   GREETING
+========================= */
+#greeting .greeting-text p {
+  margin: 10px 0;
+}
+
+/* =========================
+   PROFILE 共通
+========================= */
+.profile-card {
+  width: 900px;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.profile-card.reverse {
+  flex-direction: row-reverse;
+}
+
+.profile-photo {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.profile-left,
+.profile-right {
+  width: 45%;
+}
+
+/* 右側を上寄せにする */
+.profile-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 6px;
+}
+
+/* Groom だけ中央揃え */
+.groom-align {
+  text-align: center;
+}
+
+.groom-align .profile-role {
+  margin: 0 auto 10px auto;
+  width: fit-content;
+}
+
+/* 名前の margin を詰める（ズレの原因だった） */
+.profile-name {
+  font-size: 32px;
+  font-weight: 600;
+  margin: 0 0 2px 0;
+}
+
+/* Groom / Bride の下線を短く上品に */
+.profile-role {
+  font-size: 16px;
+  border-bottom: 1px solid #000;
+  display: inline-block;
+  padding-bottom: 2px;
+  width: fit-content;
+  margin-bottom: 10px;
+}
+
+/* 行間を詰めて写真と高さを揃える */
+.profile-items p {
+  text-align: left;
+  margin: 4px 0;
+  line-height: 1.4;
+}
+
+/* メッセージ文はカードの外に独立配置 */
+.profile-message {
+  width: 900px;
+  margin: 0 auto 60px;
+  text-align: left;
+  line-height: 1.7;
+}
+
+/* =========================
+   GUIDE（リンク集）
+========================= */
+#guide {
+  margin-top: 40px;
+}
+
+.guide-buttons {
+  width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center; 
+
+}
+
+.info-button {
+  display: block;
+  width: 40%;
+  padding: 16px 0;
+  background: #005BAC;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.info-button:hover {
+  background: #004080;
+}

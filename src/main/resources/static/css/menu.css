@@ -1,0 +1,226 @@
+/* =========================
+   メニュー全体
+========================= */
+
+.menu-page {
+    padding: 20px;
+}
+
+.menu-page h1 {
+    text-align: center;
+    margin-bottom: 6px;
+	margin-top: 80px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #777;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+/* =========================
+   カードデザイン（RSVPと統一）
+========================= */
+
+.menu-card {
+    background: #fff;
+    border: 1px solid #dce6f5;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* セクションタイトル */
+.section-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 14px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* =========================
+   メニュー項目
+========================= */
+
+.menu-item {
+    margin-bottom: 18px;
+}
+
+.label {
+    font-size: 0.85rem;
+    color: #6a8ec7;
+    margin-bottom: 4px;
+    letter-spacing: 0.05em;
+}
+
+.ja {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.en {
+    font-size: 0.8rem;
+    color: #777;
+    margin: 2px 0 0;
+}
+
+/* =========================
+   ドリンクリスト
+========================= */
+
+.drink-list {
+    margin: 6px 0 0;
+    padding-left: 1.2em;
+}
+
+.drink-list li {
+    margin-bottom: 2px;
+}
+
+/* =========================
+   注意書き
+========================= */
+
+.note {
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 10px;
+}
+
+/* =========================
+   アレルギーボタン
+========================= */
+
+.btn-allergy {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: 1px solid #6a8ec7;
+    color: #6a8ec7;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: 0.2s;
+}
+
+.btn-allergy:hover {
+    background: #6a8ec7;
+    color: #fff;
+}
+@media (max-width: 900px) {
+
+    .menu-page {
+        padding: 16px;
+    }
+
+    .menu-page h1 {
+        margin-top: 80px;
+        font-size: 1.8rem;
+    }
+
+    .menu-card {
+        padding: 18px;
+    }
+
+    .section-title {
+        font-size: 1.05rem;
+    }
+
+    .ja {
+        font-size: 1rem;
+    }
+
+    .en {
+        font-size: 0.85rem;
+    }
+}
+@media (max-width: 600px) {
+
+    .menu-page h1 {
+        margin-top: 80px;
+        font-size: 1.6rem;
+    }
+
+    .menu-card {
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+
+    .section-title {
+        font-size: 1rem;
+        margin-bottom: 12px;
+    }
+
+    .menu-item {
+        margin-bottom: 14px;
+    }
+
+    .ja {
+        font-size: 0.95rem;
+    }
+
+    .en {
+        font-size: 0.78rem;
+    }
+
+    .btn-allergy {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+}
+
+
+/* =========================
+   スマホ
+========================= */
+@media (max-width: 480px) {
+
+    /* 本文・リスト：自然に縮む */
+    p,
+    li {
+        font-size: clamp(0.8rem, 2.4vw, 1rem);
+        line-height: 1.45;
+    }
+
+    /* ページタイトル */
+    .menu-page h1 {
+        margin-top: 70px;
+        font-size: clamp(1.2rem, 5vw, 1.4rem);
+    }
+
+    /* セクションタイトル（見出し） */
+    .section-title {
+        font-size: clamp(0.9rem, 3.5vw, 1rem);
+    }
+
+    /* 日本語メニュー名（ja） */
+    .ja {
+        font-size: clamp(0.9rem, 3.2vw, 1rem);
+    }
+
+    /* 英語メニュー名（en） */
+    .en {
+        font-size: clamp(0.75rem, 2.8vw, 0.9rem);
+    }
+
+    /* 注意書き */
+    .note {
+        font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+    }
+
+    /* カードの余白 */
+    .menu-page {
+        padding: 14px;
+    }
+
+    .menu-card {
+        padding: 14px;
+    }
+
+    .drink-list {
+        padding-left: 1em;
+    }
+}

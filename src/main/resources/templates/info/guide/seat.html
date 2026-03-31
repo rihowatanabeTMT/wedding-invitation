@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Seating Chart</title>
+
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/seat.css">
+</head>
+
+<body>
+	<div class="wrapper">
+    <!-- 共通ヘッダー -->
+    <div th:replace="~{headerInfo :: globalHeader}"></div>
+
+
+
+        <main class="seating-page">
+
+            <h1>Seating Chart</h1>
+            <p class="subtitle">本日の席次をご案内します</p>
+
+            <!-- ▼ 自分の席を探す -->
+            <section class="search-area">
+                <div class="search-title">🔍 自分の席を探す</div>
+
+                <!-- 新郎 or 新婦 -->
+                <div class="search-select">
+                    <select id="sideSelect">
+                        <option value="">新郎・新婦を選択</option>
+                        <option value="groom">新郎ゲスト</option>
+                        <option value="bride">新婦ゲスト</option>
+                    </select>
+                </div>
+
+                <!-- 名前選択 -->
+                <div class="search-select">
+                    <select id="guestSelect">
+                        <option value="">先に新郎/新婦を選んでください</option>
+                    </select>
+                </div>
+
+                <button id="searchSeatBtn" class="search-btn">自分の席を調べる</button>
+            </section>
+
+            <!-- ▼ 上段：位置関係の図（A〜J） -->
+            <section class="layout-map">
+
+                <!-- 1段目 -->
+                <div class="row">
+                    <div class="table-icon" data-table="A">A</div>
+                    <div class="groom">GROOM</div>
+                    <div class="bride">BRIDE</div>
+                    <div class="table-icon" data-table="B">B</div>
+                </div>
+
+                <!-- 2段目 -->
+                <div class="row">
+                    <div class="table-icon" data-table="C">C</div>
+                    <div class="table-icon" data-table="D">D</div>
+                    <div class="table-icon" data-table="E">E</div>
+                    <div class="table-icon" data-table="F">F</div>
+                </div>
+
+                <!-- 3段目 -->
+                <div class="row">
+                    <div class="table-icon" data-table="G">G</div>
+                    <div class="table-icon" data-table="H">H</div>
+                    <div class="table-icon" data-table="I">I</div>
+                    <div class="table-icon" data-table="J">J</div>
+                </div>
+
+            </section>
+
+            <!-- ▼ 下段：選択された卓の拡大表示（最初は非表示） -->
+            <section class="selected-table-area">
+                <div class="selected-table-circle">
+                    <div id="selectedTableName" class="selected-table-name"></div>
+
+                    <!-- 左側（最大4人） -->
+                    <div class="selected-seat-left-column">
+                        <span id="left1" class="selected-seat-label"></span>
+                        <span id="left2" class="selected-seat-label"></span>
+                        <span id="left3" class="selected-seat-label"></span>
+                        <span id="left4" class="selected-seat-label"></span>
+                    </div>
+
+                    <!-- 右側（最大4人） -->
+                    <div class="selected-seat-right-column">
+                        <span id="right1" class="selected-seat-label"></span>
+                        <span id="right2" class="selected-seat-label"></span>
+                        <span id="right3" class="selected-seat-label"></span>
+                        <span id="right4" class="selected-seat-label"></span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- 共通フッター -->
+        <div th:replace="~{footerInfo :: globalFooter}"></div>
+
+    </div>
+
+    <!-- ▼ DBの値をJSに渡す -->
+    <script th:inline="javascript">
+    /*<![CDATA[*/
+    const groomGuests = /*[[${groomGuests}]]*/ [];
+    const brideGuests = /*[[${brideGuests}]]*/ [];
+    /*]]>*/
+    </script>
+
+    <script src="/js/seat.js"></script>
+	<script src="/js/header.js"></script>
+</body>
+</html>
