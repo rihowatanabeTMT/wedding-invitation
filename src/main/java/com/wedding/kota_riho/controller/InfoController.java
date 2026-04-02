@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.wedding.kota_riho.form.GuestSeatDto;
 import com.wedding.kota_riho.service.GuestService;
-import com.wedding.kota_riho.service.SeatService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,8 +15,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class InfoController {
 	
-	
-	private final SeatService seatService;
 	private final GuestService guestService;
 	
 	@GetMapping("/info")
@@ -45,6 +42,16 @@ public class InfoController {
 	    model.addAttribute("brideGuests", brideGuests);
 
 	    return "info/guide/seat";
+	}
+	
+	@GetMapping("/childrenMenu")
+	public String cMenu(Model model) {
+	    return "info/guide/childrenMenu";
+	}
+	
+	@GetMapping("/AllergyMenu")
+	public String aMenu(Model model) {
+	    return "info/guide/AllergyMenu";
 	}
 
 }

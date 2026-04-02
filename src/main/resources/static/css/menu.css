@@ -224,3 +224,62 @@
         padding-left: 1em;
     }
 }
+/* ページ全体を縦に伸ばして footer を最下部に固定 */
+.wrapper {
+    min-height: 100vh;        /* 画面の高さぴったり */
+    display: flex;
+    flex-direction: column;
+}
+
+/* main が余白を埋める */
+.wrapper main {
+    flex: 1;
+}
+
+/* footer を一番下に吸い付ける */
+footer {
+    margin-top: auto;
+}
+
+/**
+Kidmenu
+**/
+/* PC：横並び（写真を左寄りに） */
+.kids-flex {
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+/* 写真の枠を固定して、右端に行かないようにする */
+.kids-photo {
+    width: 40%;
+    flex-shrink: 0;
+}
+
+.kids-photo img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+/* リスト側が広がりすぎないようにする */
+.kids-list {
+    flex: 1;
+    width:50%;
+}
+
+
+
+/* ② 480px以下：ここで初めて縦並びにして写真を下へ */
+@media (max-width: 480px) {
+    .kids-flex {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .kids-photo {
+        width: 70%;
+        max-width: 260px;
+    }
+}

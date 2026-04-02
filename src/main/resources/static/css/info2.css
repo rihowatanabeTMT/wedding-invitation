@@ -55,7 +55,6 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 40px;
 }
 
 .profile-card.reverse {
@@ -63,13 +62,16 @@
 }
 
 .profile-photo {
-  width: 100%;
+  width: 90%;
   border-radius: 10px;
 }
 
-.profile-left,
-.profile-right {
-  width: 45%;
+.profile-left{
+  width: 43%;
+}
+
+profile-right {
+  width: 50%;
 }
 
 /* 右側を上寄せにする */
@@ -77,12 +79,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 6px;
-}
-
-/* Groom だけ中央揃え */
-.groom-align {
-  text-align: center;
+  padding: 0 30px;
 }
 
 .groom-align .profile-role {
@@ -118,7 +115,7 @@
 .profile-message {
   width: 900px;
   margin: 0 auto 60px;
-  text-align: left;
+  text-align: center;
   line-height: 1.7;
 }
 
@@ -154,4 +151,238 @@
 
 .info-button:hover {
   background: #004080;
+}
+
+@media (min-width: 900px) {
+  #wrapper,
+  section {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+}
+@media (min-width: 680px) and (max-width: 899px) {
+
+  #wrapper,
+  section {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* ===== HERO ===== */
+  #hero {
+    padding-bottom: 30px;
+  }
+
+  .curved-text svg {
+    height: clamp(300px, 60vw, 500px);
+  }
+
+  .curved-text text {
+    font-size: clamp(24px, 4vw, 40px);
+  }
+
+  .hero-invitation {
+    font-size: clamp(28px, 5vw, 52px);
+  }
+
+  .hero-sub {
+    font-size: clamp(16px, 3vw, 26px);
+  }
+
+  /* ===== GREETING ===== */
+  #greeting .greeting-text p {
+    font-size: clamp(15px, 2.6vw, 18px); /* ← 少し小さく調整 */
+    line-height: 1.55;
+  }
+
+  /* ===== PROFILE ===== */
+  .profile-card {
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    gap: 3%;
+  }
+
+  .profile-left {
+    width: 45%;
+  }
+
+  .profile-right {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-name {
+    font-size: clamp(24px, 4vw, 34px);
+  }
+
+  .profile-role {
+    font-size: clamp(12px, 2.3vw, 16px);
+    margin-top: 10px;
+  }
+
+  .profile-items {
+    width: 100%;
+    margin: 0;
+  }
+
+  .profile-items p {
+    text-align: left;
+	font-size: clamp(15px, 2vw, 20px);
+    line-height: 1.4;
+	padding-bottom: 10px;
+  }
+
+  .profile-message {
+    width: 90%;
+    padding: 0 20px;
+    font-size: clamp(14px, 2.3vw, 18px);
+  }
+
+  /* ===== GUIDE ===== */
+  .guide-intro p {
+    font-size: clamp(14px, 2.3vw, 18px);
+  }
+
+  .guide-scroll {
+    width: 35%;
+    font-size: clamp(16px, 3vw, 22px);
+  }
+
+  .guide-buttons {
+    width: 90%;
+    padding: 0 20px;
+  }
+
+  .info-button {
+    width: 60%;
+    font-size: clamp(16px, 2.5vw, 22px);
+  }
+}
+@media (max-width: 679px) {
+
+  #wrapper,
+  section {
+    width: 100%;
+  }
+
+  /* ===== HERO ===== */
+  #hero {
+    padding-bottom: 20px;
+  }
+
+  .curved-text svg {
+    height: clamp(300px, 80vw, 550px);
+  }
+
+  .curved-text text {
+	font-size: clamp(28px, 6vw, 34px);
+     letter-spacing: 0.15em;
+     font-weight: 600;
+     fill: #fff;
+   }
+
+
+  .hero-invitation {
+    font-size: clamp(18px, 5vw, 28px);
+  }
+
+  .hero-sub {
+    font-size: clamp(10px, 3vw, 16px);
+  }
+
+  /* ===== GREETING ===== */
+  #greeting .greeting-text p {
+    font-size: clamp(10px, 3vw, 16px);
+    line-height: 1.55;
+    margin: 6px 0;
+  }
+
+  /* ============================
+       PROFILE（スマホだけ縦並び）
+     ============================ */
+
+  .profile-card {
+    width: 95%;
+    display: flex;
+    flex-direction: column; /* ← スマホは縦並び */
+    align-items: center;
+    gap: 16px;
+    padding: 0 10px;
+  }
+
+  /* 新婦の reverse をスマホでは無効化 */
+  .profile-card.reverse {
+    flex-direction: column !important;
+  }
+
+  .profile-left,
+  .profile-right {
+    width: 100%;
+  }
+
+  .profile-left img {
+    width: 80%; /* ← スマホは写真大きめ */
+    margin: 0 auto;
+    display: block;
+  }
+
+  .profile-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-name {
+    font-size: clamp(16px, 4vw, 22px);
+  }
+
+  .profile-role {
+    font-size: clamp(10px, 3vw, 14px);
+    margin-top: 6px;
+  }
+
+  .profile-items {
+    width: 100%;
+    max-width: 300px; /* ← 読みやすい幅 */
+    margin: 0 auto;
+  }
+
+  .profile-items p {
+    text-align: left;
+    font-size: clamp(10px, 3vw, 16px); /* ← 統一したスマホ黄金比 */
+    line-height: 1.4;
+    padding-bottom: 8px;
+  }
+
+  .profile-message {
+    width: 92%;
+    padding: 0 10px;
+    font-size: clamp(10px, 3vw, 16px);
+    line-height: 1.55;
+  }
+
+  /* ===== GUIDE ===== */
+  .guide-intro p {
+    font-size: clamp(10px, 3vw, 16px);
+  }
+
+  .guide-scroll {
+    width: 45%;
+    font-size: clamp(12px, 3vw, 16px);
+    padding: 10px 0;
+  }
+
+  .guide-buttons {
+    width: 90%;
+    padding: 0 10px;
+  }
+
+  .info-button {
+    width: 80%;
+    font-size: clamp(12px, 3vw, 16px);
+    padding: 12px 0;
+  }
 }
