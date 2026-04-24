@@ -77,16 +77,17 @@ function showTable(tableId) {
 
     if (total === 0) return;
 
-    // ★★ ここを変更 ★★
-    let leftCount, rightCount;
+	let leftCount, rightCount;
 
-    if (total % 2 === 0) {
-        leftCount = total / 2;
-        rightCount = total / 2;
-    } else {
-        leftCount = Math.floor(total / 2); // 左が少ない
-        rightCount = Math.ceil(total / 2); // 右が多い
-    }
+	if (total % 2 === 0) {
+	    // 偶数 → 左右同じ
+	    leftCount = total / 2;
+	    rightCount = total / 2;
+	} else {
+	    // 奇数 → 右が多い
+	    rightCount = Math.floor(total / 2) + 1;
+	    leftCount = total - rightCount;
+	}
 
     guests.forEach((g, i) => {
         const wrapper = document.createElement("div");
