@@ -63,7 +63,6 @@ let highlightedGuestId = null;
 
 function showTable(tableId) {
 
-    // ★ 最初は非表示 → 卓を押したら表示
     document.querySelector(".selected-table-area").style.display = "block";
 
     const guests = tables[tableId] || [];
@@ -71,7 +70,6 @@ function showTable(tableId) {
 
     selectedTableName.textContent = tableId;
 
-    // Clear all seats
     [...leftSeats, ...rightSeats].forEach(el => {
         el.innerHTML = "";
         el.classList.remove("highlight");
@@ -79,11 +77,18 @@ function showTable(tableId) {
 
     if (total === 0) return;
 
-    const leftCount = Math.ceil(total / 2);
+    // ★★ ここを変更 ★★
+    let leftCount, rightCount;
+
+    if (total % 2 === 0) {
+        leftCount = total / 2;
+        rightCount = total / 2;
+    } else {
+        leftCount = Math.floor(total / 2); // 左が少ない
+        rightCount = Math.ceil(total / 2); // 右が多い
+    }
 
     guests.forEach((g, i) => {
-
-        // ★ seat-block（relation + name）を作る
         const wrapper = document.createElement("div");
         wrapper.classList.add("seat-block");
 
@@ -91,24 +96,21 @@ function showTable(tableId) {
         rel.classList.add("relation");
         rel.textContent = g.fullRelation || "";
 
-		const nm = document.createElement("div");
-		nm.classList.add("name");
-
-		nm.innerHTML = `
-		    <span class="lastname">${g.lastName}</span>
-		    <span class="firstname">${g.firstName}</span>
-		    <span class="sama">様</span>
-		`;	
+        const nm = document.createElement("div");
+        nm.classList.add("name");
+        nm.innerHTML = `
+            <span class="lastname">${g.lastName}</span>
+            <span class="firstname">${g.firstName}</span>
+            <span class="sama">様</span>
+        `;
 
         wrapper.appendChild(rel);
         wrapper.appendChild(nm);
 
-        // Highlight
         if (g.id === highlightedGuestId) {
             wrapper.classList.add("highlight");
         }
 
-        // 左右に配置
         if (i < leftCount) {
             leftSeats[i].appendChild(wrapper);
         } else {
@@ -117,6 +119,7 @@ function showTable(tableId) {
         }
     });
 }
+
 
 // ==============================
 // Highlight table button
