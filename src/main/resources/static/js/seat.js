@@ -22,7 +22,7 @@ function buildTables() {
         tables[g.table].push(g);
     });
 
-    // Sort by positionNo
+    // ★ 1,2,3,4,5... の昇順でOK（1,2,3 が右上から）
     Object.keys(tables).forEach(t => {
         tables[t].sort((a, b) => (a.positionNo || 0) - (b.positionNo || 0));
     });
@@ -78,26 +78,22 @@ function showTable(tableId) {
 
     if (total === 0) return;
 
-    // ==============================
-    // ★ 人数で左右を決める（右を多くする）
-    // ==============================
+    // ★ 人数で左右を決める（奇数のとき右を多く）
     let leftCount, rightCount;
 
     if (total % 2 === 0) {
         leftCount = total / 2;
         rightCount = total / 2;
     } else {
-        rightCount = Math.floor(total / 2) + 1; // ★右が多い
+        rightCount = Math.floor(total / 2) + 1; // 右が多い
         leftCount = total - rightCount;
     }
 
-    // guests は positionNo でソート済み
-    const leftList = guests.slice(0, leftCount);
-    const rightList = guests.slice(leftCount);
+    // ★ guests は positionNo 昇順（1,2,3,4,5...）
+    // → 先頭から rightCount を「右」に、その残りを「左」に
+    const rightList = guests.slice(0, rightCount);      // 1,2,3 → 右
+    const leftList  = guests.slice(rightCount);         // 4,5   → 左
 
-    // ==============================
-    // seat-block を作る関数
-    // ==============================
     const makeSeat = (g) => {
         const wrapper = document.createElement("div");
         wrapper.classList.add("seat-block");
@@ -124,11 +120,19 @@ function showTable(tableId) {
         return wrapper;
     };
 
-    // ==============================
-    // 左右に詰める
-    // ==============================
-    leftList.forEach((g, i) => leftSeats[i].appendChild(makeSeat(g)));
-    rightList.forEach((g, i) => rightSeats[i].appendChild(makeSeat(g)));
+    // ★ 右上から 1,2,3… を並べる
+    rightList.forEach((g, i) => {
+        if (rightSeats[i]) {
+            rightSeats[i].appendChild(makeSeat(g));
+        }
+    });
+
+    // ★ 左上から 4,5… を並べる
+    leftList.forEach((g, i) => {
+        if (leftSeats[i]) {
+            leftSeats[i].appendChild(makeSeat(g));
+        }
+    });
 }
 
 // ==============================
