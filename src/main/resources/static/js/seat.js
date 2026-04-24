@@ -76,53 +76,52 @@ function showTable(tableId) {
 
     if (total === 0) return;
 
-    // ★ 円卓の左右の席番号
-    const leftPositions  = [8, 7, 6, 1];
-    const rightPositions = [2, 3, 4, 5];
+    // ★ guests は positionNo でソート済み
+    // ★ 人数で左右を決める（右を多くする）
+    let leftCount, rightCount;
 
-    // ★ 左右に振り分ける
-    const leftList = [];
-    const rightList = [];
+    if (total % 2 === 0) {
+        leftCount = total / 2;
+        rightCount = total / 2;
+    } else {
+        rightCount = Math.floor(total / 2) + 1; // 右が多い
+        leftCount = total - rightCount;
+    }
 
-    guests.forEach(g => {
-        if (leftPositions.includes(g.positionNo)) {
-            leftList.push(g);
-        } else if (rightPositions.includes(g.positionNo)) {
-            rightList.push(g);
+    // ★ 左右に分割
+    const leftList = guests.slice(0, leftCount);
+    const rightList = guests.slice(leftCount);
+
+    // ★ seat-block を作る関数
+    const makeSeat = (g) => {
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("seat-block");
+
+        const rel = document.createElement("div");
+        rel.classList.add("relation");
+        rel.textContent = g.fullRelation || "";
+
+        const nm = document.createElement("div");
+        nm.classList.add("name");
+        nm.innerHTML = `
+            <span class="lastname">${g.lastName}</span>
+            <span class="firstname">${g.firstName}</span>
+            <span class="sama">様</span>
+        `;
+
+        wrapper.appendChild(rel);
+        wrapper.appendChild(nm);
+
+        if (g.id === highlightedGuestId) {
+            wrapper.classList.add("highlight");
         }
-    });
 
-    // ★ 上から順に詰める
-    const fill = (list, seatElements) => {
-        list.forEach((g, i) => {
-            const wrapper = document.createElement("div");
-            wrapper.classList.add("seat-block");
-
-            const rel = document.createElement("div");
-            rel.classList.add("relation");
-            rel.textContent = g.fullRelation || "";
-
-            const nm = document.createElement("div");
-            nm.classList.add("name");
-            nm.innerHTML = `
-                <span class="lastname">${g.lastName}</span>
-                <span class="firstname">${g.firstName}</span>
-                <span class="sama">様</span>
-            `;
-
-            wrapper.appendChild(rel);
-            wrapper.appendChild(nm);
-
-            if (g.id === highlightedGuestId) {
-                wrapper.classList.add("highlight");
-            }
-
-            seatElements[i].appendChild(wrapper);
-        });
+        return wrapper;
     };
 
-    fill(leftList, leftSeats);
-    fill(rightList, rightSeats);
+    // ★ 左右に詰める
+    leftList.forEach((g, i) => leftSeats[i].appendChild(makeSeat(g)));
+    rightList.forEach((g, i) => rightSeats[i].appendChild(makeSeat(g)));
 }
 
 
