@@ -60,6 +60,7 @@ let highlightedGuestId = null;
 // ==============================
 // Show table seats
 // ==============================
+
 function showTable(tableId) {
 
     document.querySelector(".selected-table-area").style.display = "block";
@@ -69,6 +70,7 @@ function showTable(tableId) {
 
     selectedTableName.textContent = tableId;
 
+    // Clear seats
     [...leftSeats, ...rightSeats].forEach(el => {
         el.innerHTML = "";
         el.classList.remove("highlight");
@@ -76,23 +78,26 @@ function showTable(tableId) {
 
     if (total === 0) return;
 
-    // ★ guests は positionNo でソート済み
+    // ==============================
     // ★ 人数で左右を決める（右を多くする）
+    // ==============================
     let leftCount, rightCount;
 
     if (total % 2 === 0) {
         leftCount = total / 2;
         rightCount = total / 2;
     } else {
-        rightCount = Math.floor(total / 2) + 1; // 右が多い
+        rightCount = Math.floor(total / 2) + 1; // ★右が多い
         leftCount = total - rightCount;
     }
 
-    // ★ 左右に分割
+    // guests は positionNo でソート済み
     const leftList = guests.slice(0, leftCount);
     const rightList = guests.slice(leftCount);
 
-    // ★ seat-block を作る関数
+    // ==============================
+    // seat-block を作る関数
+    // ==============================
     const makeSeat = (g) => {
         const wrapper = document.createElement("div");
         wrapper.classList.add("seat-block");
@@ -119,11 +124,12 @@ function showTable(tableId) {
         return wrapper;
     };
 
-    // ★ 左右に詰める
+    // ==============================
+    // 左右に詰める
+    // ==============================
     leftList.forEach((g, i) => leftSeats[i].appendChild(makeSeat(g)));
     rightList.forEach((g, i) => rightSeats[i].appendChild(makeSeat(g)));
 }
-
 
 // ==============================
 // Highlight table button
