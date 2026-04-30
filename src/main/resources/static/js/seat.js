@@ -139,7 +139,10 @@ function showTable(tableId) {
         nm.classList.add("name");
 
         // ★ 様を付けるか判定
-        const sama = noSamaList.includes(g.fullRelation) ? "" : "様";
+		const sama = noSamaList.some(keyword => (g.fullRelation || "").includes(keyword))
+		    ? ""
+		    : "様";
+
 
         nm.innerHTML = `
             <span class="lastname">${g.lastName}</span>
