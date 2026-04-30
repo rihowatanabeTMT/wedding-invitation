@@ -78,7 +78,8 @@ const tableSidePreference = {
 // ★ 様を付けない続柄
 // ==============================
 
-const noSamaList = ["父", "母", "兄", "姉", "弟", "妹"];
+const noSamaList = [ "新婦母", "新郎母","新婦父","新郎父","新郎姉","新婦兄"];
+
 
 // ==============================
 // Show table seats
@@ -139,10 +140,7 @@ function showTable(tableId) {
         nm.classList.add("name");
 
         // ★ 様を付けるか判定
-		const sama = noSamaList.some(keyword => (g.fullRelation || "").includes(keyword))
-		    ? ""
-		    : "様";
-
+		const sama = noSamaList.includes(g.fullRelation) ? "" : "様";
 
         nm.innerHTML = `
             <span class="lastname">${g.lastName}</span>
