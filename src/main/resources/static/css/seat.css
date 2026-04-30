@@ -182,11 +182,17 @@
     gap: 4px;   /* ← 苗字と名前の間の余白（自然で上品） */
 }
 
-/* ハイライト */
-.highlight {
-    padding: 4px 6px;
-    border-radius: 4px;
+.table-icon.table-selected {
+    background: #005bac;
+    color: #fff;
+    border-color: #005bac;
 }
+
+.highlight {
+    font-weight: 700; /* ← 太字だけにする */
+}
+
+
 
 /* =========================================
    900px 以下（タブレット）
