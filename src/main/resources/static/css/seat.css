@@ -188,8 +188,8 @@
     border-color: #005bac;
 }
 
-.highlight {
-    font-weight: 700; /* ← 太字だけにする */
+.highlight .name {
+    color: #000; /* 完全な黒にする */
 }
 
 
