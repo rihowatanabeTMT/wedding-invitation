@@ -22,7 +22,7 @@ function buildTables() {
         tables[g.table].push(g);
     });
 
-    // ★ 1,2,3,4,5... の昇順でOK（1,2,3 が右上から）
+    // ★ positionNo 昇順
     Object.keys(tables).forEach(t => {
         tables[t].sort((a, b) => (a.positionNo || 0) - (b.positionNo || 0));
     });
@@ -58,6 +58,29 @@ const searchSeatBtn = document.getElementById("searchSeatBtn");
 let highlightedGuestId = null;
 
 // ==============================
+// ★ テーブルごとの左右優先設定
+// ==============================
+
+const tableSidePreference = {
+    A: "right",
+    B: "left",
+    C: "right",
+    D: "right",
+    E: "right",
+    F: "left",
+    G: "left",
+    H: "left",
+    I: "right",
+    J: "right"
+};
+
+// ==============================
+// ★ 様を付けない続柄
+// ==============================
+
+const noSamaList = ["父", "母", "兄", "姉", "弟", "妹"];
+
+// ==============================
 // Show table seats
 // ==============================
 
@@ -78,22 +101,32 @@ function showTable(tableId) {
 
     if (total === 0) return;
 
-    // ★ 人数で左右を決める（奇数のとき右を多く）
+    // ==============================
+    // ★ テーブルごとの左右人数決定
+    // ==============================
+    const pref = tableSidePreference[tableId] || "right";
     let leftCount, rightCount;
 
     if (total % 2 === 0) {
         leftCount = total / 2;
         rightCount = total / 2;
     } else {
-        rightCount = Math.floor(total / 2) + 1; // 右が多い
-        leftCount = total - rightCount;
+        if (pref === "right") {
+            rightCount = Math.floor(total / 2) + 1;
+            leftCount = total - rightCount;
+        } else {
+            leftCount = Math.floor(total / 2) + 1;
+            rightCount = total - leftCount;
+        }
     }
 
-    // ★ guests は positionNo 昇順（1,2,3,4,5...）
-    // → 先頭から rightCount を「右」に、その残りを「左」に
-    const rightList = guests.slice(0, rightCount);      // 1,2,3 → 右
-    const leftList  = guests.slice(rightCount);         // 4,5   → 左
+    // guests は positionNo 昇順
+    const rightList = guests.slice(0, rightCount);
+    const leftList  = guests.slice(rightCount);
 
+    // ==============================
+    // ★ seat DOM 生成
+    // ==============================
     const makeSeat = (g) => {
         const wrapper = document.createElement("div");
         wrapper.classList.add("seat-block");
@@ -104,10 +137,14 @@ function showTable(tableId) {
 
         const nm = document.createElement("div");
         nm.classList.add("name");
+
+        // ★ 様を付けるか判定
+        const sama = noSamaList.includes(g.fullRelation) ? "" : "様";
+
         nm.innerHTML = `
             <span class="lastname">${g.lastName}</span>
             <span class="firstname">${g.firstName}</span>
-            <span class="sama">様</span>
+            <span class="sama">${sama}</span>
         `;
 
         wrapper.appendChild(rel);
@@ -120,14 +157,14 @@ function showTable(tableId) {
         return wrapper;
     };
 
-    // ★ 右上から 1,2,3… を並べる
+    // 右側
     rightList.forEach((g, i) => {
         if (rightSeats[i]) {
             rightSeats[i].appendChild(makeSeat(g));
         }
     });
 
-    // ★ 左上から 4,5… を並べる
+    // 左側
     leftList.forEach((g, i) => {
         if (leftSeats[i]) {
             leftSeats[i].appendChild(makeSeat(g));
