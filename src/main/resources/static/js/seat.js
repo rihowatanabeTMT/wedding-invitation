@@ -69,7 +69,7 @@ const tableSidePreference = {
     E: "right",
     F: "left",
     G: "left",
-    H: "left",
+    H: "right",
     I: "right",
     J: "right"
 };
