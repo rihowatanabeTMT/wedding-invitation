@@ -237,7 +237,6 @@ profile-right {
     text-align: left;
 	font-size: clamp(15px, 2vw, 16px);
     line-height: 1.4;
-	padding:0 10px;
   }
 
   .profile-message {
