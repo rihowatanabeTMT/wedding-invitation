@@ -201,7 +201,7 @@ profile-right {
 
   /* ===== PROFILE ===== */
   .profile-card {
-    width: 95%;
+    width: 97%;
     display: flex;
     flex-direction: row;
   }
