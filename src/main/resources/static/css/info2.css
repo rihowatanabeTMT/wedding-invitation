@@ -234,7 +234,7 @@ profile-right {
 
   .profile-items p {
     text-align: left;
-	font-size: clamp(15px, 2vw, 16px);
+	font-size: clamp(14px, 2vw, 16px);
     line-height: 1.4;
   }
 
@@ -349,7 +349,7 @@ profile-right {
 
   .profile-items {
     width: 100%;
-    max-width: 300px; /* ← 読みやすい幅 */
+    max-width: 410px; /* ← 読みやすい幅 */
     margin: 0 auto;
   }
 
