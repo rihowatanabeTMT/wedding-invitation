@@ -204,7 +204,7 @@ profile-right {
     width: 95%;
     display: flex;
     flex-direction: row;
-    gap: 3%;
+    gap: 1%;
   }
 
   .profile-left {
@@ -216,6 +216,7 @@ profile-right {
     display: flex;
     flex-direction: column;
     align-items: center;
+	padding: 0 10px;
   }
 
   .profile-name {
@@ -234,7 +235,7 @@ profile-right {
 
   .profile-items p {
     text-align: left;
-	font-size: clamp(15px, 2vw, 18px);
+	font-size: clamp(15px, 2vw, 16px);
     line-height: 1.4;
 	padding-bottom: 10px;
   }
