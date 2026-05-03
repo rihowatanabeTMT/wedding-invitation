@@ -204,7 +204,6 @@ profile-right {
     width: 95%;
     display: flex;
     flex-direction: row;
-    gap: 1%;
   }
 
   .profile-left {
@@ -216,7 +215,6 @@ profile-right {
     display: flex;
     flex-direction: column;
     align-items: center;
-	padding: 0 10px;
   }
 
   .profile-name {
