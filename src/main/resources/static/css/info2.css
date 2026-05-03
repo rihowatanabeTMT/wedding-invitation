@@ -67,7 +67,7 @@
 }
 
 .profile-left{
-  width: 43%;
+  width: 40%;
 }
 
 profile-right {
@@ -159,6 +159,10 @@ profile-right {
     max-width: 900px;
     margin: 0 auto;
   }
+  
+  p,span {
+	font-size: 18px;
+  }
 }
 @media (min-width: 680px) and (max-width: 899px) {
 
@@ -230,7 +234,7 @@ profile-right {
 
   .profile-items p {
     text-align: left;
-	font-size: clamp(15px, 2vw, 20px);
+	font-size: clamp(15px, 2vw, 18px);
     line-height: 1.4;
 	padding-bottom: 10px;
   }
