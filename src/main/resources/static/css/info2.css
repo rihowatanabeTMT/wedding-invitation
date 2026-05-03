@@ -348,8 +348,7 @@ profile-right {
   }
 
   .profile-items {
-    width: 100%;
-    max-width: 410px; /* ← 読みやすい幅 */
+    width: 85%;
     margin: 0 auto;
   }
 
