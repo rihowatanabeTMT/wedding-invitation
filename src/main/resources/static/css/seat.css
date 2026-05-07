@@ -192,6 +192,24 @@
     color: #000; /* 完全な黒にする */
 }
 
+.pdf-link {
+    display: inline-block;
+    margin-top: 24px;
+    padding: 12px 20px;
+    background: #005bac;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: 0.2s ease;
+}
+
+.pdf-link:hover {
+    background: #0a6cd1; /* 少し明るい青に */
+}
+
 
 
 /* =========================================
