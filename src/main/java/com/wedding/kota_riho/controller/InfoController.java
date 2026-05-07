@@ -22,7 +22,7 @@ public class InfoController {
 		return "info/info";
 	}
 	
-	@GetMapping("/infomation")
+	@GetMapping("/introduction")
 	public String info2() {
 		return "info/info2";
 	}
