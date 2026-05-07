@@ -191,10 +191,11 @@
 .highlight .name {
     color: #000; /* 完全な黒にする */
 }
-
+/* PC・タブレット共通 */
 .pdf-link {
-    display: inline-block;
-    margin-top: 24px;
+    display: block;
+    width: fit-content;
+    margin: 24px auto 0;
     padding: 12px 20px;
     background: #005bac;
     color: #fff;
@@ -207,7 +208,17 @@
 }
 
 .pdf-link:hover {
-    background: #0a6cd1; /* 少し明るい青に */
+    background: #0a6cd1;
+}
+
+/* ▼ スマホ（480px以下）だけ少し小さく */
+@media (max-width: 480px) {
+    .pdf-link {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+        border-radius: 6px;
+        margin-top: 20px;
+    }
 }
 
 
